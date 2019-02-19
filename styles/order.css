@@ -1,0 +1,36 @@
+.container {
+    background-color: var(--bg);
+    flex-direction: row;
+    max-width: 100%;
+}
+
+.drinks-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    flex-grow: 1;
+    margin: 2em;
+    padding: 1em;
+    height: 100%;
+    justify-content: space-between;
+}
+
+
+.tab-container {
+    display: flex;
+    background-color: white;
+    flex-grow: 2;
+    margin: 2em;
+    padding: 1em;
+    height: 100%;
+}
+
+.drink {
+    display: flex;
+    flex-grow: 1;
+    border: solid red;
+    height: 200px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+}
