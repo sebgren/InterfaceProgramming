@@ -6,7 +6,7 @@
 
 html, body {
     background-color: var(--bg);
-    height: 100%;
+    height: calc(100vh - 300px);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -28,7 +28,7 @@ h1 {
     margin-right: auto;
 }
 
-.header {
+.header > h1{
     text-align: center;
     justify-content: center;
     height: 200px;
