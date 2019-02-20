@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Eagle+Lake|Roboto');
 
+:root {
+    --bg: #874317;
+}
+
 html, body {
-    background-color: #874317;
-    height: 100%;
+    background-color: var(--bg);
+    height: calc(100vh - 300px);
     font-family: 'Roboto', sans-serif;
 }
 
@@ -24,14 +28,14 @@ h1 {
     margin-right: auto;
 }
 
-.header {
+.header > h1{
     text-align: center;
     justify-content: center;
     height: 200px;
 }
 
 
-.loginContainer {
+.login-container {
     flex: 1;
     text-align: center;
     justify-content: center;
