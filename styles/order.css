@@ -1,0 +1,54 @@
+.container {
+    background-color: var(--bg);
+    flex-direction: row;
+    max-width: 100%;
+}
+
+.drinks-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    flex-grow: 1;
+    margin: 2em;
+    padding: 1em;
+    height: 100%;
+    width: 66%;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+
+.tab-container {
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 2;
+    margin: 2em;
+    padding: 1em;
+    height: 100%;
+    width: 33%;
+}
+
+.drink {
+    display: flex;
+    border: solid red;
+    height: 150px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .drink {
+    height: 100px;
+    width: 100px;
+  }
+}
+
+.header > h1{
+    background-color: var(--bg);
+    height: 3em;
+    margin: 0;
+    color: white;
+}
