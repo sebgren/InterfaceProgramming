@@ -15,12 +15,10 @@ var DB = ("DBLoaded.js");
 
 
 function allUserNames() {
-    console.log("allUserNames reached");
     var nameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
         nameCollect.push(DB.users[i].username);
     }
-    console.log('Exempelnamn= ' + nameCollect[2]);
     return nameCollect;
 
     
@@ -28,24 +26,17 @@ function allUserNames() {
 }
 
 function validateUser(){
-    console.log('validateUser reached');
     var usrname = document.getElementById('username');
     var pswrd = document.getElementById('password');
 
     //if match = true, the user will log in
     var match = false;
-
-    console.log('username= ' + usrname.value);
-    console.log('password= ' + pswrd.value);
-
     
     //creates list with all the useranmes
     var usernameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
         usernameCollect.push(DB.users[i].username);
     }
-
-    console.log('usernameCollect= '+ usernameCollect[2]);
 
     
     //creates list with all the passwords
@@ -60,8 +51,6 @@ function validateUser(){
         credentialsCollect.push(DB.users[i].credentials);
     }
 
-    console.log('passwordCollect= '+ passwordCollect[2]);
-
     //variable to store current index, used to check credential-number
     var userIndex = 0;
 
@@ -69,18 +58,10 @@ function validateUser(){
     //if it username matches with username input it checks if the password is correct too
     for(i=0; i < usernameCollect.length; i++){
 
-        console.log('step 1');
         if(usernameCollect[i] == usrname.value){
-            console.log('step 2');
                 if(passwordCollect[i] == pswrd.value){
                     userIndex = i;
-                    console.log('step 3');
-
                     match = true;
-                    console.log('match= '+ match.value);
-
-                    console.log('passwordCollect(i)= ' + passwordCollect[i]);
-                    console.log('usernameCollect(i)= ' + usernameCollect[i]);
                 }
           
             }
@@ -88,6 +69,7 @@ function validateUser(){
 
     //if bool is true the user is redirected to the right page
     if(match == true){
+        //Not the right pages, just to test the functionality.
         if(credentialsCollect[userIndex] == 0){
             window.location.href = "http://www.w3schools.com";
         } else {
