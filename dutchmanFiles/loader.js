@@ -9,40 +9,85 @@
 // advantage that the data is easy to access through simple APIs. Also, when storing as local storage,
 // all data is stored as strings, which might be adding some complexity.
 //
+
+var DB = ("DBLoaded.js");
+
+
+
 function allUserNames() {
     var nameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
         nameCollect.push(DB.users[i].username);
     }
     return nameCollect;
+
+    
+
 }
 
+function validateUser(){
+    var usrname = document.getElementById('username');
+    var pswrd = document.getElementById('password');
 
-//Validate login credentials
-function matchPassword() {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    
-    var usernameCollect = [];
-    var passwordCollect = [];
+    //if match = true, the user will log in
     var match = false;
-
+    
+    //creates list with all the useranmes
+    var usernameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
-        nameCollect.push(DB.users[i].username);
-        nameCollect.push(DB.users[i].password);
-
+        usernameCollect.push(DB.users[i].username);
     }
-    for(j = 0; i < usernameCollect.length; i++){
-        if(usernameCollect[i] == username && passwordCollect[i] == password){
-            match = true;
-            console.log('Match found, should redirect to next page');
+
+    
+    //creates list with all the passwords
+    var passwordCollect = [];
+    for (i = 0; i < DB.users.length; i++) {
+        passwordCollect.push(DB.users[i].password);
+    }
+
+    //creates list with all the credentials
+    var credentialsCollect = [];
+    for (i = 0; i < DB.users.length; i++) {
+        credentialsCollect.push(DB.users[i].credentials);
+    }
+
+    //variable to store current index, used to check credential-number
+    var userIndex = 0;
+
+    //loops through the list of usernames
+    //if it username matches with username input it checks if the password is correct too
+    for(i=0; i < usernameCollect.length; i++){
+
+        if(usernameCollect[i] == usrname.value){
+                if(passwordCollect[i] == pswrd.value){
+                    userIndex = i;
+                    match = true;
+                }
+          
+            }
+        }
+
+    //if bool is true the user is redirected to the right page
+    if(match == true){
+        //Not the right pages, just to test the functionality.
+        if(credentialsCollect[userIndex] == 0){
+            window.location.href = "http://www.w3schools.com";
+        } else {
+            window.location.href = "http://www.sweclockers.com";
         }
     }
-    //exists in nameCollect?
-    //if true: 
+    else{
+        window.alert("Wrong username or password");
+    }
+
     
-    return match;
+    
+
+
+
+    
 }
+
 
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
