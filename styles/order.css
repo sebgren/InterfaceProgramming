@@ -38,6 +38,79 @@
     justify-content: center;
     align-items: center;
 }
+.beerDiv {
+    display: flex;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/beer.jpg');
+    background-image:opacity: 0.5;
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+.beerDiv:hover { 
+    background-color: #f4b042;
+    opacity: 0.5;
+}
+
+.whiskeyDiv {
+    display: flex;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/whiskey.jpeg');
+    padding-bottom: 
+    background-image:opacity: 0.5;
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+.whiskeyDiv:hover { 
+  background-color: #f4b042;
+    opacity: 0.5;
+  }
+
+.wineDiv {
+    display: flex;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/wine.jpg');
+    background-image:opacity: 0.5;
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
+}
+
+.wineDiv:hover { 
+  background-color: #f4b042;
+    opacity: 0.5;
+}
+
 
 @media only screen and (max-width: 600px) {
   .drink {
