@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <title>The Flying Dutchman</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/order.css">
+    <script src="../dutchmanFiles/loader.js"></script>
+    <script src="../dutchmanFiles/DBLoaded.js"></script>
+    <script src="../scripts/main.js"></script>
+
+
+    <body>
+    <div id="creditString">hej</div>
+        <div class="header"><h1>Tablet #1</h1></div>
+
+        <div class="container">
+
+            <div class="drinks-container">
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+                <div class="drink">
+                    BEER
+                </div>
+
+            </div>
+            <div class="tab-container">
+                <h1>Tab</h1>
+                <ol class="tab-drink-list">
+                    <li>Beer A, 100 kr</li>
+                    <li>Beer B, 50 kr</li>
+                </ol>
+                Total: 150
+                <div class="button-container-vip">
+                    <button class="pay-button">Pay</button>
+                    <button onclick="showCredits('jakob');" class="vip-button">Use VIP-Credit</button>
+                </div>
+            </div>
+
+        </div>
+    <script>showCredit("jakob");</script> <!-- TODO: Now always shows user "jakobs" credit -->
+    </body>
+
+</html>

@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    justify-content: flex-start;
     text-align: center;
     flex-grow: 2;
     margin: 0.5em;
@@ -123,5 +124,48 @@
     background-color: var(--bg);
     height: 3em;
     margin: 0;
+    color: white;
+}
+
+.button-container-vip {
+     display: flex;
+     flex-direction: column;
+     background-color: white;
+     justify-content: flex-start;
+     text-align: center;
+     flex-grow: 2;
+     height: 20%;
+     width: 100%;
+
+ }
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    justify-content: flex-start;
+    text-align: center;
+    flex-grow: 2;
+    height: 10%;
+    width: 100%;
+
+}
+
+.pay-button {
+    height: 50px;
+    background-color: darkred;
+}
+
+.vip-button {
+    height: 50px;
+    background-color: green;
+}
+
+.tab-drink-list{
+    height: 80%;
+}
+
+#creditString {
+    text-align: end;
     color: white;
 }
