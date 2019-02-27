@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     background-color: white;
     flex-grow: 1;
-    margin: 2em;
+    margin: 0.5em;
     padding: 1em;
     height: 100%;
     width: 66%;
@@ -20,11 +20,11 @@
 
 .tab-container {
     display: flex;
+    flex-direction: column;
     background-color: white;
-    justify-content: center;
     text-align: center;
     flex-grow: 2;
-    margin: 2em;
+    margin: 0.5em;
     padding: 1em;
     height: 100%;
     width: 33%;
