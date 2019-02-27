@@ -2,6 +2,17 @@
 var DB = {
     "users": [
         {
+            //Staff-account
+            "user_id": "999",
+            "credentials": "4",
+            "password": "staffpass",
+            "username": "Staffan",
+            "first_name": "Staffan",
+            "last_name": "Staff",
+            "email": "staffanstaff@dutchman.se",
+            "phone": "0701337893"
+        },
+        {
             "user_id": "2",
             "credentials": "0",
             "password": "lösenord1",

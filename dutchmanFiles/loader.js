@@ -11,34 +11,202 @@
 //
 
 var DB = ("DBLoaded.js");
+var DB2 = ("Beverages.js");
 
 
-
+//Done by Lars
 function allUserNames() {
     var nameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
         nameCollect.push(DB.users[i].username);
     }
     return nameCollect;
+}
+//Not used right now, might be useful later
+//Gets all the different types of beverages.
+function loadBeverages(){
+    //creates listarray with all drinktypes   
+    var alldrinktypes = [];
+    for (i = 0; i < DB2.spirits.length; i++) {
+        alldrinktypes.push(DB2.spirits[i].varugrupp);
+    }
+    //Removes dupliactes from array
+    var uniqueDrinkTypes = alldrinktypes.filter(function(item, pos){
+        return alldrinktypes.indexOf(item)== pos; 
+    });
 
-    
+    console.log("unique drink types= " + uniqueDrinkTypes);
 
+    return uniqueDrinkTypes;
 }
 
+//Creates divs according to how many drinks that you set "sliceddrinkList to".
+
+//that need to be shown
+window.onload = createDrinkDivs;
+function createDrinkDivs(drink){
+    var slicedDrinkList = [];
+    //slice generates an error in the log but still works.
+    slicedDrinkList = drink.slice(0, 50);
+
+    console.log("number of beers ===> " + drink.length);
+
+    //Using join to convert array to string
+    var firstDrinkString = drink[1].join();
+    var remove;
+    var drinkInfo;
+    var drinkDiv = document.createElement('div');
+   
+    //if the string includes Ale
+    if(firstDrinkString.includes("Ale") == true){
+        remove = "whiskeyDiv";
+        eraseFunction(remove);
+        remove = "wineDiv";
+        eraseFunction(remove);
+
+
+        for(i=0; i<slicedDrinkList.length; i++){
+            drinkDiv = document.createElement('div');
+            drinkDiv.className="beerDiv";
+            
+            drinkInfo = slicedDrinkList[i];
+            drinkDiv.id =drinkInfo[2];
+            drinkDiv.draggable =true;
+            drinkDiv.ondragstart="drag(event)";
+            
+            document.getElementById('dc').appendChild(drinkDiv);
+            
+            //Testing onclick with a random page       
+            drinkDiv.onclick="location.href='https://www.w3schools.com';"
+
+            //Set first element of array to display in div. 0 = the name of the drink.
+            drinkDiv.innerHTML = drinkInfo[0];            
+        }                  
+    }
+
+    if(firstDrinkString.includes("Whisky") == true){
+            remove = "beerDiv";
+            eraseFunction(remove);
+            remove = "wineDiv";
+            eraseFunction(remove);
+        for(i=0; i<slicedDrinkList.length; i++) 
+        {
+            var drinkDiv = document.createElement('div');
+            drinkDiv.className="whiskeyDiv";
+            document.getElementById('dc').appendChild(drinkDiv);
+            drinkInfo = slicedDrinkList[i];
+            drinkDiv.innerHTML = drinkInfo[0];
+        }     
+    }        
+
+    if(firstDrinkString.includes("Vin") == true){
+            remove = "beerDiv";
+            eraseFunction(remove);
+            remove = "whiskeyDiv";
+            eraseFunction(remove);
+
+        for(i=0; i<slicedDrinkList.length; i++) 
+        {
+            var drinkDiv = document.createElement('div');
+            drinkDiv.className="wineDiv";
+            document.getElementById('dc').appendChild(drinkDiv);
+            drinkInfo = slicedDrinkList[i];
+            drinkDiv.innerHTML = drinkInfo[0];
+        }     
+    }             
+}
+
+
+
+//Used to remove the divs 
+function eraseFunction(className){
+    var elements = document.getElementsByClassName(className);
+    while(elements.length > 0){
+        elements[0].parentNode.removeChild(elements[0]);
+    }
+}
+//for the drag and drop (not working with drinkDivs at the moment)
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+//for the drag and drop (not working with drinkDivs at the moment)
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+//for the drag and drop (not working with drinkDivs at the moment)
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+//When the beer button is clicked
+function checkBeerBox(){
+    console.log("checkBeerBox reached!!!!");
+    drink = "Ale";
+    getCorrectDrink(drink);
+}
+
+//When the whiskey button is clicked
+function checkWhiskeyBox(){
+    drink = "Whisky";
+    getCorrectDrink(drink);
+}
+
+//When the wine button is clicked
+function checkWineBox(){
+    drink = "Vin";
+    getCorrectDrink(drink);
+}
+
+//function to get all the drinks
+function getDrinks(){
+    var allDrinks = [];
+    for (i = 0; i < DB2.spirits.length; i++) {
+        allDrinks.push(DB2.spirits[i]);
+    }
+    return allDrinks;    
+}
+
+//Creates a list with specified drink and sends it to the 
+//function that creates divs (createDrinkDivs).
+function getCorrectDrink(drink){
+    console.log("getCorrectDrink reached");
+    var collector = [];
+    collector = getDrinks();
+    var drinkID = 0;
+    var specificDrinks = [];
+    
+    for(i=0; i<collector.length; i++){
+        console.log("in the loop");
+        if(collector[i].varugrupp.includes(drink)){
+            specificDrinks.push([collector[i].namn, collector[i].varugrupp, collector[i].nr]);
+            drinkID += 1;    
+        }
+    }
+    specificDrinks.sort();
+    createDrinkDivs(specificDrinks);
+}
+
+
+//User authentication function - for logging in as VIP or staff.
 function validateUser(){
     var usrname = document.getElementById('username');
     var pswrd = document.getElementById('password');
 
     //if match = true, the user will log in
     var match = false;
-    
+
     //creates list with all the useranmes
     var usernameCollect = [];
     for (i = 0; i < DB.users.length; i++) {
         usernameCollect.push(DB.users[i].username);
     }
+    console.log("usernameCollect list = " + usernameCollect[2]);
 
-    
+
     //creates list with all the passwords
     var passwordCollect = [];
     for (i = 0; i < DB.users.length; i++) {
@@ -70,7 +238,7 @@ function validateUser(){
     //if bool is true the user is redirected to the right page
     if(match == true){
         //Not the right pages, just to test the functionality.
-        if(credentialsCollect[userIndex] == 0){
+        if(credentialsCollect[userIndex] == 4){
             window.location.href = "http://www.w3schools.com";
         } else {
             window.location.href = "http://www.sweclockers.com";
@@ -79,16 +247,9 @@ function validateUser(){
     else{
         window.alert("Wrong username or password");
     }
-
-    
-    
-
-
-
     
 }
-
-
+//Lars code vvvvv
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
 // selected user name (not the first name/alst name). It will also add details from another "database"
@@ -177,7 +338,8 @@ function allBeverages() {
         collector.push([DB2.spirits[i].namn, DB2.spirits[i].varugrupp]);
     };
     //
-    return collector;
+
+    createDrinkDivs(collector);
 }
 
 // =====================================================================================================
@@ -240,6 +402,8 @@ function addToSet(set, item) {
 function percentToNumber(percentStr) {
     return Number(percentStr.slice(0,-1));
 }
+
+
 
 // =====================================================================================================
 // =====================================================================================================
