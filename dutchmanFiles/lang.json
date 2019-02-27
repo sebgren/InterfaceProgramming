@@ -17,7 +17,7 @@
   },
   "intro-text" : {
      "eng" : "To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide your login credentials or press the \"Regular Guest \"-button",
-     "swe" : "För att kunna visa rätt vy måste vi veta om du är anställd, en VIP-medlem eller en vanlig gäst. Var vänlig skriv in dina inloggningsuppgifter eller tryck på knappen \"Vanlig Gäst\" ",
+     "swe" : "För att kunna visa rätt vy måste vi veta om du är anställd, en VIP-medlem eller en vanlig gäst. Var vänlig skriv in dina inloggningsuppgifter eller tryck på knappen \"Vanlig Gäst\" "
   },
   "submit" : {
      "eng" : "Submit",
