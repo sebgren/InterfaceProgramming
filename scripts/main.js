@@ -1,3 +1,5 @@
+var hiddenTab = 
+
 function getLoginCredentials(){
 	var usrname = document.getElementById('username');
 	var pswrd = document.getElementById('password');
@@ -14,4 +16,9 @@ function showCredit(userName) {
 	var credit = getCredit(userName);
 	var stringCredit = document.getElementById('creditString');
 	stringCredit.textContent = "Hi "+ userName + "! Your current credit is: " + credit;
+}
+
+function displayTab() {
+	document.getElementById('tab-content').style.display = "block";
+	console.log("asdf")
 }
