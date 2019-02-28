@@ -8,12 +8,14 @@
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
+    <script src="../scripts/main.js"></script>
     <meta charset="utf-8">
 
 
     <body>
 
         <div class="header"><h1>Tablet #1</h1></div>
+
         <input type="radio" id="beerBtn" name ="rBtn" class="chb" onclick="checkBeerBox();"> Beers
         <input type="radio" id="whiskeybox" name="rBtn" class="chb" onclick="checkWhiskeyBox();"> Whiskey
         <input type="radio" id="whiskeybox" name="rBtn" class="chb" onclick="checkWineBox();"> Wine
@@ -43,5 +45,6 @@
         draggable="true" 
         ondragstart="drag(event)" width="336" height="69"></div>
 
+        <script>checkIfStaff();</script>
     </body>
 </html>

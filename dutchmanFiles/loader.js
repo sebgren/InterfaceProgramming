@@ -239,9 +239,12 @@ function validateUser(){
     if(match == true){
         //Not the right pages, just to test the functionality.
         if(credentialsCollect[userIndex] == 4){
-            window.location.href = "http://www.w3schools.com";
+            window.location.href ="pages/tables.html";
+        } else if(credentialsCollect[userIndex] == 3){
+            sessionStorage.setItem("vipUsername", usernameCollect[userIndex]);
+            window.location.href ="pages/order-VIP.html";
         } else {
-            window.location.href = "http://www.sweclockers.com";
+            window.location.href="pages/order.html";
         }
     }
     else{

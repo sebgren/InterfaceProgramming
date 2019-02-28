@@ -53,3 +53,9 @@
     margin: 0;
     color: white;
 }
+
+.switch-view-button {
+    height: 50px;
+    background-color: white;
+    float: right;
+}
