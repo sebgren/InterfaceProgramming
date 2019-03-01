@@ -38,6 +38,22 @@
     border-radius: 10pc;
     justify-content: center;
     align-items: center;
+    margin: 1em;
+}
+
+.active-table {
+    animation: pulse 1s infinite;
+}
+
+#tab-content {
+    visibility: hidden;
+    height: 100%;
+}
+
+#tab-footer {
+    display: flex;
+    justify-content: space-evenly;
+    opacity: 0.4;
 }
 
 @media only screen and (max-width: 600px) {
@@ -54,8 +70,61 @@
     color: white;
 }
 
+
 .switch-view-button {
     height: 50px;
     background-color: white;
     float: right;
+
+@-webkit-keyframes pulse {
+    0% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,0,0, 0.4);
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 30px rgba(255,0,0, 0);
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 rgba(255,0,0, 0);
+    }
+}
+@keyframes pulse {
+    0% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,0,0, 0.4);
+        box-shadow: 0 0 0 0 rgba(255,0,0, 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 30px rgba(255,0,0, 0);
+        box-shadow: 0 0 0 30px rgba(255,0,0, 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(255,0,0, 0);
+         box-shadow: 0 0 0 0 rgba(255,0,0, 0);
+    }
+}
+
+/* Style buttons */
+.btn {
+    height: 60px;
+    width: 60px;
+    border: solid 2px black;
+    border-radius: 16pc;
+
+    font-size: 16px; 
+    cursor: pointer; 
+}
+
+.check {
+    color: green;
+}
+
+.times {
+    color: red;
+}
+
+/*.btn-animation {
+  animation: pulse 0.5s;
+}*/
+
+.btn:focus {
+    outline: none;
 }
