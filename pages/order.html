@@ -8,20 +8,41 @@
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="utf-8">
 
 
     <body>
 
         <div class="header"><h1>Tablet #1</h1></div>
-        <input type="radio" id="beerBtn" name ="rBtn" class="chb" onclick="checkBeerBox();"> Beers
-        <input type="radio" id="whiskeybox" name="rBtn" class="chb" onclick="checkWhiskeyBox();"> Whiskey
-        <input type="radio" id="whiskeybox" name="rBtn" class="chb" onclick="checkWineBox();"> Wine
+        
+        <label class = "rbContainer"> Beers
+            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkBeerBox();"> 
+            <span class="checkmark"></span>
+        </label>
+
+        <label class = "rbContainer"> Whiskey
+            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWhiskeyBox();"> 
+            <span class="checkmark"></span>
+        </label>
+
+        <label class = "rbContainer"> Wine
+            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWineBox();"> 
+            <span class="checkmark"></span>
+        </label>
+
+        <label class = "rbContainer"> All Beverages
+            <input type="radio" id="beerBtn" name ="rBtn" onclick="createDivsOnLoad();"> 
+            <span class="checkmark"></span>
+        </label>
+        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for beverage..">
+
+       
 
         <div class="container">
 
-            <div id='dc' class="drinks-container" onclick="location.href='https://www.w3schools.com';">   
-                
+            <div id='dc' class="drinks-container">   
+
 
             </div>
             <div class="tab-container">
@@ -32,7 +53,7 @@
                 </ol>
                 Total: 150
                 <div class="button-container">
-                    <button class="pay-button">Pay</button>
+                    <button onclick="createDivsOnLoad()"lass="pay-button">Pay</button>
 
                 </div>
             </div>
