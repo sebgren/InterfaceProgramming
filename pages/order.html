@@ -8,6 +8,7 @@
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
+    <script src="../scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="utf-8">
 
@@ -37,8 +38,6 @@
         </label>
         <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for beverage..">
 
-       
-
         <div class="container">
 
             <div id='dc' class="drinks-container">   
@@ -58,5 +57,13 @@
                 </div>
             </div>
         </div>
+
+        <div class="beerDiv" 
+        id="drag1" src="../images/beer.jpg" 
+        draggable="true" 
+        ondragstart="drag(event)" width="336" height="69"></div>
+
+        <script>checkIfStaff();</script>
+
     </body>
 </html>
