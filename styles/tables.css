@@ -75,6 +75,7 @@
     height: 50px;
     background-color: white;
     float: right;
+}
 
 @-webkit-keyframes pulse {
     0% {
