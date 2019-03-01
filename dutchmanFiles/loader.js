@@ -9,9 +9,128 @@
 // advantage that the data is easy to access through simple APIs. Also, when storing as local storage,
 // all data is stored as strings, which might be adding some complexity.
 //
+/*
+$(document).ready(function(){
+    //gets the div ID when clicked on div
+   $('.drinkDivClass').click(function(event) {
+    var status = $(this).attr('id');
+    matchIdWithDrink(status);
+    });
+});
+
+*/
 
 var DB = ("DBLoaded.js");
 var DB2 = ("Beverages.js");
+
+
+
+
+function matchIdWithDrink(id){
+    console.log("matchIdWithDrink REACHED");
+    var collector = [];
+    collector = getDrinks();
+
+    var modalInfo = [];
+
+    for(i=0; i<collector.length; i++){
+
+        if(collector[i].artikelid == id){
+            modalInfo.push([collector[i].namn, collector[i].namn2, 
+                collector[i].producent, collector[i].alkoholhalt,
+                collector[i].prisinklmoms]);
+
+        }
+    } 
+    showModal(modalInfo);
+    console.log(modalInfo);
+ 
+}
+// Get the modal
+var modal = document.getElementById('myModal');
+
+
+
+// Get the button that opens the modal
+
+
+// Get the <span> element that closes the modal
+
+
+// When the user clicks on the button, open the modal 
+function showModal(modalInfo) {
+    
+    var infoString = modalInfo.join();
+    var infoToDisplay = infoString.split(',');
+
+    console.log("INFO TO DISPLAY " +infoToDisplay);
+    
+
+
+
+    var nameTxt = infoToDisplay[0] + " " + infoToDisplay[1];
+    //var ursprungTxt = infoToDisplay[2] + ", " + infoToDisplay[3];
+    var producerTxt = infoToDisplay[2];
+    var alcoholTxt = infoToDisplay[3];
+    var priceTxt = infoToDisplay[4] + " kr";
+    
+    //var words = infoToDisplay.split(',');
+
+
+
+
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("myBtn");
+
+
+    document.getElementById("name").innerHTML = nameTxt;
+    //document.getElementById("ursprung").innerHTML = ursprungTxt;
+    document.getElementById("producer").innerHTML = producerTxt;
+    document.getElementById("alcoholLevel").innerHTML = alcoholTxt;
+    document.getElementById("price").innerHTML = priceTxt;
+    
+
+    modal.style.display = "block";
+
+
+}
+
+function closeModal(){
+    var modal = document.getElementById('myModal');
+    modal.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+
+
+// When the user clicks anywhere outside of the modal, close it
+
+
+/*
+function showModal(info){
+    span.onclick = closeModal();
+
+    console.log("info= " + info);
+    var modalDiv = document.createElement('div');
+    modalDiv.className="modal-content";
+
+    modalDiv.innerHTML = info;
+
+}
+
+function closeModal(){
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+*/
+
+
+
 
 
 //Done by Lars
@@ -66,17 +185,17 @@ function createDrinkDivs(drink){
         for(i=0; i<slicedDrinkList.length; i++){
             drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
+
+            //This is where id is assigned for ale
             drinkDiv.id="beerDivId";
             
             drinkInfo = slicedDrinkList[i];
             drinkDiv.draggable =true;
             drinkDiv.ondragstart="drag(event)";
+
             
             document.getElementById('dc').appendChild(drinkDiv);
             
-            //Testing onclick with a random page       
-            drinkDiv.onclick="location.href='https://www.w3schools.com';"
-
             //Set first element of array to display in div. 0 = the name of the drink.
             drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];            
         }                  
@@ -89,7 +208,9 @@ function createDrinkDivs(drink){
         {
             var drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
+            //This is where id is assigned for whiskey
             drinkDiv.id="whiskeyDivId";
+
             document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
             drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
@@ -104,12 +225,15 @@ function createDrinkDivs(drink){
         {
             var drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
+            //This is where id is assigned for wine
             drinkDiv.id="wineDivId";
             document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
             drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
         }     
-    }             
+    }
+
+    drinkDiv.onclick=showModal(this.id);          
 }
 
 
@@ -187,7 +311,7 @@ function getCorrectDrinkWithbutton(drink){
     for(i=0; i<collector.length; i++){
 
         if(collector[i].varugrupp.includes(drink)){
-            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].artikelid, collector[i].nr]);
             drinkID += 1;    
 
         }
@@ -213,7 +337,7 @@ function getCorrectDrink(drink){
         console.log("in the loop");
         if(collector[i].varugrupp.includes(drink)){
 
-            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].artikelid, collector[i].nr]);
             drinkID += 1;    
         }
     }
@@ -251,8 +375,13 @@ function createDivsOnLoad(){
             
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="beerDivId";
         drinkInfo = slicedAle[i];
+        drinkDiv.id= drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/beer.jpg')";
+        //drinkDiv.onclick=showModal(this.id);
+        
+
+        
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
         document.getElementById('dc').appendChild(drinkDiv);
@@ -260,12 +389,14 @@ function createDivsOnLoad(){
     }
     for(i=0; i<slicedWine.length; i++){
         console.log("loop 2");
+
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="wineDivId";
-
-
         drinkInfo = slicedWine[i];
+        drinkDiv.id= drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/wine.jpg')";
+
+
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0]+ " " + drinkInfo[1]; 
         document.getElementById('dc').appendChild(drinkDiv);                              
@@ -275,8 +406,11 @@ function createDivsOnLoad(){
         console.log("loop 3");
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="whiskeyDivId";
         drinkInfo = slicedWiskey[i];
+        drinkDiv.id = drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/whiskey.jpeg')";
+
+        
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
         document.getElementById('dc').appendChild(drinkDiv);
@@ -361,6 +495,16 @@ function searchFunction(listToSearch){
         }  
     } 
 }  
+
+// Get the modal
+function modal(){
+    console.log("MODAL REACHED");
+}
+
+
+
+
+
 //Lars code vvvvv
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
@@ -406,6 +550,8 @@ function userDetails(userName) {
 
     return userCollect;
 }
+
+
 
 // =====================================================================================================
 // This function will change the credit amount in the user's account. Note that the amount given as argument is the new
