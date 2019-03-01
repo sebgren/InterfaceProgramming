@@ -43,11 +43,10 @@ function loadBeverages(){
 //Creates divs according to how many drinks that you set "sliceddrinkList to".
 
 //that need to be shown
-window.onload = createDrinkDivs;
 function createDrinkDivs(drink){
     var slicedDrinkList = [];
     //slice generates an error in the log but still works.
-    slicedDrinkList = drink.slice(0, 50);
+    slicedDrinkList = drink.slice(0, 100);
 
     console.log("number of beers ===> " + drink.length);
 
@@ -56,21 +55,20 @@ function createDrinkDivs(drink){
     var remove;
     var drinkInfo;
     var drinkDiv = document.createElement('div');
+
    
     //if the string includes Ale
     if(firstDrinkString.includes("Ale") == true){
-        remove = "whiskeyDiv";
-        eraseFunction(remove);
-        remove = "wineDiv";
+        remove = "drinkDivClass";
         eraseFunction(remove);
 
 
         for(i=0; i<slicedDrinkList.length; i++){
             drinkDiv = document.createElement('div');
-            drinkDiv.className="beerDiv";
+            drinkDiv.className="drinkDivClass";
+            drinkDiv.id="beerDivId";
             
             drinkInfo = slicedDrinkList[i];
-            drinkDiv.id =drinkInfo[2];
             drinkDiv.draggable =true;
             drinkDiv.ondragstart="drag(event)";
             
@@ -80,38 +78,36 @@ function createDrinkDivs(drink){
             drinkDiv.onclick="location.href='https://www.w3schools.com';"
 
             //Set first element of array to display in div. 0 = the name of the drink.
-            drinkDiv.innerHTML = drinkInfo[0];            
+            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];            
         }                  
     }
 
     if(firstDrinkString.includes("Whisky") == true){
-            remove = "beerDiv";
-            eraseFunction(remove);
-            remove = "wineDiv";
+            remove = "drinkDivClass";
             eraseFunction(remove);
         for(i=0; i<slicedDrinkList.length; i++) 
         {
             var drinkDiv = document.createElement('div');
-            drinkDiv.className="whiskeyDiv";
+            drinkDiv.className="drinkDivClass";
+            drinkDiv.id="whiskeyDivId";
             document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
-            drinkDiv.innerHTML = drinkInfo[0];
+            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
         }     
     }        
 
     if(firstDrinkString.includes("Vin") == true){
-            remove = "beerDiv";
-            eraseFunction(remove);
-            remove = "whiskeyDiv";
+            remove = "drinkDivClass";
             eraseFunction(remove);
 
         for(i=0; i<slicedDrinkList.length; i++) 
         {
             var drinkDiv = document.createElement('div');
-            drinkDiv.className="wineDiv";
+            drinkDiv.className="drinkDivClass";
+            drinkDiv.id="wineDivId";
             document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
-            drinkDiv.innerHTML = drinkInfo[0];
+            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
         }     
     }             
 }
@@ -144,21 +140,26 @@ function drop(ev) {
 
 //When the beer button is clicked
 function checkBeerBox(){
-    console.log("checkBeerBox reached!!!!");
+    remove = "drinkDivClass";
+    eraseFunction(remove);
     drink = "Ale";
-    getCorrectDrink(drink);
+    getCorrectDrinkWithbutton(drink);
 }
 
 //When the whiskey button is clicked
 function checkWhiskeyBox(){
+    remove = "drinkDivClass";
+    eraseFunction(remove);
     drink = "Whisky";
-    getCorrectDrink(drink);
+    getCorrectDrinkWithbutton(drink);
 }
 
 //When the wine button is clicked
 function checkWineBox(){
+    remove = "drinkDivClass";
+    eraseFunction(remove);
     drink = "Vin";
-    getCorrectDrink(drink);
+    getCorrectDrinkWithbutton(drink);
 }
 
 //function to get all the drinks
@@ -167,11 +168,40 @@ function getDrinks(){
     for (i = 0; i < DB2.spirits.length; i++) {
         allDrinks.push(DB2.spirits[i]);
     }
+
+    
     return allDrinks;    
+
+
+    
 }
 
 //Creates a list with specified drink and sends it to the 
 //function that creates divs (createDrinkDivs).
+function getCorrectDrinkWithbutton(drink){
+    var collector = [];
+    collector = getDrinks();
+    var drinkID = 0;
+    var specificDrinks = [];
+    
+    for(i=0; i<collector.length; i++){
+
+        if(collector[i].varugrupp.includes(drink)){
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
+            drinkID += 1;    
+
+        }
+    }
+
+    
+    
+    specificDrinks.sort();
+
+    
+
+    createDrinkDivs(specificDrinks);
+}
+
 function getCorrectDrink(drink){
     console.log("getCorrectDrink reached");
     var collector = [];
@@ -182,12 +212,77 @@ function getCorrectDrink(drink){
     for(i=0; i<collector.length; i++){
         console.log("in the loop");
         if(collector[i].varugrupp.includes(drink)){
-            specificDrinks.push([collector[i].namn, collector[i].varugrupp, collector[i].nr]);
+
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
             drinkID += 1;    
         }
     }
+    
     specificDrinks.sort();
-    createDrinkDivs(specificDrinks);
+
+    return specificDrinks;
+}
+
+//creates divs when the page loads
+window.onload = createDivsOnLoad;
+function createDivsOnLoad(){
+    remove = "drinkDivClass";
+    eraseFunction(remove);
+    var ales = [];
+    ales = getCorrectDrink("Ale");
+    slicedAle = [];
+    slicedAle = ales.slice(0, 100);
+
+    var whiskeys = [];
+    whiskeys = getCorrectDrink("Whisky");
+    slicedWiskey = [];
+    slicedWiskey = whiskeys.slice(0, 100);
+
+    var wines = [];
+    wines = getCorrectDrink("Vin");
+    slicedWine = [];
+    slicedWine = wines.slice(0, 100);
+
+    var drinkInfo;
+    var drinkDiv = document.createElement('div');
+
+    for(i=0; i<slicedAle.length; i++){
+        console.log("loop 1");
+            
+        drinkDiv = document.createElement('div');
+        drinkDiv.className="drinkDivClass";
+        drinkDiv.id="beerDivId";
+        drinkInfo = slicedAle[i];
+        //console.log("drinkinfo == " + drinksToDisplay[i]);
+        drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
+        document.getElementById('dc').appendChild(drinkDiv);
+                                   
+    }
+    for(i=0; i<slicedWine.length; i++){
+        console.log("loop 2");
+        drinkDiv = document.createElement('div');
+        drinkDiv.className="drinkDivClass";
+        drinkDiv.id="wineDivId";
+
+
+        drinkInfo = slicedWine[i];
+        //console.log("drinkinfo == " + drinksToDisplay[i]);
+        drinkDiv.innerHTML = drinkInfo[0]+ " " + drinkInfo[1]; 
+        document.getElementById('dc').appendChild(drinkDiv);                              
+    }
+
+    for(i=0; i<slicedWiskey.length; i++){    
+        console.log("loop 3");
+        drinkDiv = document.createElement('div');
+        drinkDiv.className="drinkDivClass";
+        drinkDiv.id="whiskeyDivId";
+        drinkInfo = slicedWiskey[i];
+        //console.log("drinkinfo == " + drinksToDisplay[i]);
+        drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
+        document.getElementById('dc').appendChild(drinkDiv);
+                                   
+    }
+
 }
 
 
@@ -239,9 +334,9 @@ function validateUser(){
     if(match == true){
         //Not the right pages, just to test the functionality.
         if(credentialsCollect[userIndex] == 4){
-            window.location.href = "http://www.w3schools.com";
+            window.location.href = "./pages/tables.html";
         } else {
-            window.location.href = "http://www.sweclockers.com";
+            window.location.href = "./pages/order-VIP.html";
         }
     }
     else{
@@ -249,6 +344,23 @@ function validateUser(){
     }
     
 }
+
+//To search for specific drinks
+function searchFunction(listToSearch){
+    var input = document.getElementById("myInput");
+    var filter = input.value.toLowerCase();
+    var divs = document.getElementsByClassName('drinkDivClass');
+
+    for (i = 0; i < divs.length; i++) {
+        if (divs[i].innerText.toLowerCase().includes(filter)){
+        divs[i].style.display = "block";
+
+        } 
+        else {
+        divs[i].style.display = "none";
+        }  
+    } 
+}  
 //Lars code vvvvv
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
