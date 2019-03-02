@@ -12,7 +12,11 @@
 
 var DB = ("DBLoaded.js");
 var DB2 = ("Beverages.js");
+var beerDrinks = [];
+var whiskeyDrinks = [];
+var wineDrinks = [];
 
+$( document ).ready(getDrinks);
 
 //Done by Lars
 function allUserNames() {
@@ -27,7 +31,9 @@ function allUserNames() {
 function loadBeverages(){
     //creates listarray with all drinktypes   
     var alldrinktypes = [];
-    for (i = 0; i < DB2.spirits.length; i++) {
+    // var len = DB2.spirits.length;
+    var len = 50;
+    for (i = 0; i < len; i++) {
         alldrinktypes.push(DB2.spirits[i].varugrupp);
     }
     //Removes dupliactes from array
@@ -43,77 +49,37 @@ function loadBeverages(){
 //Creates divs according to how many drinks that you set "sliceddrinkList to".
 
 //that need to be shown
-window.onload = createDrinkDivs;
-function createDrinkDivs(drink){
-    var slicedDrinkList = [];
-    //slice generates an error in the log but still works.
-    slicedDrinkList = drink.slice(0, 50);
+// window.onload = createDrinkDivs;
 
-    console.log("number of beers ===> " + drink.length);
+//========================================================================================================
+/*  This function takes a specific type of beverage and its list and generates a div containing all those 
+ *  items.
+ */
+function createDrinkDivs(drinks, type){
+    console.log(drinks);
+    
+    var drinksContainer = $("#drinks-container");
+    drinksContainer.empty();
 
-    //Using join to convert array to string
-    var firstDrinkString = drink[1].join();
-    var remove;
-    var drinkInfo;
-    var drinkDiv = document.createElement('div');
-   
-    //if the string includes Ale
-    if(firstDrinkString.includes("Ale") == true){
-        remove = "whiskeyDiv";
-        eraseFunction(remove);
-        remove = "wineDiv";
-        eraseFunction(remove);
+    for(var i=0; i < drinks.length; i++)
+    {
+        var drinkDiv = document.createElement('div');
+        drinkDiv.className= type.toLowerCase() + "Div";
+        
+        drinkDiv.id = type + "-" + drinks[i].nr.toString();
+        drinkDiv.draggable = true;
+        drinkDiv.ondragstart = drinkDragStart;
+        drinkDiv.ondragend = drinkDragEnd;
+        
+        //Set first element of array to display in div. 0 = the name of the drink.
+        drinkDiv.innerHTML = drinks[i].namn + " " + drinks[i].namn2;
 
 
-        for(i=0; i<slicedDrinkList.length; i++){
-            drinkDiv = document.createElement('div');
-            drinkDiv.className="beerDiv";
-            
-            drinkInfo = slicedDrinkList[i];
-            drinkDiv.id =drinkInfo[2];
-            drinkDiv.draggable =true;
-            drinkDiv.ondragstart="drag(event)";
-            
-            document.getElementById('dc').appendChild(drinkDiv);
-            
-            //Testing onclick with a random page       
-            drinkDiv.onclick="location.href='https://www.w3schools.com';"
-
-            //Set first element of array to display in div. 0 = the name of the drink.
-            drinkDiv.innerHTML = drinkInfo[0];            
-        }                  
-    }
-
-    if(firstDrinkString.includes("Whisky") == true){
-            remove = "beerDiv";
-            eraseFunction(remove);
-            remove = "wineDiv";
-            eraseFunction(remove);
-        for(i=0; i<slicedDrinkList.length; i++) 
-        {
-            var drinkDiv = document.createElement('div');
-            drinkDiv.className="whiskeyDiv";
-            document.getElementById('dc').appendChild(drinkDiv);
-            drinkInfo = slicedDrinkList[i];
-            drinkDiv.innerHTML = drinkInfo[0];
-        }     
-    }        
-
-    if(firstDrinkString.includes("Vin") == true){
-            remove = "beerDiv";
-            eraseFunction(remove);
-            remove = "whiskeyDiv";
-            eraseFunction(remove);
-
-        for(i=0; i<slicedDrinkList.length; i++) 
-        {
-            var drinkDiv = document.createElement('div');
-            drinkDiv.className="wineDiv";
-            document.getElementById('dc').appendChild(drinkDiv);
-            drinkInfo = slicedDrinkList[i];
-            drinkDiv.innerHTML = drinkInfo[0];
-        }     
-    }             
+        drinksContainer.append(drinkDiv);
+        
+        //Testing onclick with a random page       
+        // drinkDiv.onclick="location.href='https://www.w3schools.com';"
+    }                  
 }
 
 
@@ -130,65 +96,137 @@ function allowDrop(ev) {
   ev.preventDefault();
 }
 
-//for the drag and drop (not working with drinkDivs at the moment)
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
+//========================================================================================================
+/*  This function is called when a beverage starts being dragged
+ */
+function drinkDragStart(ev) {
+    var id = ev.target.id;
+    var name = ev.target.innerHTML;
+    // console.log("Drag start " + id);
+    localStorage.setItem("draggedId", id);
+    localStorage.setItem("draggedName", name);
 }
 
-//for the drag and drop (not working with drinkDivs at the moment)
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
+
+//========================================================================================================
+/*  This function is called when a beverage stops being dragged
+ */
+function drinkDragEnd(ev) {
+    // console.log("Drag end");
+    setTimeout(function(){
+        localStorage.removeItem("draggedId");
+        localStorage.removeItem("draggedName");
+    }, 300);
 }
 
-//When the beer button is clicked
-function checkBeerBox(){
-    console.log("checkBeerBox reached!!!!");
-    drink = "Ale";
-    getCorrectDrink(drink);
+//========================================================================================================
+/*  This function is called when the Beer button is clicked
+ */
+function checkBeerBox()
+{
+    getCorrectDrink("Ale");
 }
 
-//When the whiskey button is clicked
-function checkWhiskeyBox(){
-    drink = "Whisky";
-    getCorrectDrink(drink);
+//========================================================================================================
+/*  This function is called when the whiskey button is clicked
+ */
+function checkWhiskeyBox()
+{
+    getCorrectDrink("Whisky");
 }
 
-//When the wine button is clicked
-function checkWineBox(){
-    drink = "Vin";
-    getCorrectDrink(drink);
+//========================================================================================================
+/*  This function is called when the wine button is clicked
+ */
+function checkWineBox()
+{
+    getCorrectDrink("Vin");
 }
 
-//function to get all the drinks
-function getDrinks(){
-    var allDrinks = [];
-    for (i = 0; i < DB2.spirits.length; i++) {
-        allDrinks.push(DB2.spirits[i]);
+//========================================================================================================
+/*  This function takes a type (string) as a parameter and call the createDrinkDivs function to create
+ * corresponding list of drinks.
+ */
+function getCorrectDrink(type){
+
+    if(type == "Ale")
+    {
+        console.log("get correct ale");
+        createDrinkDivs(beerDrinks, "beer");
+        return;
     }
-    return allDrinks;    
+    else if(type == "Whisky")
+    {
+        createDrinkDivs(whiskeyDrinks, "whiskey");
+        return;
+    }
+    else if(type == "Vin")
+    {
+        createDrinkDivs(wineDrinks, "wine");
+        return;
+    }
+    else {
+        console.log("Wrong type of drink :" + type);
+    }   
 }
 
-//Creates a list with specified drink and sends it to the 
-//function that creates divs (createDrinkDivs).
-function getCorrectDrink(drink){
-    console.log("getCorrectDrink reached");
-    var collector = [];
-    collector = getDrinks();
-    var drinkID = 0;
-    var specificDrinks = [];
-    
-    for(i=0; i<collector.length; i++){
-        console.log("in the loop");
-        if(collector[i].varugrupp.includes(drink)){
-            specificDrinks.push([collector[i].namn, collector[i].varugrupp, collector[i].nr]);
-            drinkID += 1;    
+//========================================================================================================
+/*  This function gets 100 each type of beverages from DB2.
+ */
+function getDrinks() {
+    var nBeer = 0;
+    var nWhiskey = 0;
+    var nWine = 0;
+
+    for(var i = 0; (nBeer + nWhiskey + nWine) < 300; i++)
+    {
+        if(nBeer < 100 && DB2.spirits[i].varugrupp.includes("Ale"))
+        {
+            beerDrinks.push(filterDrinkInfo(DB2.spirits[i]));
+            nBeer += 1;
+        }
+        else if(nWhiskey < 100 && DB2.spirits[i].varugrupp.includes("Whisky"))
+        {
+            whiskeyDrinks.push(filterDrinkInfo(DB2.spirits[i]));
+            nWhiskey += 1;
+        }
+        else if(nWine < 100 && DB2.spirits[i].varugrupp.includes("Vin"))
+        {
+            wineDrinks.push(filterDrinkInfo(DB2.spirits[i]));
+            nWine += 1;
         }
     }
-    specificDrinks.sort();
-    createDrinkDivs(specificDrinks);
 }
+
+//========================================================================================================
+/*  This function takes a drink object as a parameter and return a new object that are filtered out some
+ * unnecessary fields.
+ */
+function filterDrinkInfo(drinkObj) {
+    var newDrinkObj = {};
+
+    // get No.
+    newDrinkObj.nr = drinkObj.nr;
+
+    //get Article ID
+    newDrinkObj.artikelid = drinkObj.artikelid;
+
+    //get name 1
+    newDrinkObj.namn = drinkObj.namn;
+
+    //get name 2
+    newDrinkObj.namn2 = drinkObj.namn2;
+
+    //get pricing
+    newDrinkObj.prisinklmoms = drinkObj.prisinklmoms;
+
+    //get alcohol content
+    newDrinkObj.alkoholhalt = drinkObj.alkoholhalt;
+
+    return newDrinkObj;
+}
+
+
 
 
 //User authentication function - for logging in as VIP or staff.
