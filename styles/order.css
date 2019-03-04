@@ -118,14 +118,6 @@
     -1px 1px 0 #000,
     1px 1px 0 #000; 
 }
-  
-#beerDivId{
-    background-image: url('../images/beer.jpg');
-}
-
-#wineDivId{
-    background-image: url('../images/wine.jpg');
-}
 
 #whiskeyDivId{
     background-image: url('../images/whiskey.jpeg');
@@ -173,7 +165,6 @@
     height: 50px;
     line-height: 50px;
     background-color: darkred;
-    background-color: #23CC0E;
 }
 
 .vip-button {
@@ -190,60 +181,6 @@
     color: white;
 }
 
-#tab-items {
-    height: 600px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
-#tab-items ul{
-    list-style: none;
-}
-
-.tab-item {
-    float: left;
-    /* background-color: rgba(0, 0, 0, 0.7); */
-    border: 1px solid #000;
-}
-
-.float-left {
-    float: left;
-}
-
-.float-right {
-    float: right;
-}
-
-.tab-item-img {
-
-}
-
-.tab-item-name {
-    width: 220px;
-    height: 50px;
-    font-family:sans-serif;
-    margin-right: 40px;
-}
-
-.tab-item-name p {
-    width: 220px;
-    height: 50px;
-    display: table-cell;
-    vertical-align:middle;
-    text-align:center;
-    color: #000;
-    text-decoration: none;
-}
-
-.tab-item-control {
-    line-height:  50px;
-    margin-right: 20px;
-}
-
-.tab-item-price {
-    width: 60px;
-    margin-right: 10px;
-}
 
 .switch-view-button {
     height: 50px;
@@ -338,3 +275,57 @@ input[type=text]:focus {
 
 
 /*PAGINATION*/
+#tab-items {
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#tab-items ul{
+    list-style: none;
+}
+
+.tab-item {
+    float: left;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    border: 1px solid #000;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.tab-item-img {
+
+}
+
+.tab-item-name {
+    width: 220px;
+    height: 50px;
+    font-family:sans-serif;
+    margin-right: 40px;
+}
+
+.tab-item-name p {
+    width: 220px;
+    height: 50px;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    color: #000;
+    text-decoration: none;
+}
+
+.tab-item-control {
+    line-height:  50px;
+    margin-right: 20px;
+}
+
+.tab-item-price {
+    width: 60px;
+    margin-right: 10px;
+}
