@@ -22,6 +22,30 @@ h2 {
     font-size: 2em;
 }
 
+button {
+    height: 35px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #7F573C;
+    border: none;
+    color: white;
+
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 1;
+    transition: 0.4s;
+    cursor: pointer
+}
+
+button:hover {
+    opacity: 0.6;
+}
+
 .container {
     background-color: white;
     display: flex;
@@ -44,4 +68,14 @@ h2 {
     flex: 1;
     text-align: center;
     justify-content: center;
+}
+
+.logo {
+    display:block;
+    margin-top: 0%;
+    margin-left: 43.5%;
+    height: 130px;
+    width: 130px;
+
+
 }

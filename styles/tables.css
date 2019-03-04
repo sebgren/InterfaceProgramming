@@ -72,9 +72,12 @@
 
 
 .switch-view-button {
-    height: 50px;
+    border-radius: 8px;
     background-color: white;
+    color: black;
     float: right;
+
+}
 
 @-webkit-keyframes pulse {
     0% {
