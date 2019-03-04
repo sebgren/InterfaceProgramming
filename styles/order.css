@@ -2,6 +2,7 @@
     background-color: var(--bg);
     flex-direction: row;
     max-width: 100%;
+
 }
 
 .drinks-container {
@@ -11,10 +12,11 @@
     flex-grow: 1;
     margin: 0.5em;
     padding: 1em;
-    height: 100%;
+    height: 97%;
     width: 66%;
     justify-content: space-evenly;
     overflow: auto;
+    overflo
 }
 
 
@@ -27,9 +29,21 @@
     flex-grow: 2;
     margin: 0.5em;
     padding: 1em;
-    height: 100%;
+    height: 97%;
     width: 33%;
 }
+.flexButtons{
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    margin: 0.5em;
+    height: 15%;
+    width: 60.5%;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+
 
 .drink {
     display: flex;
@@ -46,7 +60,7 @@
     width: 150px;
     justify-content: center;
     align-items: center;
-    background-image:opacity: 0.5;
+    background-image:opacity: 0.9;
     background-size: contain;
     font-size: large;
     color: white;
@@ -55,6 +69,7 @@
     1px -1px 0 #000,
     -1px 1px 0 #000,
     1px 1px 0 #000; 
+    border-radius: 10px;
 }
 
 .drinkDivClass:hover { 
@@ -142,6 +157,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  padding-right: 10px;
 }
 
 /* Hide the browser's default radio button */
@@ -168,7 +184,7 @@
 
 /* When the radio button is checked, add a blue background */
 .rbContainer input:checked ~ .checkmark {
-  background-color: #2196F3;
+  background-color: #268406;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -195,15 +211,15 @@
 
 
 /* SEARCH FIELD*/
-input[type=text] {
-  width: 25px;
-  box-sizing: border-box;
+.searchDiv{
+  width: 50px;
+  height:10px;
   border: 2px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   background-color: white;
   background-image: url('../images/search.png');
-  background-size: contain;
+  background-size: contain; 
   
 
   background-repeat: no-repeat;
@@ -213,7 +229,7 @@ input[type=text] {
 }
 
 /* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
+.searchDiv:focus {
   width: 20%;
 }
 

@@ -16,36 +16,37 @@
     <body>
 
         <div class="header"><h1>Tablet #1</h1></div>
-        
+        <div class="flexButtons">
         <label class = "rbContainer"> Beers
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkBeerBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
             <span class="checkmark"></span>
         </label>
 
         <label class = "rbContainer"> Whiskey
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWhiskeyBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
             <span class="checkmark"></span>
         </label>
 
         <label class = "rbContainer"> Wine
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWineBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
             <span class="checkmark"></span>
         </label>
 
-        <label class = "rbContainer"> All Beverages
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="createDivsOnLoad();"> 
+        <label class = "rbContainer"> All 
+            <input type="radio" name ="rBtn" checked onclick="createDivsOnLoad();"> 
             <span class="checkmark"></span>
         </label>
-        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for beverage..">
-
-        <button id="myBtn" onclick="showModal();">Open Modal</button>
+        <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search">
+    
+        </div>
+        
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="close" onclick="closeModal()">&times;</span>
+                    <span id="spanId" class="close" onclick="closeModal()">&times;</span>
                     <h2>Information about the Drink</h2>
                 </div>
                 <div id="modalBody" class="modal-body">
@@ -66,7 +67,6 @@
         <div class="container">
 
             <div id='dc' class="drinks-container">   
-
 
             </div>
             <div class="tab-container">
