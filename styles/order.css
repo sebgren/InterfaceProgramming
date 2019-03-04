@@ -63,7 +63,7 @@
     1px 1px 0 #000; 
 }
 
-.beerDiv:hover { 
+.drinkDivClass:hover { 
     background-color: #f4b042;
     opacity: 0.5;
 }
@@ -118,10 +118,17 @@
     -1px 1px 0 #000,
     1px 1px 0 #000; 
 }
+  
+#beerDivId{
+    background-image: url('../images/beer.jpg');
+}
 
-.wineDiv:hover { 
-  background-color: #f4b042;
-    opacity: 0.5;
+#wineDivId{
+    background-image: url('../images/wine.jpg');
+}
+
+#whiskeyDivId{
+    background-image: url('../images/whiskey.jpeg');
 }
 
 
@@ -166,11 +173,12 @@
     height: 50px;
     line-height: 50px;
     background-color: darkred;
+    background-color: #23CC0E;
 }
 
 .vip-button {
     height: 50px;
-    background-color: green;
+    background-color: #6BFF88;
 }
 
 .tab-drink-list{
@@ -236,3 +244,97 @@
     width: 60px;
     margin-right: 10px;
 }
+
+.switch-view-button {
+    height: 50px;
+    background-color: white;
+    float: right;
+}
+
+.rbContainer {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.rbContainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.rbContainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.rbContainer input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.rbContainer:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.rbContainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.rbContainer .checkmark:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+
+/* SEARCH FIELD*/
+input[type=text] {
+  width: 25px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('../images/search.png');
+  background-size: contain;
+  
+
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+  width: 20%;
+}
+
+
+/*PAGINATION*/

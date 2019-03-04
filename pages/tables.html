@@ -3,17 +3,20 @@
     <title>The Flying Dutchman</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/tables.css">
+    <script src="../scripts/main.js"></script>
     <body>
 
+        <button onclick="switchToOrder();" class="switch-view-button">Switch to order view</button>
         <div class="header"><h1>Tables</h1></div>
 
         <div class="container">
 
             <div class="table-container">
 
-                <div class="table">
+                <div class="table active-table" onclick="displayTab()">
                     Table #1
                 </div>
 
@@ -44,6 +47,18 @@
             </div>
             <div class="tab-container">
                 <h2>tab</h2>
+                <div id="tab-content">
+                    <p>
+                        <hr>1x Nils Oscar Celebration Ale
+                        <hr>2x Flying Dog K-9 Cruiser Winter Ale
+                        <hr>1x Omnipollo Nebuchadnezzar
+                        <hr>2x Brewdog Paradox Isle of Arran
+                    </p>
+                </div>
+                <div id="tab-footer">
+                    <button onclick="clickAnimation('check')" class="btn check" id="check"><i class="fas fa-check"></i></button>
+                    <button onclick="clickAnimation('times')" class="btn times" id="times"><i class="fas fa-times"></i></button>
+                </div>
             </div>
         </div>
 

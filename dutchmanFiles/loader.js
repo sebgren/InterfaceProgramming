@@ -64,7 +64,7 @@ function createDrinkDivs(drinks, type){
     for(var i=0; i < drinks.length; i++)
     {
         var drinkDiv = document.createElement('div');
-        drinkDiv.className= type.toLowerCase() + "Div";
+        drinkDiv.className= type.toLowerCase() + "Div" + " beverage";
         
         drinkDiv.id = type + "-" + drinks[i].nr.toString();
         drinkDiv.draggable = true;
@@ -277,9 +277,13 @@ function validateUser(){
     if(match == true){
         //Not the right pages, just to test the functionality.
         if(credentialsCollect[userIndex] == 4){
-            window.location.href = "http://www.w3schools.com";
+            window.location.href ="pages/tables.html";
+        } else if(credentialsCollect[userIndex] == 3){
+            sessionStorage.setItem("vipUsername", usernameCollect[userIndex]);
+            window.location.href ="pages/order-VIP.html";
         } else {
-            window.location.href = "http://www.sweclockers.com";
+            window.location.href="pages/order.html";
+
         }
     }
     else{
@@ -287,6 +291,24 @@ function validateUser(){
     }
     
 }
+
+//To search for specific drinks
+function searchFunction(listToSearch){
+    console.log("Searched");
+    var input = document.getElementById("myInput");
+    var filter = input.value.toLowerCase();
+    var divs = document.getElementsByClassName('beverage');
+
+    for (i = 0; i < divs.length; i++) {
+        if (divs[i].innerText.toLowerCase().includes(filter)){
+        divs[i].style.display = "block";
+
+        } 
+        else {
+        divs[i].style.display = "none";
+        }  
+    } 
+}  
 //Lars code vvvvv
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
