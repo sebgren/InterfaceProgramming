@@ -299,9 +299,9 @@ input[type=text]:focus {
     float: right;
 }
 
-.tab-item-img {
+/* .tab-item-img {
 
-}
+} */
 
 .tab-item-name {
     width: 220px;
@@ -328,4 +328,16 @@ input[type=text]:focus {
 .tab-item-price {
     width: 60px;
     margin-right: 10px;
+}
+
+#pay-button {
+    text-decoration: none;
+    width: 100%;
+    background-color: darkred;
+    height: 60px;
+    /* line-height: 60px; */
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 20pt;
+    font-weight: 800;
 }
