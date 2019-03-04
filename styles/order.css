@@ -39,14 +39,20 @@
     justify-content: center;
     align-items: center;
 }
-.drinkDivClass {
-    display: flex;
+.beerDiv {
+    /* display: inline-block; */
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
     border: solid black;
     height: 150px;
     width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
     justify-content: center;
     align-items: center;
-    background-image:opacity: 0.5;
+    background-image: url('../images/beer.jpg');
+    /* opacity: 0.5; */
     background-size: contain;
     font-size: large;
     color: white;
@@ -62,12 +68,55 @@
     opacity: 0.5;
 }
 
-#beerDivId{
-    background-image: url('../images/beer.jpg');
+.whiskeyDiv {
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/whiskey.jpeg');
+    /* opacity: 0.5; */
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
 }
 
-#wineDivId{
+.whiskeyDiv:hover { 
+  background-color: #f4b042;
+    opacity: 0.5;
+  }
+
+.wineDiv {
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
     background-image: url('../images/wine.jpg');
+    /* opacity: 0.5; */
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
 }
 
 #whiskeyDivId{
@@ -110,12 +159,12 @@
     flex-grow: 2;
     height: 10%;
     width: 100%;
-
 }
 
 .pay-button {
     height: 50px;
-    background-color: #23CC0E;
+    line-height: 50px;
+    background-color: darkred;
 }
 
 .vip-button {
@@ -226,3 +275,57 @@ input[type=text]:focus {
 
 
 /*PAGINATION*/
+#tab-items {
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#tab-items ul{
+    list-style: none;
+}
+
+.tab-item {
+    float: left;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    border: 1px solid #000;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.tab-item-img {
+
+}
+
+.tab-item-name {
+    width: 220px;
+    height: 50px;
+    font-family:sans-serif;
+    margin-right: 40px;
+}
+
+.tab-item-name p {
+    width: 220px;
+    height: 50px;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    color: #000;
+    text-decoration: none;
+}
+
+.tab-item-control {
+    line-height:  50px;
+    margin-right: 20px;
+}
+
+.tab-item-price {
+    width: 60px;
+    margin-right: 10px;
+}
