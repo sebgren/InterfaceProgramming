@@ -14,6 +14,108 @@ var DB = ("DBLoaded.js");
 var DB2 = ("Beverages.js");
 
 
+
+
+
+//Author: Jakob Skogby Steinholtz, 2019
+function matchIdWithDrink(id){
+    console.log("matchIdWithDrink REACHED");
+    var collector = [];
+    collector = getDrinks();
+
+    var modalInfo = [];
+
+    for(i=0; i<collector.length; i++){
+
+        if(collector[i].artikelid == id){
+            modalInfo.push([collector[i].namn, collector[i].namn2, 
+                collector[i].producent, collector[i].alkoholhalt,
+                collector[i].prisinklmoms], collector[i].ursprunglandnamn);
+
+        }
+    } 
+    showModal(modalInfo);
+    console.log(modalInfo);
+ 
+}
+
+//Author: Jakob Skogby Steinholtz, 2019
+//Opens modal with swedish text when user clicks on a drink
+function showModal(modalInfo) {
+    
+    var infoString = modalInfo.join();
+
+    var oWithDots = "Ã¶";
+    var oWithDotsCapital = "Ã–";
+
+    var aWithDots = "Ã¤";
+    var aWithDotsCapital = "Ã„";
+
+    var aWithCircle = "Ã¥";
+    var aWithCircleCapital = "Ã…";
+
+    var infoToDisplay;
+
+    var swedishString1;
+    var swedishString2;
+    var swedishString3;
+    var swedishString4;
+    var swedishString5;
+    var swedishString6;
+    if(infoString.includes(oWithDots) || infoString.includes(aWithDots) || 
+        infoString.includes(aWithCircle) || infoString.includes(oWithDotsCapital)
+        || infoString.includes(aWithDotsCapital) || infoString.includes(aWithCircleCapital)){
+        swedishString1 = infoString.replace(oWithDots, "ö");
+        swedishString2 = swedishString1.replace(aWithDots, "ä");
+        swedishString3 = swedishString2.replace(aWithCircle, "å");  
+        swedishString4 = swedishString3.replace(oWithDotsCapital, "Ö");
+        swedishString5 = swedishString4.replace(aWithDotsCapital, "Ä");
+        swedishString6 = swedishString5.replace(aWithCircleCapital, "Å");
+        infoToDisplay = swedishString6.split(',');     
+    }
+
+    else{
+        infoToDisplay = infoString.split(',');
+    } 
+    var nameTxt = infoToDisplay[0] + " " + infoToDisplay[1];
+    var producerTxt = infoToDisplay[2];
+    var alcoholTxt = infoToDisplay[3];
+    var priceTxt = infoToDisplay[4] + " kr";
+    var ursprungTxt = infoToDisplay[5];
+
+    var modal = document.getElementById('myModal');
+    var btn = document.getElementById("myBtn");
+
+    document.getElementById("name").innerHTML = nameTxt;
+    document.getElementById("ursprung").innerHTML = ursprungTxt;
+    document.getElementById("producer").innerHTML = producerTxt;
+    document.getElementById("alcoholLevel").innerHTML = alcoholTxt;
+    document.getElementById("price").innerHTML = priceTxt;
+
+    //Change display mode to "block" to show the modal
+    modal.style.display = "block";
+
+
+}
+//Author: Jakob Skogby Steinholtz, 2019
+//close the modal
+function closeModal(){
+    var modal = document.getElementById('myModal');
+    modal.style.display = "none";
+}
+
+// When the user clicks on <span> (x), close the modal
+
+
+// When the user clicks anywhere outside of the modal, close it
+
+
+
+
+
+
+
+// Author: Lars Oestreicher, 2018
 //Done by Lars
 function allUserNames() {
     var nameCollect = [];
@@ -24,7 +126,7 @@ function allUserNames() {
 }
 //Not used right now, might be useful later
 //Gets all the different types of beverages.
-function loadBeverages(){
+/*function loadBeverages(){
     //creates listarray with all drinktypes   
     var alldrinktypes = [];
     for (i = 0; i < DB2.spirits.length; i++) {
@@ -38,11 +140,10 @@ function loadBeverages(){
     console.log("unique drink types= " + uniqueDrinkTypes);
 
     return uniqueDrinkTypes;
-}
+}*/
 
+//Author: Jakob Skogby Steinholtz, 2019
 //Creates divs according to how many drinks that you set "sliceddrinkList to".
-
-//that need to be shown
 function createDrinkDivs(drink){
     var slicedDrinkList = [];
     //slice generates an error in the log but still works.
@@ -57,7 +158,7 @@ function createDrinkDivs(drink){
     var drinkDiv = document.createElement('div');
 
    
-    //if the string includes Ale
+    //if the string includes "Ale"
     if(firstDrinkString.includes("Ale") == true){
         remove = "drinkDivClass";
         eraseFunction(remove);
@@ -66,54 +167,60 @@ function createDrinkDivs(drink){
         for(i=0; i<slicedDrinkList.length; i++){
             drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
-            drinkDiv.id="beerDivId";
+            
             
             drinkInfo = slicedDrinkList[i];
-            drinkDiv.draggable =true;
-            drinkDiv.ondragstart="drag(event)";
-            
-            document.getElementById('dc').appendChild(drinkDiv);
-            
-            //Testing onclick with a random page       
-            drinkDiv.onclick="location.href='https://www.w3schools.com';"
-
-            //Set first element of array to display in div. 0 = the name of the drink.
-            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];            
+            drinkDiv.id=drinkInfo[3];
+            drinkDiv.style.backgroundImage = "url('../images/beer.jpg')";  
+            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];  
+            drinkDiv.onclick = clickListener;   
+            document.getElementById('dc').appendChild(drinkDiv);       
         }                  
     }
 
+    //if the string includes "Whisky"
     if(firstDrinkString.includes("Whisky") == true){
             remove = "drinkDivClass";
             eraseFunction(remove);
         for(i=0; i<slicedDrinkList.length; i++) 
         {
-            var drinkDiv = document.createElement('div');
+            drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
-            drinkDiv.id="whiskeyDivId";
-            document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
-            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
+            drinkDiv.id=drinkInfo[3];
+            drinkDiv.style.backgroundImage = "url('../images/whiskey.jpeg')";  
+            drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];            
+            drinkDiv.onclick = clickListener;
+            document.getElementById('dc').appendChild(drinkDiv);
+            
+            
+            
         }     
     }        
 
+    //if the string includes "Vin"
     if(firstDrinkString.includes("Vin") == true){
             remove = "drinkDivClass";
             eraseFunction(remove);
 
         for(i=0; i<slicedDrinkList.length; i++) 
         {
-            var drinkDiv = document.createElement('div');
+            drinkDiv = document.createElement('div');
             drinkDiv.className="drinkDivClass";
-            drinkDiv.id="wineDivId";
-            document.getElementById('dc').appendChild(drinkDiv);
             drinkInfo = slicedDrinkList[i];
+            drinkDiv.id=drinkInfo[3];
+            drinkDiv.style.backgroundImage = "url('../images/wine.jpg')";              
             drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1];
+            drinkDiv.onclick = clickListener;
+            document.getElementById('dc').appendChild(drinkDiv);
         }     
-    }             
+    }
+
 }
 
 
 
+//Author: Jakob Skogby Steinholtz, 2019
 //Used to remove the divs 
 function eraseFunction(className){
     var elements = document.getElementsByClassName(className);
@@ -121,23 +228,8 @@ function eraseFunction(className){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
-//for the drag and drop (not working with drinkDivs at the moment)
-function allowDrop(ev) {
-  ev.preventDefault();
-}
 
-//for the drag and drop (not working with drinkDivs at the moment)
-function drag(ev) {
-  ev.dataTransfer.setData("text", ev.target.id);
-}
-
-//for the drag and drop (not working with drinkDivs at the moment)
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-}
-
+//Author: Jakob Skogby Steinholtz, 2019
 //When the beer button is clicked
 function checkBeerBox(){
     remove = "drinkDivClass";
@@ -145,7 +237,7 @@ function checkBeerBox(){
     drink = "Ale";
     getCorrectDrinkWithbutton(drink);
 }
-
+//Author: Jakob Skogby Steinholtz, 2019
 //When the whiskey button is clicked
 function checkWhiskeyBox(){
     remove = "drinkDivClass";
@@ -153,7 +245,7 @@ function checkWhiskeyBox(){
     drink = "Whisky";
     getCorrectDrinkWithbutton(drink);
 }
-
+//Author: Jakob Skogby Steinholtz, 2019
 //When the wine button is clicked
 function checkWineBox(){
     remove = "drinkDivClass";
@@ -162,6 +254,7 @@ function checkWineBox(){
     getCorrectDrinkWithbutton(drink);
 }
 
+//Author: Jakob Skogby Steinholtz, 2019
 //function to get all the drinks
 function getDrinks(){
     var allDrinks = [];
@@ -175,55 +268,46 @@ function getDrinks(){
 
     
 }
-
+//Author: Jakob Skogby Steinholtz, 2019
 //Creates a list with specified drink and sends it to the 
 //function that creates divs (createDrinkDivs).
 function getCorrectDrinkWithbutton(drink){
     var collector = [];
     collector = getDrinks();
     var drinkID = 0;
-    var specificDrinks = [];
-    
+    var specificDrinks = []; 
     for(i=0; i<collector.length; i++){
-
         if(collector[i].varugrupp.includes(drink)){
-            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].artikelid, collector[i].nr]);
             drinkID += 1;    
-
         }
     }
-
-    
-    
     specificDrinks.sort();
-
-    
-
     createDrinkDivs(specificDrinks);
 }
 
+//Author: Jakob Skogby Steinholtz, 2019
+//Creates list with specified drink and return that specific list.
+//Used to create three specific lists in "CreateDivsOnLoad".
 function getCorrectDrink(drink){
-    console.log("getCorrectDrink reached");
     var collector = [];
     collector = getDrinks();
     var drinkID = 0;
     var specificDrinks = [];
     
     for(i=0; i<collector.length; i++){
-        console.log("in the loop");
         if(collector[i].varugrupp.includes(drink)){
-
-            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].nr]);
+            specificDrinks.push([collector[i].namn, collector[i].namn2, collector[i].varugrupp, collector[i].artikelid, collector[i].nr]);
             drinkID += 1;    
         }
     }
-    
     specificDrinks.sort();
-
     return specificDrinks;
 }
 
+//Author: Jakob Skogby Steinholtz, 2019
 //creates divs when the page loads
+//Similar to the function "createDrinkDivs"
 window.onload = createDivsOnLoad;
 function createDivsOnLoad(){
     remove = "drinkDivClass";
@@ -251,23 +335,31 @@ function createDivsOnLoad(){
             
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="beerDivId";
         drinkInfo = slicedAle[i];
+        drinkDiv.id= drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/beer.jpg')";
+        
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
-        document.getElementById('dc').appendChild(drinkDiv);
-                                   
+        drinkDiv.onclick = clickListener;
+
+        document.getElementById('dc').appendChild(drinkDiv);        
+
     }
+
     for(i=0; i<slicedWine.length; i++){
         console.log("loop 2");
+
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="wineDivId";
-
-
         drinkInfo = slicedWine[i];
+        drinkDiv.id= drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/wine.jpg')";
+
+
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0]+ " " + drinkInfo[1]; 
+        drinkDiv.onclick = clickListener;
         document.getElementById('dc').appendChild(drinkDiv);                              
     }
 
@@ -275,17 +367,26 @@ function createDivsOnLoad(){
         console.log("loop 3");
         drinkDiv = document.createElement('div');
         drinkDiv.className="drinkDivClass";
-        drinkDiv.id="whiskeyDivId";
         drinkInfo = slicedWiskey[i];
+        drinkDiv.id = drinkInfo[3];
+        drinkDiv.style.backgroundImage = "url('../images/whiskey.jpeg')";
+
+        
         //console.log("drinkinfo == " + drinksToDisplay[i]);
         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
+        drinkDiv.onclick = clickListener;
         document.getElementById('dc').appendChild(drinkDiv);
                                    
     }
-
+}
+//Author: Jakob Skogby Steinholtz, 2019
+//If a drinkDiv is clicked this function gets the ID of that
+//specific div and sends it to "matchIidWithDrink".
+function clickListener(){
+    matchIdWithDrink(this.id);
 }
 
-
+////Author: Jakob Skogby Steinholtz, 2019
 //User authentication function - for logging in as VIP or staff.
 function validateUser(){
     var usrname = document.getElementById('username');
@@ -348,7 +449,7 @@ function validateUser(){
     }
     
 }
-
+//Author: Jakob Skogby Steinholtz, 2019
 //To search for specific drinks
 function searchFunction(listToSearch){
     var input = document.getElementById("myInput");
@@ -365,7 +466,8 @@ function searchFunction(listToSearch){
         }  
     } 
 }  
-//Lars code vvvvv
+
+//Lars code under this
 // =====================================================================================================
 // This is an example of a file that will return an array with some specific details about a
 // selected user name (not the first name/alst name). It will also add details from another "database"
@@ -410,6 +512,8 @@ function userDetails(userName) {
 
     return userCollect;
 }
+
+
 
 // =====================================================================================================
 // This function will change the credit amount in the user's account. Note that the amount given as argument is the new
