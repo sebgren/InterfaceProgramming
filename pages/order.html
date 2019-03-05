@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <title>The Flying Dutchman</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/order.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="../dutchmanFiles/jquery-3.3.1.min.js"></script>
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
@@ -19,37 +22,68 @@
     <body>
 
         <div class="header"><h1>Tablet #1</h1></div>
-        
+        <div class="flexButtons">
         <label class = "rbContainer"> Beers
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkBeerBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
             <span class="checkmark"></span>
         </label>
 
         <label class = "rbContainer"> Whiskey
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWhiskeyBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
             <span class="checkmark"></span>
         </label>
 
         <label class = "rbContainer"> Wine
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="checkWineBox();"> 
+            <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
             <span class="checkmark"></span>
         </label>
 
-        <label class = "rbContainer"> All Beverages
-            <input type="radio" id="beerBtn" name ="rBtn" onclick="createDivsOnLoad();"> 
+        <label class = "rbContainer"> All 
+            <input type="radio" name ="rBtn" checked onclick="createDivsOnLoad();"> 
             <span class="checkmark"></span>
         </label>
-        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for beverage..">
+        <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search">
+    
+        </div>
+        
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span id="spanId" class="close" onclick="closeModal()">&times;</span>
+                    <h2>Information about the Drink</h2>
+                </div>
+                <div id="modalBody" class="modal-body">
+                    <ul>
+                        <li id="name"></li>
+                        <li id="ursprung"></li>
+                        <li id="producer"></li>
+                        <li id="alcoholLevel"></li>
+                        <li id="price"></li>
+                        
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
 
         <div class="container">
             <div class="drinks-container">   
                 <ul id="drinks-container">
+                        </ul>
+<!--<<<<<<< HEAD
+                
+=======-->
+        <!--<div id='dc' class="drinks-container">   
 
-                </ul>
+>>>>>>> master-->
             </div>
 
             <div class="tab-container">
                 <h1>tab</h1>
+<!--<<<<<<< HEAD-->
                     <!-- <ol class="tab-drink-list">
                         <li>Beer A, 100 kr</li>
                         <li>Beer B, 50 kr</li>
@@ -75,6 +109,15 @@
                             <p id="item-1-currency" class="float-left tab-item-currency">SEK</p>
                         </li> -->
                     </ul>
+<!--=======
+                <ol class="tab-drink-list">
+                    <li>Beer A, 100 kr</li>
+                    <li>Beer B, 50 kr</li>
+                </ol>
+                Total: 150
+                <div class="button-container">
+                    <button class="pay-button" onclick="showPayment()">Pay</button>
+>>>>>>> master-->
                 </div>
 
                 <button id="pay-button" href="">Pay</button>
@@ -86,7 +129,28 @@
         draggable="true" 
         ondragstart="drag(event)" width="336" height="69"></div> -->
 
-        <script>checkIfStaff();</script>
+        <div id="payment-modal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" style="font-size: 2em">&times;</span>
+                    <h2>Payment successful!</h2>
+                </div>
+                <div class="modal-body">
+                    <i class="fas fa-check-circle"
+                       style="font-size:100px;color:#5cb85c;"></i>
+                </div>
+                <div class="modal-footer"> Thank you for your purchase!
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <script>
+            checkIfStaff();
+            //showPayment();
+        </script>
 
         <script src="../scripts/dragndrop.js"></script>
     </body>
