@@ -8,6 +8,7 @@
     <script src="dutchmanFiles/loader.js"></script>
     <script src="dutchmanFiles/DBLoaded.js"></script> 
     <script src="dutchmanFiles/Beverages.js"></script>
+    <script src="scripts/ch_lang.js"></script>
     <body>
 
         <div class="container">
@@ -15,24 +16,26 @@
                 <h1>The Flying Dutchman</h1>
                 <hr>
             </div>
+            <input type="button" id="chlang" onclick="change_lang()" value="Press">
             <div class="login-container">
-                <p>
+                <p id="intro">
                     To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide the appropriate information below.
                 </p>
 
                 <p>
-                    Username: <input type="text" id="username" name="Username" value="Username"><br>
-                    Password: <input type="password" id="password" name="Password" value="Password"><br>
+                  <span id="user">Username:</span> <input type="text" id="username" name="Username" value="Username"><br>
+                  <span id="pass">Password:</span> <input type="password" id="password" name="Password" value="Password"><br>
                 </p>
 
                 <p>
-                    <button onclick="validateUser();">Submit</button>
+                    <button id="subm"  onclick="validateUser();">Submit</button>
                 </p>
-                    <button onclick="loadBeverages();">testBev</button>
+                    <button id="loadbev" onclick="loadBeverages();">testBev</button>
                 <p>
-                    <a href="pages/order.html"><button>Regular Guest</button></a>
+                    <a href="pages/order.html"><button id="regguest">Regular Guest</button></a>
                 </p>
-            </div>
+                <script src="scripts/index_script.js"></script>            
+</div>
             
         </div>
 
