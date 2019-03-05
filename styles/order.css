@@ -130,12 +130,12 @@
 
 .pay-button {
     height: 50px;
-    background-color: darkred;
+    background-color: #23CC0E;
 }
 
 .vip-button {
     height: 50px;
-    background-color: green;
+    background-color: #6BFF88;
 }
 
 .tab-drink-list{
@@ -145,6 +145,13 @@
 #creditString {
     text-align: end;
     color: white;
+}
+
+
+.switch-view-button {
+    height: 50px;
+    background-color: white;
+    float: right;
 }
 
 .rbContainer {
@@ -232,7 +239,6 @@
 .searchDiv:focus {
   width: 20%;
 }
-
 
 /*MODAL*/
 /* The Modal (background) */

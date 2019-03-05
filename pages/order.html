@@ -9,7 +9,8 @@
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
-    
+    <script src="../scripts/main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <meta charset="utf-8">
 
 
@@ -43,7 +44,6 @@
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
-
             <div class="modal-content">
                 <div class="modal-header">
                     <span id="spanId" class="close" onclick="closeModal()">&times;</span>
@@ -77,10 +77,18 @@
                 </ol>
                 Total: 150
                 <div class="button-container">
-                    <button onclick="createDivsOnLoad()"lass="pay-button">Pay</button>
+                    <button onclick="createDivsOnLoad()" class="pay-button">Pay</button>
 
                 </div>
             </div>
         </div>
+
+        <div class="beerDiv" 
+        id="drag1" src="../images/beer.jpg" 
+        draggable="true" 
+        ondragstart="drag(event)" width="336" height="69"></div>
+
+        <script>checkIfStaff();</script>
+
     </body>
 </html>

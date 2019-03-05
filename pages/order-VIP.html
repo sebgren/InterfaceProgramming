@@ -11,7 +11,7 @@
 
 
     <body>
-    <div id="creditString">hej</div>
+    <div id="creditString"></div>
         <div class="header"><h1>Tablet #1</h1></div>
 
         <div class="container">
@@ -56,12 +56,12 @@
                 Total: 150
                 <div class="button-container-vip">
                     <button class="pay-button">Pay</button>
-                    <button onclick="showCredits('jakob');" class="vip-button">Use VIP-Credit</button>
+                    <button class="vip-button">Use VIP-Credit</button>
                 </div>
             </div>
 
         </div>
-    <script>showCredit("jakob");</script> <!-- TODO: Now always shows user "jakobs" credit -->
+    <script>showCredit(sessionStorage.getItem("vipUsername"));</script>
     </body>
 
 </html>
