@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/order.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
@@ -77,8 +79,7 @@
                 </ol>
                 Total: 150
                 <div class="button-container">
-                    <button onclick="createDivsOnLoad()" class="pay-button">Pay</button>
-
+                    <button class="pay-button" onclick="showPayment()">Pay</button>
                 </div>
             </div>
         </div>
@@ -88,7 +89,28 @@
         draggable="true" 
         ondragstart="drag(event)" width="336" height="69"></div>
 
-        <script>checkIfStaff();</script>
+        <div id="payment-modal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close" style="font-size: 2em">&times;</span>
+                    <h2>Payment successful!</h2>
+                </div>
+                <div class="modal-body">
+                    <i class="fas fa-check-circle"
+                       style="font-size:100px;color:#5cb85c;"></i>
+                </div>
+                <div class="modal-footer"> Thank you for your purchase!
+                </div>
+            </div>
+        </div>
+
+        </div>
+
+        <script>
+            checkIfStaff();
+            //showPayment();
+        </script>
 
     </body>
 </html>

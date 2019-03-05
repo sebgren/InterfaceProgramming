@@ -131,11 +131,120 @@
 .pay-button {
     height: 50px;
     background-color: #23CC0E;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 2px 2px;
+    opacity: 1;
+    transition: 0.4s;
+    cursor: pointer
+}
+.pay-button:hover {
+    opacity: 0.6;
 }
 
 .vip-button {
     height: 50px;
-    background-color: #6BFF88;
+    background-color: #387F2F;
+    border: darkred;
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 2px 2px;
+    opacity: 1;
+    transition: 0.4s;
+    cursor: pointer
+}
+
+.vip-button:hover {
+    opacity: 0.6;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    text-align: center;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    border-radius: 12px;
+    padding: 2px 16px;
+    font-size: 1.5em;
+    background-color: white;
+    color: #5cb85c;
+}
+
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+
+.modal-footer {
+    padding: 2px 16px 100px;
+    background-color: white;
+    font-size:1.7em;
+    color: #5cb85c;
+    font-weight: bold;
+    border-radius: 12px;
+
+}
+
+
+.modal-content {
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: #fefefe;
+    top: 20%;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 40%;
+    height: 60%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    animation-name: animatetop;
+    animation-duration: 0.4s
+}
+
+
+@keyframes animatetop {
+    from {top: -300px; opacity: 0}
+    to {top: 20%; opacity: 1}
 }
 
 .tab-drink-list{
@@ -149,8 +258,9 @@
 
 
 .switch-view-button {
-    height: 50px;
+    border-radius: 8px;
     background-color: white;
+    color: black;
     float: right;
 }
 
