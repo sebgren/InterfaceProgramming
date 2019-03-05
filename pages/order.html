@@ -95,7 +95,9 @@
                     </ul>
                 </div>
 
-                <button id="pay-button" href="">Pay</button>
+                <div class="button-container">
+                    <button class="pay-button" onclick="showPayment()">Pay</button>
+                </div>
             </div>
         </div>
 
@@ -108,7 +110,7 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="close" style="font-size: 2em">&times;</span>
+                    <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
                     <h2>Payment successful!</h2>
                 </div>
                 <div class="modal-body">
