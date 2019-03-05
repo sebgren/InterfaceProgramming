@@ -12,18 +12,32 @@
 
 var DB = ("DBLoaded.js");
 var DB2 = ("Beverages.js");
+
+// beerDrinks contains 100 types of beer
 var beerDrinks = [];
+
+// whiskeyDrinks contains 100 types of beer
 var whiskeyDrinks = [];
+
+// wineDrinks contains 100 types of beer
 var wineDrinks = [];
 
-$( document ).ready(getDrinks);
+//========================================================================================================
+/* When the document is ready, it first loads the drinks to corresponding variables and then display all 
+ * of them
+ */
+$( document ).ready(function(){
+    getDrinks();
+    displayAllDrinks();
+});
 
-
-
-
-//Author: Jakob Skogby Steinholtz, 2019
+//========================================================================================================
+/* The function takes a string id (e.g. beer-232312; wine-342124). It extracts the type and the article id
+ * of the beverage. Then a pop up displays details of that corresponding drink by calling the showModal 
+ * function.
+ */
 function matchIdWithDrink(id){
-    console.log("matchIdWithDrink REACHED");
+    // console.log("matchIdWithDrink REACHED");
 
     //regular expression
     var matchedString = id.match(/(\w+)\-(\d+)/);
@@ -31,15 +45,15 @@ function matchIdWithDrink(id){
     var drinkId = matchedString[2];
 
     var collector;
-    if(type = "beer")
+    if(type == "beer")
     {
         collector = beerDrinks;
     }
-    else if(type = "whiskey")
+    else if(type == "whiskey")
     {
         collector = whiskeyDrinks;
     }
-    else if(type = "wine")
+    else if(type == "wine")
     {
         collector = wineDrinks;
     }
@@ -51,18 +65,18 @@ function matchIdWithDrink(id){
     var modalInfo = [];
 
     for(i=0; i<collector.length; i++){
-
         if(collector[i].artikelid == drinkId)
         {
             modalInfo.push([collector[i].namn, collector[i].namn2, 
                 collector[i].producent, collector[i].alkoholhalt,
                 collector[i].prisinklmoms], collector[i].ursprunglandnamn);
+
+            break;
         }
     } 
 
     showModal(modalInfo);
     console.log(modalInfo);
- 
 }
 
 //Author: Jakob Skogby Steinholtz, 2019
@@ -180,13 +194,13 @@ function allUserNames() {
 //========================================================================================================
 /*  This function takes a specific type of beverage and its list and generates a div containing all those 
  *  items.
- */
-function createDrinkDivs(drinks, type){
-    console.log(drinks);
+ */ 
+function createDrinkDivs(drinks, type)
+{
+    // console.log(drinks);
     
     var drinksContainer = $("#drinks-container");
-    drinksContainer.empty();
-
+   
     for(var i=0; i < drinks.length; i++)
     {
         var drinkDiv = document.createElement('div');
@@ -206,7 +220,22 @@ function createDrinkDivs(drinks, type){
         
         //Testing onclick with a random page       
         // drinkDiv.onclick="location.href='https://www.w3schools.com';"
-    }                  
+    }  
+}  
+
+//========================================================================================================
+/*  This function displays all drinks. It first empties the drink container and then call createDrinkDivs 
+ *  function on each type of beverage.
+ */
+function displayAllDrinks()
+{
+    console.log("displayAllDrinks");
+
+    $("#drinks-container").empty();
+    createDrinkDivs(beerDrinks, "beer");
+    createDrinkDivs(whiskeyDrinks, "whiskey");
+    createDrinkDivs(wineDrinks, "wine");
+}
 // =======
 // function createDrinkDivs(drink){
 //     var slicedDrinkList = [];
@@ -281,9 +310,6 @@ function createDrinkDivs(drinks, type){
 //     }
 
 // >>>>>>> master
-}
-
-
 
 //Author: Jakob Skogby Steinholtz, 2019
 //Used to remove the divs 
@@ -327,7 +353,8 @@ function drinkDragEnd(ev) {
  */
 function checkBeerBox()
 {
-    getCorrectDrink("Ale");
+    $("#drinks-container").empty();
+    createDrinkDivs(beerDrinks, "beer");
 }
 
 //========================================================================================================
@@ -335,7 +362,8 @@ function checkBeerBox()
  */
 function checkWhiskeyBox()
 {
-    getCorrectDrink("Whisky");
+    $("#drinks-container").empty();
+    createDrinkDivs(whiskeyDrinks, "whiskey");
 }
 
 //========================================================================================================
@@ -343,35 +371,37 @@ function checkWhiskeyBox()
  */
 function checkWineBox()
 {
-    getCorrectDrink("Vin");
+    $("#drinks-container").empty();
+    createDrinkDivs(wineDrinks, "wine");
 }
 
 //========================================================================================================
 /*  This function takes a type (string) as a parameter and call the createDrinkDivs function to create
  * corresponding list of drinks.
  */
-function getCorrectDrink(type){
+// function getCorrectDrink(type){
 
-    if(type == "Ale")
-    {
-        console.log("get correct ale");
-        createDrinkDivs(beerDrinks, "beer");
-        return;
-    }
-    else if(type == "Whisky")
-    {
-        createDrinkDivs(whiskeyDrinks, "whiskey");
-        return;
-    }
-    else if(type == "Vin")
-    {
-        createDrinkDivs(wineDrinks, "wine");
-        return;
-    }
-    else {
-        console.log("Wrong type of drink :" + type);
-    }   
-}
+//     if(type == "Ale")
+//     {
+//         console.log("get correct ale");
+
+        
+//         return;
+//     }
+//     else if(type == "Whisky")
+//     {
+        
+//         return;
+//     }
+//     else if(type == "Vin")
+//     {
+        
+//         return;
+//     }
+//     else {
+//         console.log("Wrong type of drink :" + type);
+//     }   
+// }
 
 //Author: Jakob Skogby Steinholtz, 2019
 //When the beer button is clicked
@@ -409,7 +439,7 @@ function getCorrectDrink(type){
 // <<<<<<< HEAD
 
 //========================================================================================================
-/*  This function gets 100 each type of beverages from DB2.
+/*  This function gets 100 each type of beverages from DB2 and loads them to the corresponding variable.
  */
 function getDrinks() {
     var nBeer = 0;
@@ -512,76 +542,76 @@ function filterDrinkInfo(drinkObj) {
 //Author: Jakob Skogby Steinholtz, 2019
 //creates divs when the page loads
 //Similar to the function "createDrinkDivs"
-window.onload = createDivsOnLoad;
-function createDivsOnLoad(){
-    remove = "drinkDivClass";
-    eraseFunction(remove);
-    var ales = [];
-    ales = getCorrectDrink("Ale");
-    slicedAle = [];
-    slicedAle = ales.slice(0, 100);
+// window.onload = createDivsOnLoad;
+// function createDivsOnLoad(){
+//     remove = "drinkDivClass";
+//     eraseFunction(remove);
+//     var ales = [];
+//     ales = getCorrectDrink("Ale");
+//     slicedAle = [];
+//     slicedAle = ales.slice(0, 100);
 
-    var whiskeys = [];
-    whiskeys = getCorrectDrink("Whisky");
-    slicedWiskey = [];
-    slicedWiskey = whiskeys.slice(0, 100);
+//     var whiskeys = [];
+//     whiskeys = getCorrectDrink("Whisky");
+//     slicedWiskey = [];
+//     slicedWiskey = whiskeys.slice(0, 100);
 
-    var wines = [];
-    wines = getCorrectDrink("Vin");
-    slicedWine = [];
-    slicedWine = wines.slice(0, 100);
+//     var wines = [];
+//     wines = getCorrectDrink("Vin");
+//     slicedWine = [];
+//     slicedWine = wines.slice(0, 100);
 
-    var drinkInfo;
-    var drinkDiv = document.createElement('div');
+//     var drinkInfo;
+//     var drinkDiv = document.createElement('div');
 
-    for(i=0; i<slicedAle.length; i++){
-        console.log("loop 1");
+//     for(i=0; i<slicedAle.length; i++){
+//         console.log("loop 1");
             
-        drinkDiv = document.createElement('div');
-        drinkDiv.className="drinkDivClass";
-        drinkInfo = slicedAle[i];
-        drinkDiv.id= drinkInfo[3];
-        drinkDiv.style.backgroundImage = "url('../images/beer.jpg')";
+//         drinkDiv = document.createElement('div');
+//         drinkDiv.className="drinkDivClass";
+//         drinkInfo = slicedAle[i];
+//         drinkDiv.id= drinkInfo[3];
+//         drinkDiv.style.backgroundImage = "url('../images/beer.jpg')";
         
-        //console.log("drinkinfo == " + drinksToDisplay[i]);
-        drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
-        drinkDiv.onclick = clickListener;
+//         //console.log("drinkinfo == " + drinksToDisplay[i]);
+//         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
+//         drinkDiv.onclick = clickListener;
 
-        document.getElementById('dc').appendChild(drinkDiv);        
+//         document.getElementById('dc').appendChild(drinkDiv);        
 
-    }
+//     }
 
-    for(i=0; i<slicedWine.length; i++){
-        console.log("loop 2");
+//     for(i=0; i<slicedWine.length; i++){
+//         console.log("loop 2");
 
-        drinkDiv = document.createElement('div');
-        drinkDiv.className="drinkDivClass";
-        drinkInfo = slicedWine[i];
-        drinkDiv.id= drinkInfo[3];
-        drinkDiv.style.backgroundImage = "url('../images/wine.jpg')";
+//         drinkDiv = document.createElement('div');
+//         drinkDiv.className="drinkDivClass";
+//         drinkInfo = slicedWine[i];
+//         drinkDiv.id= drinkInfo[3];
+//         drinkDiv.style.backgroundImage = "url('../images/wine.jpg')";
 
-        //console.log("drinkinfo == " + drinksToDisplay[i]);
-        drinkDiv.innerHTML = drinkInfo[0]+ " " + drinkInfo[1]; 
-        drinkDiv.onclick = clickListener;
-        document.getElementById('dc').appendChild(drinkDiv);                              
-    }
+//         //console.log("drinkinfo == " + drinksToDisplay[i]);
+//         drinkDiv.innerHTML = drinkInfo[0]+ " " + drinkInfo[1]; 
+//         drinkDiv.onclick = clickListener;
+//         document.getElementById('dc').appendChild(drinkDiv);                              
+//     }
 
-    for(i=0; i<slicedWiskey.length; i++){    
-        console.log("loop 3");
-        drinkDiv = document.createElement('div');
-        drinkDiv.className="drinkDivClass";
-        drinkInfo = slicedWiskey[i];
-        drinkDiv.id = drinkInfo[3];
-        drinkDiv.style.backgroundImage = "url('../images/whiskey.jpeg')";
+//     for(i=0; i<slicedWiskey.length; i++){    
+//         console.log("loop 3");
+//         drinkDiv = document.createElement('div');
+//         drinkDiv.className="drinkDivClass";
+//         drinkInfo = slicedWiskey[i];
+//         drinkDiv.id = drinkInfo[3];
+//         drinkDiv.style.backgroundImage = "url('../images/whiskey.jpeg')";
 
         
-        //console.log("drinkinfo == " + drinksToDisplay[i]);
-        drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
-        drinkDiv.onclick = clickListener;
-        document.getElementById('dc').appendChild(drinkDiv);
+//         //console.log("drinkinfo == " + drinksToDisplay[i]);
+//         drinkDiv.innerHTML = drinkInfo[0] + " " + drinkInfo[1]; 
+//         drinkDiv.onclick = clickListener;
+//         document.getElementById('dc').appendChild(drinkDiv);
                                    
-    }
-}
+//     }
+// }
 //Author: Jakob Skogby Steinholtz, 2019
 //If a drinkDiv is clicked this function gets the ID of that
 //specific div and sends it to "matchIidWithDrink".
