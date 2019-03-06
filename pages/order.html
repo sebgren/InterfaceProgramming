@@ -8,11 +8,14 @@
     <link rel="stylesheet" href="../styles/order.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="../dutchmanFiles/jquery-3.3.1.min.js"></script>
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
     <script src="../scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="../scripts/plusminus.js"></script>
+    <script src="../scripts/dragndrop.js"></script>
     <meta charset="utf-8">
 
 
@@ -36,13 +39,14 @@
         </label>
 
         <label class = "rbContainer"> All 
-            <input type="radio" name ="rBtn" checked onclick="createDivsOnLoad();"> 
+
+            <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
+
             <span class="checkmark"></span>
         </label>
         <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search">
     
         </div>
-        
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -67,33 +71,47 @@
         </div>
 
         <div class="container">
-
-            <div id='dc' class="drinks-container">   
-
+            <div class="drinks-container">   
+                <ul id="drinks-container">
+                </ul>
             </div>
+
             <div class="tab-container">
                 <h1>tab</h1>
-                <ol class="tab-drink-list">
-                    <li>Beer A, 100 kr</li>
-                    <li>Beer B, 50 kr</li>
-                </ol>
-                Total: 150
+
+                <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
+
+                    <ul id="items">
+                        <!-- <li id="item-1-beer-1" class="tab-item">
+                            <img class="float-left tab-item-img" src="../images/beer.jpg" width="50px" height="50px">
+                            <div class="float-left tab-item-name"><p>Beer asdak kjskjd kawjdkqwjdqkwkw  wwjdwi w</p></div>
+                            <div class="float-left tab-item-control">
+                                <input id="item-1-plus" type="button" value="+" onclick="plusQuantity(this)">
+                                <span id="item-1-quantity">1</span>
+                                <input id="item-1-minus" type="button" value="-" onclick="minusQuantity(this)">
+                            </div>
+                            <p id="item-1-price" class="float-left tab-item-price">1700</p>
+                            <p id="item-1-currency" class="float-left tab-item-currency">SEK</p>
+                        </li> -->
+                    </ul>
+                </div>
+
                 <div class="button-container">
                     <button class="pay-button" onclick="showPayment()">Pay</button>
                 </div>
             </div>
         </div>
 
-        <div class="beerDiv" 
+        <!-- <div class="beerDiv" 
         id="drag1" src="../images/beer.jpg" 
         draggable="true" 
-        ondragstart="drag(event)" width="336" height="69"></div>
+        ondragstart="drag(event)" width="336" height="69"></div> -->
 
         <div id="payment-modal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
-                    <span class="close" style="font-size: 2em">&times;</span>
+                    <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
                     <h2>Payment successful!</h2>
                 </div>
                 <div class="modal-body">
@@ -105,12 +123,11 @@
             </div>
         </div>
 
-        </div>
-
         <script>
             checkIfStaff();
             //showPayment();
         </script>
 
+        <script src="../scripts/dragndrop.js"></script>
     </body>
 </html>

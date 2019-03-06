@@ -53,14 +53,20 @@
     justify-content: center;
     align-items: center;
 }
-.drinkDivClass {
-    display: flex;
+.beerDiv {
+    /* display: inline-block; */
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
     border: solid black;
     height: 150px;
     width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
     justify-content: center;
     align-items: center;
-    background-image:opacity: 0.9;
+    background-image: url('../images/beer.jpg');
+    /* opacity: 0.5; */
     background-size: contain;
     font-size: large;
     color: white;
@@ -77,12 +83,55 @@
     opacity: 0.5;
 }
 
-#beerDivId{
-    
+.whiskeyDiv {
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../images/whiskey.jpeg');
+    /* opacity: 0.5; */
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
 }
 
-#wineDivId{
+.whiskeyDiv:hover { 
+  background-color: #f4b042;
+    opacity: 0.5;
+  }
+
+.wineDiv {
+    float: left;
+    /* line-height: 150px; */
+    text-align: center;
+    border: solid black;
+    height: 150px;
+    width: 150px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
     background-image: url('../images/wine.jpg');
+    /* opacity: 0.5; */
+    background-size: contain;
+    font-size: large;
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000; 
 }
 
 #whiskeyDivId{
@@ -125,7 +174,6 @@
     flex-grow: 2;
     height: 10%;
     width: 100%;
-
 }
 
 .pay-button {
@@ -142,7 +190,9 @@
     margin: 2px 2px;
     opacity: 1;
     transition: 0.4s;
-    cursor: pointer
+    cursor: pointer;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 .pay-button:hover {
     opacity: 0.6;
@@ -162,11 +212,19 @@
     margin: 2px 2px;
     opacity: 1;
     transition: 0.4s;
-    cursor: pointer
+    cursor: pointer;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 
 .vip-button:hover {
     opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+    .vip-button {
+        font-size: 12px;
+    }
 }
 
 .modal {
@@ -204,6 +262,29 @@
     font-size: 1.5em;
     background-color: white;
     color: #5cb85c;
+}
+
+@media only screen and (max-width: 1000px) {
+    .modal-header {
+        font-size: 1.2em;
+    }
+
+    #vip-modal-header {
+        font-size: 1.1em;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .modal-header {
+        font-size: 0.7em;
+    }
+    .modal-footer {
+        font-size: 1.5em;
+    }
+
+    #vip-modal-header {
+        font-size: 0.6em;
+    }
 }
 
 
@@ -365,17 +446,73 @@
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-/* Modal Content/Box */
+#tab-items {
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#tab-items ul{
+    list-style: none;
+}
+
+.tab-item {
+    float: left;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    border: 1px solid #000;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+/* .tab-item-img {
+
+} */
+
+.tab-item-name {
+    width: 220px;
+    height: 50px;
+    font-family:sans-serif;
+    margin-right: 40px;
+}
+
+.tab-item-name p {
+    width: 220px;
+    height: 50px;
+    display: table-cell;
+    vertical-align:middle;
+    text-align:center;
+    color: #000;
+    text-decoration: none;
+}
+
+.tab-item-control {
+    line-height:  50px;
+    margin-right: 20px;
+}
+
+.tab-item-price {
+    width: 60px;
+    margin-right: 10px;
+}
+
+
+/* Modal Content/Box 
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
-  padding: 20px;
+  /* padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-}
+
 
 /* The Close Button */
-.close {
+/*.close {
   color: #ffffff;
   float: right;
   font-size: 28px;
@@ -390,24 +527,24 @@
 }
 
 /* Modal Header */
-.modal-header {
+/*.modal-header {
   padding: 2px 16px;
   background-color: #db9046;
   color: white;
 }
 
 /* Modal Body */
-.modal-body {padding: 2px 16px;}
+/*.modal-body {padding: 2px 16px;}
 
 /* Modal Footer */
-.modal-footer {
+/*.modal-footer {
   padding: 2px 16px;
   background-color: #db9046;
   color: white;
 }
 
 /* Modal Content */
-.modal-content {
+/*.modal-content {
   position: relative;
   background-color: #fefefe;
   margin: auto;
@@ -417,10 +554,4 @@
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.4s
-}
-
-/* Add Animation */
-@keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
 }

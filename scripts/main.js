@@ -1,4 +1,4 @@
-var hiddenTab = 
+// var hiddenTab = 
 
 function getLoginCredentials(){
 	var usrname = document.getElementById('username');
@@ -87,7 +87,7 @@ function showPayment() {
 	modal.style.display = "block";
 
 	// Adds close functionality to X.
-	var span = document.getElementsByClassName("close")[0];
+	var span = document.getElementById("close-normal");
 	span.onclick = function () {
 		modal.style.display = "none";
 	}
@@ -134,7 +134,7 @@ function showPaymentVip() {
 		}
 
 		// Adds close functionality to X.
-		var span = document.getElementsByClassName("close")[1];
+		var span = document.getElementById("close-vip");
 		span.onclick = function () {
 			modal.style.display = "none";
 		}
