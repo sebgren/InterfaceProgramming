@@ -16,6 +16,7 @@
     width: 66%;
     justify-content: space-evenly;
     overflow: auto;
+    overflo
 }
 
 
@@ -285,7 +286,6 @@
         font-size: 0.6em;
     }
 }
-
 
 
 .modal-body {

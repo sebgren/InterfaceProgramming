@@ -13,6 +13,7 @@
 var DB = ("DBLoaded.js");
 var DB2 = ("Beverages.js");
 
+
 // beerDrinks contains 100 types of beer
 var beerDrinks = [];
 
@@ -123,6 +124,7 @@ function showModal(modalInfo) {
     var priceTxt = infoToDisplay[4] + " kr";
     var ursprungTxt = infoToDisplay[5];
 
+
     var modal = document.getElementById('myModal');
     var btn = document.getElementById("myBtn");
 
@@ -148,12 +150,6 @@ function closeModal(){
 
 
 // When the user clicks anywhere outside of the modal, close it
-
-
-
-
-
-
 
 // Author: Lars Oestreicher, 2018
 //Done by Lars
@@ -219,6 +215,7 @@ function eraseFunction(className){
         elements[0].parentNode.removeChild(elements[0]);
     }
 }
+
 
 //for the drag and drop (not working with drinkDivs at the moment)
 function allowDrop(ev) {
@@ -329,7 +326,7 @@ function filterDrinkInfo(drinkObj) {
 
     //get alcohol content
     newDrinkObj.alkoholhalt = drinkObj.alkoholhalt;
-
+  
     newDrinkObj.producent = drinkObj.producent;
 
     newDrinkObj.prisinklmoms = drinkObj.prisinklmoms;
