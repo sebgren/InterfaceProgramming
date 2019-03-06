@@ -16,7 +16,6 @@
     width: 66%;
     justify-content: space-evenly;
     overflow: auto;
-    overflo
 }
 
 
@@ -271,6 +270,7 @@
 
     #vip-modal-header {
         font-size: 1.1em;
+    }
 }
 
 @media only screen and (max-width: 500px) {
@@ -509,7 +509,7 @@
   /* padding: 20px;
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
-}
+
 
 /* The Close Button */
 /*.close {
@@ -555,4 +555,3 @@
   animation-name: animatetop;
   animation-duration: 0.4s
 }
->>>>>>> master
