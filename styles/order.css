@@ -190,7 +190,9 @@
     margin: 2px 2px;
     opacity: 1;
     transition: 0.4s;
-    cursor: pointer
+    cursor: pointer;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 .pay-button:hover {
     opacity: 0.6;
@@ -210,11 +212,19 @@
     margin: 2px 2px;
     opacity: 1;
     transition: 0.4s;
-    cursor: pointer
+    cursor: pointer;
+    padding-top: unset;
+    padding-bottom: unset;
 }
 
 .vip-button:hover {
     opacity: 0.6;
+}
+
+@media only screen and (max-width: 600px) {
+    .vip-button {
+        font-size: 12px;
+    }
 }
 
 .modal {
@@ -253,6 +263,29 @@
     background-color: white;
     color: #5cb85c;
 }
+
+@media only screen and (max-width: 1000px) {
+    .modal-header {
+        font-size: 1.2em;
+    }
+
+    #vip-modal-header {
+        font-size: 1.1em;
+}
+
+@media only screen and (max-width: 500px) {
+    .modal-header {
+        font-size: 0.7em;
+    }
+    .modal-footer {
+        font-size: 1.5em;
+    }
+
+    #vip-modal-header {
+        font-size: 0.6em;
+    }
+}
+
 
 
 .modal-body {

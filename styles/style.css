@@ -58,24 +58,33 @@ button:hover {
 }
 
 .header > h1{
+    display: flex;
     text-align: center;
     justify-content: center;
-    height: 200px;
+
 }
 
 
 .login-container {
+    background-color: white;
     flex: 1;
     text-align: center;
     justify-content: center;
 }
 
 .logo {
+    position: relative;
+    left: 12px;
     display:block;
-    margin-top: 0%;
-    margin-left: 43.5%;
+
+    margin-left: auto;
+    margin-right: auto;
     height: 130px;
     width: 130px;
+}
 
-
+@media only screen and (max-width: 600px) {
+    .logo {
+        margin-top: 50px;
+    }
 }
