@@ -139,9 +139,9 @@ function addDraggedItemToTab (id, name) {
                 <img class="float-left tab-item-img" src="../images/`+type+`.jpg" width="50px" height="50px">
                 <div class="float-left tab-item-name"><p>`+name+`</p></div>
                 <div class="float-left tab-item-control">
-                    <input id="tab-item-`+id+`-plus" type="button" value="+" onclick="plusQuantity(this)">
-                    <span id="tab-item-`+id+`-quantity">1</span>
                     <input id="tab-item-`+id+`-minus" type="button" value="-" onclick="minusQuantity(this)">
+                    <span id="tab-item-`+id+`-quantity">1</span>
+                    <input id="tab-item-`+id+`-plus" type="button" value="+" onclick="plusQuantity(this)">
                 </div>
                 <p id="tab-item-`+id+`-price" class="float-left tab-item-price">`+defaultItemPrice[type+"Price"]+`</p>
                 <p id="tab-item-`+id+`-currency" class="float-left tab-item-currency">SEK</p>
@@ -152,14 +152,19 @@ function addDraggedItemToTab (id, name) {
     }
 
     // Update the view
-    updateItemsInTab();
+    updateTab();
 }
 
 //========================================================================================================
-/*  This function updates the quantity of each item in the Tab based on the itemsInTab in localStorage
+/*  This function updates the quantity and the total price for each item and the total price for the whole
+ * list of items.
  */
-function updateItemsInTab() {
+function updateTab() {
+
+    // Get the list of items from localStorage
     var items = JSON.parse(localStorage.getItem("itemsInTab")).items;
+
+    var totalPrice = 0;
 
     for(var item of items)
     {
@@ -167,7 +172,18 @@ function updateItemsInTab() {
         var quantity = item.quantity;
         var price = item.price;
 
+        // Update the quantity of each item
         $("#tab-item-" + id + "-quantity").text(quantity);
+
+        // Update the total price of each item
         $("#tab-item-" + id + "-price").text(price * quantity);
+
+        totalPrice += quantity * price;
     }
+
+    // Show the price section
+    $("#section-price").show();
+
+    // Update the total price of the whole list
+    $("#total-price").text(totalPrice);
 }
