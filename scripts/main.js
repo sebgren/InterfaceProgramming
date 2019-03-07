@@ -101,6 +101,9 @@ function showPayment() {
 
 	// Empty the tab by removing all the li children
 	$("#items").empty();
+
+	// Remove the list of items in localStorage
+	localStorage.removeItem("itemsInTab");
 }
 
 /**

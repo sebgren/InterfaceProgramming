@@ -4,16 +4,30 @@
 function plusQuantity(element) {
     var id = element.id;
     // console.log(id);
-    var s = id.match(/item\-\d+/);
-    // console.log(s[0]);
-    $("#" + s + "-quantity").text(function(_, oldText) {
-        var oldQuantity = parseInt(oldText);
-        var newQuantity = oldQuantity + 1;
+    var matchedString = id.match(/tab\-item\-(\w+)\-(\d+)\-.*/);
 
-        updatePrice("#" + s + "-price", newQuantity * 100);
+    var type = matchedString[1];
+    var drinkId = matchedString[2];
+    var itemId = type + "-" + drinkId;
 
-        return newQuantity.toString();
-    });
+    console.log("Type " + type);
+    console.log("Drink id " + drinkId);
+  
+    var itemsInTab = JSON.parse(localStorage.getItem("itemsInTab"));
+
+    for(var index in itemsInTab.items)
+    {
+        var item = itemsInTab.items[index];
+
+        if(item.id === itemId)
+        {
+            itemsInTab.items[index].quantity += 1;
+        } 
+    }
+
+    localStorage.setItem("itemsInTab", JSON.stringify(itemsInTab));
+
+    updateItemQuantityInTab();
 }
 
 
@@ -23,16 +37,31 @@ function plusQuantity(element) {
 function minusQuantity(element) {
     var id = element.id;
     // console.log(id);
-    var s = id.match(/item\-\d+/);
-    // console.log(s[0]);
-    $("#" + s + "-quantity").text(function(_, oldText) {
-        var oldQuantity = parseInt(oldText);
-        var newQuantity = (oldQuantity-1) < 0 ? 0 : (oldQuantity-1);
+    var matchedString = id.match(/tab\-item\-(\w+)\-(\d+)\-.*/);
 
-        updatePrice("#" + s + "-price", newQuantity * 100);
+    var type = matchedString[1];
+    var drinkId = matchedString[2];
+    var itemId = type + "-" + drinkId;
 
-        return newQuantity.toString();
-    });
+    console.log("Type " + type);
+    console.log("Drink id " + drinkId);
+  
+    var itemsInTab = JSON.parse(localStorage.getItem("itemsInTab"));
+
+    for(var index in itemsInTab.items)
+    {
+        var item = itemsInTab.items[index];
+
+        if(item.id === itemId)
+        {
+            var oldQuantity = itemsInTab.items[index].quantity;
+            itemsInTab.items[index].quantity = (oldQuantity-1) < 0 ? 0 : (oldQuantity-1);
+        } 
+    }
+
+    localStorage.setItem("itemsInTab", JSON.stringify(itemsInTab));
+
+    updateItemQuantityInTab();
 }
 
 //========================================================================================================

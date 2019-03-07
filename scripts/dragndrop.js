@@ -42,38 +42,132 @@ function itemsOnDragLeave(event) {
 /*  This function adds the dragged beverage to the Tab. It gets the Id and the name of that beverage.
  */
 function addDraggedItemToTab (id, name) {
-    console.log("id " + id);
-    var noItemsInTab = localStorage.getItem("noItemsInTab");
 
-    if(noItemsInTab == null) 
-        noItemsInTab = 1;
+    // default price for each beverage
+    var defaultItemPrice = {"beerPrice": 50, "whiskeyPrice": 75, "winePrice": 100};
+
+    // The pattern is (type)-(drinkId)
+    // matchedStrings is an array of matched strings
+    var matchedStrings = id.match(/(\w+)\-(\d+)/);
+
+    // type of the dragged beverage
+    var type = matchedStrings[1];
+
+    // drinkId of the dragged beverage
+    var drinkId = matchedStrings[2];
+
+    // get the list of items from localStorage
+    var itemsInTab = localStorage.getItem("itemsInTab");
+
+    // structure of the object stored in localStorage
+    /*
+        {
+            "items": [
+                {
+                    "id" : "beer-1",
+                    "quantity": 1,
+                    "price": 50
+                },
+
+                {
+                    "id": "whiskey-2",
+                    "quantity": 1,
+                    "price": 75
+                },
+
+                {
+                    "id": "wine-3",
+                    "quantity": 1,
+                    "price": 100
+                }
+            ]
+        }
+    */
+
+    // Parse the list of items 
+    if(itemsInTab == null) 
+        itemsInTab = {"items" : []};
     else
     {
-        noItemsInTab = noItemsInTab + 1;
-        localStorage.setItem("noItemsInTab", noItemsInTab);
+        itemsInTab = JSON.parse(itemsInTab);
     }
 
-    var currentNumber = noItemsInTab - 1;
-    var matchedString = id.match(/(\w+)\-(\d+)/);
-    var type = matchedString[1];
-    var drinkId = matchedString[2];
+    // Current number of items in Tab
+    var numberOfItems = Object.keys(itemsInTab.items).length;
 
-    console.log("Type " + type);
-    console.log("drinkId " + drinkId);
+    // Should the dragged beverage be appended to Tab ?
+    var shouldAppend = true;
 
-    $("#items").append(`
-        <li id="item-`+ currentNumber +`-`+type+`-`+drinkId+`" class="tab-item">
-            <img class="float-left tab-item-img" src="../images/`+type+`.jpg" width="50px" height="50px">
-            <div class="float-left tab-item-name"><p>`+name+`</p></div>
-            <div class="float-left tab-item-control">
-                <input id="item-`+drinkId+`-plus" type="button" value="+" onclick="plusQuantity(this)">
-                <span id="item-`+drinkId+`-quantity">1</span>
-                <input id="item-`+drinkId+`-minus" type="button" value="-" onclick="minusQuantity(this)">
-            </div>
-            <p id="item-`+drinkId+`-price" class="float-left tab-item-price">100</p>
-            <p id="item-`+drinkId+`-currency" class="float-left tab-item-currency">SEK</p>
+    // If there're currently no items, then append it
+    if(numberOfItems == 0) 
+    {   
+        shouldAppend = true;
+    }
+    else
+    {
+        for(var tempItem of itemsInTab.items)
+        {
+            // If the item is already in the list, then not append it
+            if(tempItem.id === id)
+            {
+                // update the quantity of that item
+                var item = tempItem;
+                item.quantity += 1;
+                shouldAppend = false;
+                break;
+            }
+        }
+    }
 
-            <button id="item-`+currentNumber+`-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
-        </li>
-    `);
+    if(shouldAppend)
+    {
+        // Create an item based on the id of the dragged beverage
+        var item = {"id" : id, "quantity" : 1, "price": defaultItemPrice[type+"Price"]};
+
+        // Push it to the list
+        itemsInTab.items.push(item);
+    }
+    
+    // Update the list of items in localStorage
+    localStorage.setItem("itemsInTab", JSON.stringify(itemsInTab));
+
+    // Append that item to the view
+    if(shouldAppend)
+    {
+        $("#items").append(`
+            <li id="tab-item-`+id+`" class="tab-item">
+                <img class="float-left tab-item-img" src="../images/`+type+`.jpg" width="50px" height="50px">
+                <div class="float-left tab-item-name"><p>`+name+`</p></div>
+                <div class="float-left tab-item-control">
+                    <input id="tab-item-`+id+`-plus" type="button" value="+" onclick="plusQuantity(this)">
+                    <span id="tab-item-`+id+`-quantity">1</span>
+                    <input id="tab-item-`+id+`-minus" type="button" value="-" onclick="minusQuantity(this)">
+                </div>
+                <p id="tab-item-`+id+`-price" class="float-left tab-item-price">`+defaultItemPrice[type+"Price"]+`</p>
+                <p id="tab-item-`+id+`-currency" class="float-left tab-item-currency">SEK</p>
+
+                <button id="tab-item-`+id+`-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
+            </li>
+        `);
+    }
+
+    // Update the view
+    updateItemsInTab();
+}
+
+//========================================================================================================
+/*  This function updates the quantity of each item in the Tab based on the itemsInTab in localStorage
+ */
+function updateItemsInTab() {
+    var items = JSON.parse(localStorage.getItem("itemsInTab")).items;
+
+    for(var item of items)
+    {
+        var id = item.id;
+        var quantity = item.quantity;
+        var price = item.price;
+
+        $("#tab-item-" + id + "-quantity").text(quantity);
+        $("#tab-item-" + id + "-price").text(price * quantity);
+    }
 }
