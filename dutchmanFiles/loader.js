@@ -30,6 +30,7 @@ var wineDrinks = [];
 $( document ).ready(function(){
     getDrinks();
     displayAllDrinks();
+    localStorage.removeItem("itemsInTab");
 });
 
 //========================================================================================================
