@@ -16,7 +16,7 @@
     width: 66%;
     justify-content: space-evenly;
     overflow: auto;
-    overflo
+
 }
 
 
@@ -475,10 +475,10 @@
 } */
 
 .tab-item-name {
-    width: 220px;
+    width: 200px;
     height: 50px;
     font-family:sans-serif;
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 .tab-item-name p {
@@ -499,6 +499,11 @@
 .tab-item-price {
     width: 60px;
     margin-right: 10px;
+}
+
+.tab-item-currency {
+    margin-right: 20px;
+    vertical-align: middle;
 }
 
 

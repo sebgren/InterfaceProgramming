@@ -72,6 +72,8 @@ function addDraggedItemToTab (id, name) {
             </div>
             <p id="item-`+drinkId+`-price" class="float-left tab-item-price">100</p>
             <p id="item-`+drinkId+`-currency" class="float-left tab-item-currency">SEK</p>
+
+            <button id="item-`+currentNumber+`-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
         </li>
     `);
 }
