@@ -104,6 +104,7 @@ function showPayment() {
 
 	// Remove the list of items in localStorage
 	localStorage.removeItem("itemsInTab");
+	$("#section-price").hide();
 }
 
 /**
