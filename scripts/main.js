@@ -98,6 +98,9 @@ function showPayment() {
 			modal.style.display = "none";
 		}
 	}
+
+	// Empty the tab by removing all the li children
+	$("#items").empty();
 }
 
 /**
