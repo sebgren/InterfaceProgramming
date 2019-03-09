@@ -1,10 +1,15 @@
 .container {
-    background-color: var(--bg);
     flex-direction: row;
     max-width: 100%;
     height: 100%;
+    background-color: transparent;
 
 }
+
+.header {
+    background-color: transparent;
+}
+
 .drinks-container-header{
     display: flex;
     flex-direction: column;
@@ -19,7 +24,6 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    background-color: white;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
@@ -34,14 +38,13 @@
     flex-wrap: wrap;
     flex-direction: row;
     padding-left: 1em;
-    background-color: white;
     justify-content: center;
 }
 /*To make rounded edges on the drink-container*/
 .drinks-container-wrapper{
     display: flex;
     flex-wrap: wrap;
-        background-color: white;
+    background-color: white;
     flex-grow: 1;
     margin: 0.5em;
     height: 100%;
@@ -64,7 +67,6 @@
 .tab-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: flex-start;
     text-align: center;
     
@@ -194,16 +196,18 @@
 }
 
 .header > h1{
-    background-color: var(--bg);
     height: 3em;
     margin: 0;
     color: white;
 }
 
+h1 {
+    background-color: transparent;
+}
+
 .button-container-vip {
      display: flex;
      flex-direction: column;
-     background-color: white;
      justify-content: flex-start;
      text-align: center;
      flex-grow: 2;
@@ -215,7 +219,6 @@
 .button-container {
     display: flex;
     flex-direction: column;
-    background-color: white;
     justify-content: flex-start;
     text-align: center;
     flex-grow: 2;
@@ -504,7 +507,6 @@
 
 .tab-item {
     float: left;
-    /* background-color: rgba(0, 0, 0, 0.7); */
     border: 1px solid #000;
 }
 
@@ -547,57 +549,3 @@
     margin-right: 10px;
 }
 
-
-/* Modal Content/Box 
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto; /* 15% from the top and centered */
-  /* padding: 20px;
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-
-
-/* The Close Button */
-/*.close {
-  color: #ffffff;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-/* Modal Header */
-/*.modal-header {
-  padding: 2px 16px;
-  background-color: #db9046;
-  color: white;
-}
-
-/* Modal Body */
-/*.modal-body {padding: 2px 16px;}
-
-/* Modal Footer */
-/*.modal-footer {
-  padding: 2px 16px;
-  background-color: #db9046;
-  color: white;
-}
-
-/* Modal Content */
-/*.modal-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  animation-name: animatetop;
-  animation-duration: 0.4s
-}

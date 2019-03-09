@@ -5,7 +5,7 @@
 }
 
 html, body {
-    background-color: var(--bg);
+    
     height: calc(100vh - 300px);
     font-family: 'Roboto', sans-serif;
 }
