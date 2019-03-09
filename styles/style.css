@@ -10,6 +10,24 @@ html, body {
     font-family: 'Roboto', sans-serif;
 }
 
+.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The image used */
+    background-image: url('../images/indexImage.jpg');
+
+    /* Full height */
+    height: 100%; 
+    width: 100%;
+    z-index: -1;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 h1 {
     width: 100%;
     background-color: white;
@@ -134,9 +152,8 @@ button:hover {
 
 
 .container {
-    background-color: white;
     display: flex;
-
+    background-color: white;
     flex-direction: column;
     max-width: 860px;
     margin-left: auto;
