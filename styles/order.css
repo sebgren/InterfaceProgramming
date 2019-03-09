@@ -287,6 +287,10 @@
     }
 }
 
+#logout-button {
+    background-color: chocolate;
+    float: left;
+}
 
 .modal-body {
     padding: 2px 16px;
