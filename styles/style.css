@@ -31,6 +31,7 @@ button {
     background-color: #7F573C;
     border: none;
     color: white;
+    border-radius: 10px;
 
     text-align: center;
     text-decoration: none;
@@ -46,6 +47,98 @@ button:hover {
     opacity: 0.6;
 }
 
+#username{
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+#password{
+    width: 70%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.loginDiv{
+    width:750px;
+    height: 250px;
+    border: 0.5px solid #ccc;
+    display: inline-block;
+    border-radius: 20px;
+}
+
+.introTxtDiv{
+    width:650px;
+    height:50px;
+    text-align: center;
+    display: inline-block;
+}
+
+#subm{
+    width:70%;
+    background-color: #fcb207;
+}
+
+#regguest{
+    padding-top: 10px;
+    width:20%;
+    background-color: #fcb207;
+}
+
+#chlang{
+padding-top: 10px;
+    width:20%;
+    background-color: #fcb207;
+}
+.changeLangDiv{
+ 
+}
+
+
+.shiptrail{
+    position: relative;
+  overflow: hidden;
+  width: 860px;
+  height: 80px;
+  margin: auto;
+
+}
+
+#logoId{
+    position: absolute;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  display: block;
+    top: 0;
+  
+
+  animation: ani 5s ease-in-out infinite;
+}
+
+@keyframes ani {
+  0% {
+    left: -90px;
+  }
+
+
+  100% {
+    left: 860px;
+  }
+ 
+
+}
+
+
+
 .container {
     background-color: white;
     display: flex;
@@ -55,12 +148,14 @@ button:hover {
     max-width: 860px;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 20px;
 }
 
 .header > h1{
     display: flex;
     text-align: center;
     justify-content: center;
+    display: inline-block;
 
 }
 
@@ -70,6 +165,7 @@ button:hover {
     flex: 1;
     text-align: center;
     justify-content: center;
+    border-radius: 20px;
 }
 
 .logo {

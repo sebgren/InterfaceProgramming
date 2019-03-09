@@ -71,11 +71,39 @@
         </div>
 
         <div class="container">
-            <div class="drinks-container">   
-                <ul id="drinks-container">
-                </ul>
-            </div>
+            <div class="drinks-container-wrapper">
+            <div class="drinks-container-header">
+                <div class="flexButtons">
+                    <label class = "rbContainer"> Beers
+                        <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
 
+                    <label class = "rbContainer"> Whiskey
+                        <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class = "rbContainer"> Wine
+                        <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class = "rbContainer"> All 
+
+                        <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
+
+                        <span class="checkmark"></span>
+                    </label>
+                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                </div>
+            </div>
+            <div class="drinks-container">     
+                    <ul id="drinks-container">
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-container-wrapper">
             <div class="tab-container">
                 <h1 style="margin: 10px;">tab</h1>
 
@@ -108,6 +136,7 @@
                     <button class="pay-button" onclick="showPayment()">Pay</button>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- <div class="beerDiv" 

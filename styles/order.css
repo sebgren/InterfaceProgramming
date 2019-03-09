@@ -4,21 +4,61 @@
     max-width: 100%;
 
 }
+.drinks-container-header{
+    display: flex;
+    flex-direction: column;
+    flex-direction: row;
+    padding-top: 2%;
+    width:100%;
+    border-bottom: 1px solid;
+      
+}
 
 .drinks-container {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 1em;
+    height: 80%;
+    width: 100%;
+    overflow: auto;
+}
+
+#drinks-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    padding-left: 1em;
+    background-color: white;
+    justify-content: center;
+}
+/*To make rounded edges on the drink-container*/
+.drinks-container-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+        background-color: white;
+    flex-grow: 1;
+    margin: 0.5em;
+    height: 100%;
+    width: 66%;
+    border-radius: 1%;    
+}
+/*To make rounded edges on the tab-container*/
+.tab-container-wrapper{
+  display: flex;
+    flex-wrap: wrap;
     background-color: white;
     flex-grow: 1;
     margin: 0.5em;
-    padding: 1em;
-    height: 97%;
-    width: 66%;
-    justify-content: space-evenly;
-    overflow: auto;
+    height: 100%;
+    width: 33%;
+    border-radius: 1%;
 
 }
-
 
 .tab-container {
     display: flex;
@@ -26,21 +66,23 @@
     background-color: white;
     justify-content: flex-start;
     text-align: center;
+    
     flex-grow: 2;
     margin: 0.5em;
     padding: 1em;
-    height: 97%;
+    height: 92%;
     width: 33%;
 }
+
+
 .flexButtons{
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
     margin: 0.5em;
-    height: 15%;
+    height: 5%;
     width: 60.5%;
     justify-content: space-evenly;
-    overflow: auto;
 }
 
 
@@ -57,57 +99,56 @@
     /* display: inline-block; */
     float: left;
     /* line-height: 150px; */
-    text-align: center;
-    border: solid black;
-    height: 150px;
-    width: 150px;
+    height: 280px;
+    width: 200px;
     margin-right: 15px;
     margin-bottom: 15px;
-    justify-content: center;
-    align-items: center;
     background-image: url('../images/beer.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
     /* opacity: 0.5; */
     background-size: contain;
     font-size: large;
-    color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
+    font-style: italic;
+    color: #424242;
+    
     border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    display: inline-block;
 }
 
-.drinkDivClass:hover { 
-    background-color: #f4b042;
+.beerDiv:hover { 
     opacity: 0.5;
-}
+  }
+
+
+
 
 .whiskeyDiv {
     float: left;
     /* line-height: 150px; */
     text-align: center;
-    border: solid black;
-    height: 150px;
-    width: 150px;
+    height: 280px;
+    width: 200px;
     margin-right: 15px;
     margin-bottom: 15px;
-    justify-content: center;
-    align-items: center;
     background-image: url('../images/whiskey.jpeg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+
+
     /* opacity: 0.5; */
     background-size: contain;
     font-size: large;
-    color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
+    font-style: italic;
+    color: #424242;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
 
 .whiskeyDiv:hover { 
-  background-color: #f4b042;
     opacity: 0.5;
   }
 
@@ -115,24 +156,29 @@
     float: left;
     /* line-height: 150px; */
     text-align: center;
-    border: solid black;
-    height: 150px;
-    width: 150px;
+    height: 280px;
+    width: 200px;
     margin-right: 15px;
     margin-bottom: 15px;
     justify-content: center;
-    align-items: center;
     background-image: url('../images/wine.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
     /* opacity: 0.5; */
     background-size: contain;
     font-size: large;
-    color: white;
-    text-shadow:
-    -1px -1px 0 #000,
-    1px -1px 0 #000,
-    -1px 1px 0 #000,
-    1px 1px 0 #000; 
+    font-style: italic;
+    color: #424242;
+        border-radius: 10px;
+
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
 }
+
+
+.wineDiv:hover { 
+    opacity: 0.5;
+  }
 
 #whiskeyDivId{
     background-image: url('../images/whiskey.jpeg');
@@ -343,7 +389,7 @@
 
 
 .switch-view-button {
-    border-radius: 8px;
+    border-radius: 10px;
     background-color: white;
     color: black;
     float: right;
@@ -359,7 +405,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  padding-right: 10px;
+  
 }
 
 /* Hide the browser's default radio button */
@@ -407,7 +453,6 @@
     left: 9px;
     width: 8px;
     height: 8px;
-    border-radius: 50%;
     background: white;
 }
 

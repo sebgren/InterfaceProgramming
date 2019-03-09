@@ -10,35 +10,39 @@
     <script src="dutchmanFiles/Beverages.js"></script>
     <script src="scripts/ch_lang.js"></script>
     <body>
-
         <div class="container">
             <div class="header">
-                <h1 style="height: 100px; margin-bottom: 0%;">The Flying Dutchman</h1>
-                <img class="logo" src="images/placeholder-logo.svg" alt="logo">
-                <hr>
+                <h1>The Flying Dutchman</h1>
+                <div class="shiptrail">
+                    <img id="logoId"class="logo" src="images/placeholder-logo.svg" alt="logo">
+                </div>
             </div>
-            <input type="button" id="chlang" onclick="change_lang()" value="Press">
+
             <div class="login-container">
-                <p id="intro">
+                <div class="loginDiv">
+                    <div class="introTxtDiv">    
+                    <p id="intro">
                     To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide the appropriate information below.
-                </p>
+                    </p>
+                    </div>
+                    <p>
+                        <input type="text" id="username" name="Username" placeholder="Username"><br>    
+                        <input type="password" id="password" name="Password" placeholder="Password"><br>
+                    </p>
 
-                <p>
-                  <span id="user">Username:</span> <input type="text" id="username" name="Username" value="Username"><br>
-                  <span id="pass">Password:</span> <input type="password" id="password" name="Password" value="Password"><br>
-                </p>
-
-                <p>
-                    <button id="subm"  onclick="validateUser();">Submit</button>
-                </p>
-                
+                    <p>
+                        <button id="subm"  onclick="validateUser();">Submit</button>
+                    </p>
+                </div>
                 <p>
                     <a href="pages/order.html"><button id="regguest">Regular Guest</button></a>
                 </p>
-                <script src="scripts/index_script.js"></script>            
-</div>
-            
-        </div>
 
+                <div class="changeLangDiv">
+                    <button type="button" id="chlang" onclick="change_lang()" value="Press">Change language</button>
+                </div>
+                <script src="scripts/index_script.js"></script>            
+            </div>
+        </div>
     </body>
 </html>
