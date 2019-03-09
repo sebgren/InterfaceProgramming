@@ -13,7 +13,7 @@ function getLoginCredentials(){
 function showCredit(userName) {
 	var credit =  userDetails(userName)[5];
 	var stringCredit = document.getElementById('creditString');
-	stringCredit.textContent = "Hi "+ userDetails(userName)[2] + "! Your current credit is: " + credit;
+	stringCredit.innerHTML = userDetails(userName)[2] + ", <span id=\"current-credits\"></span>" + credit;
 }
 
 /**
@@ -127,8 +127,8 @@ function showPaymentVip() {
 			if (updateCredit(amount)) {
 				// Modify text in modal footer if successful.
 				var modalFooter = modal.getElementsByClassName("modal-footer");
-				modalFooter[0].innerHTML = "Thank you for your purchase!" +
-					" <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>";
+				modalFooter[0].innerHTML = "<span id=\"pay-thanks\">Thank you for your purchase!</span>" +
+					" <p style='font-size: 0.7em; font-weight: normal'><span id=\"vip-update\">Your VIP-credit has been updated.</span></p>";
 
 				// Empty the tab by removing all the li children
 				$("#items").empty();
@@ -140,7 +140,7 @@ function showPaymentVip() {
 			} else {
 				//Modify text if unsuccessful.
 				var modalHeader = document.getElementById("vip-modal-header");
-				modalHeader.lastElementChild.textContent = "Payment unsuccessful!";
+				modalHeader.lastElementChild.innerHTML = "<span id=\"payment-failure\"> Payment unsuccessful!</span>";
 				modalHeader.style.color = "IndianRed";
 
 				var modalFooter = document.getElementById("vip-modal-footer");

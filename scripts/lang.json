@@ -1,4 +1,4 @@
-{ "tab" : 
+var translation = { "tab" : 
    { 
      "eng" : "Tab", 
      "swe" : "Nota"
@@ -15,7 +15,7 @@
      "eng" : "Table",
      "swe" : "Bord"
   },
-  "intro-text" : {
+  "introText" : {
      "eng" : "To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide your login credentials or press the \"Regular Guest \"-button",
      "swe" : "För att kunna visa rätt vy måste vi veta om du är anställd, en VIP-medlem eller en vanlig gäst. Var vänlig skriv in dina inloggningsuppgifter eller tryck på knappen \"Vanlig Gäst\" "
   },
@@ -35,20 +35,65 @@
      "eng" : "Wine",
      "swe" : "Vin"
   },
+  "all" : {
+    "eng" : "All",
+    "swe" : "Alla"
+  },
+  "myInput" : {
+    "eng" : "Search...",
+    "swe" : "Sök..."
+  },
   "pay" : {
     "eng" : "Pay",
     "swe" : "Betala"
   },
   "pay-with-credits" : {
-    "eng" : "Pay with Credits",
-    "swe" : "Betala med krediter"
+    "eng" : "Use VIP-credit",
+    "swe" : "Betala med VIP-krediter"
+  },
+  "sum" : {
+    "eng" : "Total price: ",
+    "swe" : "Summa: ",
   },
   "welcome" : {
     "eng" : "Welcome",
     "swe" : "Välkommen"
   },
   "current-credits" : {
-    "eng" : "Your current credit is ",
-    "swe" : "Din nuvarande kredit är "
+    "eng" : "Your current VIP-credit is ",
+    "swe" : "Din nuvarande VIP-kredit är "
+  },
+  "logout-button" : {
+    "eng" : "Logout",
+    "swe" : "Logga ut"
+  },
+  "drink-info" : {
+    "eng" : "Information about the drink",
+    "swe" : "Dryckinformation"
+  },
+  "payment-success" : {
+    "eng" : "Payment successful!",
+    "swe" : "Lyckad betalning!"
+  },
+  "payment-failure" : {
+    "eng" : "Payment unsuccessful!",
+    "swe" : "Betalningen misslyckades!"
+  },
+
+  "pay-thanks" : {
+    "eng" : "Thank you for your purchase!",
+    "swe" : "Tack för din betalning!"
+  },
+  "vip-update" : {
+    "eng" : "Your VIP-credit has been updated",
+    "swe" : "Din VIP-kredit har uppdaterats"
+  },
+  "switch-to-order" : {
+    "eng" : "Switch to order view",
+    "swe" : "Byt till order-vyn"
+  },
+  "switch-to-table" : {
+    "eng" : "Switch to table view",
+    "swe" : "Byt till bord-vyn"
   }
-}
+} 

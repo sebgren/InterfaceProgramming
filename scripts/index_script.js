@@ -10,15 +10,15 @@ lang1 = localStorage.getItem("lang");
 // alert(" "+myObj2.submit.swe);
 
 if (lang1=="swe") {
-document.getElementById("user").innerHTML=myObj.username.swe;
-document.getElementById("pass").innerHTML=myObj.password.swe;
+document.getElementById("username").placeholder=myObj.username.swe;
+document.getElementById("password").placeholder=myObj.password.swe;
  document.getElementById("subm").innerHTML=myObj2.submit.swe;
  document.getElementById("regguest").innerHTML=myObj2.regularguest.swe ; 
    
 } 
 if (lang1=="eng") {
-document.getElementById("user").innerHTML=myObj.username.eng;
-document.getElementById("pass").innerHTML=myObj.password.eng;
+document.getElementById("username").placeholder=myObj.username.eng;
+document.getElementById("password").placeholder=myObj.password.eng;
  document.getElementById("regguest").innerHTML=myObj2.regularguest.eng;
 
 }

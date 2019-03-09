@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="styles/style.css">
     <!-- <script src="scripts/main.js"></script> -->
+    <script src="dutchmanFiles/jquery-3.3.1.min.js"></script>
     <script src="dutchmanFiles/loader.js"></script>
     <script src="dutchmanFiles/DBLoaded.js"></script> 
     <script src="dutchmanFiles/Beverages.js"></script>
     <script src="scripts/ch_lang.js"></script>
+    <script type="text/javascript" src="scripts/lang.json"></script>
+    <script src="scripts/translate.js"></script>
     <body>
         <div class="bg"></div>
         <div class="container">
@@ -22,7 +25,7 @@
             <div class="login-container">
                 <div class="loginDiv">
                     <div class="introTxtDiv">    
-                        <p id="intro">
+                        <p id="introText">
                         To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide the appropriate information below.
                         </p>
                     </div>
@@ -35,7 +38,7 @@
                 </div>
                 <div class="login-footer">
 
-                    <button id="regguest" onclick="location.href='pages/order.html';">Regular Guest</button></a>
+                    <button id="regguest" onclick="location.href='pages/order.html';">Regular Guest</button>
                     <br>
                     <button id="chlang" onclick="change_lang()" value="Press">Change language</button>
 
