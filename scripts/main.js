@@ -82,59 +82,13 @@ function showFooter(val) {
  * Shows payment modal for normal payment.
  */
 function showPayment() {
-	// Make modal visible.
-	var modal = document.getElementById('payment-modal');
-	modal.style.display = "block";
-
-	// Adds close functionality to X.
-	var span = document.getElementById("close-normal");
-	span.onclick = function () {
-		modal.style.display = "none";
-	}
-
-	// Closes modal if user clicks outside of modal.
-	window.onclick = function (event) {
-		if (event.target == modal) {
-			modal.style.display = "none";
-		}
-	}
-}
-
-/**
- * Shows payment modal for paying with VIP-credits. Calls function to update credits. Shows appropriate message for
- * successful as well as unsuccessful payments.
- */
-function showPaymentVip() {
-
-	if(sessionStorage.getItem("vipUsername")!= null) {
+	if (document.getElementById("total-price").textContent != '0') {
 		// Make modal visible.
-		var modal = document.getElementById('vip-payment-modal');
+		var modal = document.getElementById('payment-modal');
 		modal.style.display = "block";
 
-		// Update credit
-		if(updateCredit(150)){ 							//TODO: CHANGE TO NON-DUMMY AMOUNT)
-			//Modify text in modal footer if successful.
-			var modalFooter = modal.getElementsByClassName("modal-footer");
-			modalFooter[0].innerHTML = "Thank you for your purchase!" +
-			" <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>";
-		} else {
-			//Modify text if unsuccessful.
-			var modalHeader = document.getElementById("vip-modal-header");
-			modalHeader.lastElementChild.textContent = "Payment unsuccessful!";
-			modalHeader.style.color = "IndianRed";
-
-			var modalFooter = document.getElementById("vip-modal-footer");
-			modalFooter.innerHTML = "You do not have enough credit." +
-				" <p style='font-size: 0.7em; font-weight: normal'>Please contact our staff.</p>";
-			modalFooter.style.color = "IndianRed";
-
-			var modalBody = document.getElementById("vip-modal-body");
-			modalBody.innerHTML = "<i class='fas fa-times-circle'" +
-			"style='font-size:100px;color:IndianRed; padding-bottom: 25px;'></i>";
-		}
-
 		// Adds close functionality to X.
-		var span = document.getElementById("close-vip");
+		var span = document.getElementById("close-normal");
 		span.onclick = function () {
 			modal.style.display = "none";
 		}
@@ -143,6 +97,73 @@ function showPaymentVip() {
 		window.onclick = function (event) {
 			if (event.target == modal) {
 				modal.style.display = "none";
+			}
+		}
+
+
+		// Empty the tab by removing all the li children
+		$("#items").empty();
+
+		// Remove the list of items in localStorage
+		localStorage.removeItem("itemsInTab");
+
+		$("#section-price").hide();
+		document.getElementById("total-price").innerText = 0;
+	}
+}
+
+/**
+ * Shows payment modal for paying with VIP-credits. Calls function to update credits. Shows appropriate message for
+ * successful as well as unsuccessful payments.
+ */
+function showPaymentVip() {
+	if (document.getElementById("total-price").textContent != '0') {
+		if (sessionStorage.getItem("vipUsername") != null) {
+			// Make modal visible.
+			var modal = document.getElementById('vip-payment-modal');
+			modal.style.display = "block";
+			var amount = document.getElementById("total-price").textContent;
+			// Update credit
+			if (updateCredit(amount)) {
+				// Modify text in modal footer if successful.
+				var modalFooter = modal.getElementsByClassName("modal-footer");
+				modalFooter[0].innerHTML = "Thank you for your purchase!" +
+					" <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>";
+
+				// Empty the tab by removing all the li children
+				$("#items").empty();
+
+				// Remove the list of items in localStorage
+				localStorage.removeItem("itemsInTab");
+				$("#section-price").hide();
+				document.getElementById("total-price").textContent = 0;
+			} else {
+				//Modify text if unsuccessful.
+				var modalHeader = document.getElementById("vip-modal-header");
+				modalHeader.lastElementChild.textContent = "Payment unsuccessful!";
+				modalHeader.style.color = "IndianRed";
+
+				var modalFooter = document.getElementById("vip-modal-footer");
+				modalFooter.innerHTML = "You do not have enough credit." +
+					" <p style='font-size: 0.7em; font-weight: normal'>Please contact our staff.</p>";
+				modalFooter.style.color = "IndianRed";
+
+				var modalBody = document.getElementById("vip-modal-body");
+				modalBody.innerHTML = "<i class='fas fa-times-circle'" +
+					"style='font-size:100px;color:IndianRed; padding-bottom: 25px;'></i>";
+			}
+
+			// Adds close functionality to X.
+			var span = document.getElementById("close-vip");
+			span.onclick = function () {
+				modal.style.display = "none";
+			}
+
+			// Closes modal if user clicks outside of modal.
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
 			}
 		}
 	}
@@ -166,4 +187,10 @@ function updateCredit(amount) {
 	} else {
 		return false;
 	}
+}
+
+function logout() {
+	sessionStorage.removeItem('vipUsername');
+	sessionStorage.removeItem('isStaff');
+	window.location.href ="../index.html";
 }

@@ -337,6 +337,10 @@ h1 {
     }
 }
 
+#logout-button {
+    background-color: chocolate;
+    float: left;
+}
 
 .modal-body {
     padding: 2px 16px;
@@ -523,10 +527,10 @@ h1 {
 } */
 
 .tab-item-name {
-    width: 220px;
+    width: 200px;
     height: 50px;
     font-family:sans-serif;
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 .tab-item-name p {
@@ -549,3 +553,7 @@ h1 {
     margin-right: 10px;
 }
 
+.tab-item-currency {
+    margin-right: 20px;
+    vertical-align: middle;
+}
