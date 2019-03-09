@@ -14,32 +14,30 @@
             <div class="header">
                 <h1>The Flying Dutchman</h1>
                 <div class="shiptrail">
-                    <img id="logoId"class="logo" src="images/placeholder-logo.svg" alt="logo">
+                    <img id="logoId"class="logo" src="images/placeholder-logo.svg" alt="logo" style="height: 80px; width: 80;">
                 </div>
             </div>
 
             <div class="login-container">
                 <div class="loginDiv">
                     <div class="introTxtDiv">    
-                    <p id="intro">
-                    To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide the appropriate information below.
-                    </p>
+                        <p id="intro">
+                        To be able to show you the right view, we have to know if you're an employee, a VIP member or a regular guest. Please provide the appropriate information below.
+                        </p>
                     </div>
-                    <p>
-                        <input type="text" id="username" name="Username" placeholder="Username"><br>    
-                        <input type="password" id="password" name="Password" placeholder="Password"><br>
-                    </p>
+                    <div class="login-form">
+                        <input type="text" id="username" name="Username" placeholder="Username">    
+                        <input type="password" id="password" name="Password" placeholder="Password">
 
-                    <p>
                         <button id="subm"  onclick="validateUser();">Submit</button>
-                    </p>
+                    </div>
                 </div>
-                <p>
-                    <a href="pages/order.html"><button id="regguest">Regular Guest</button></a>
-                </p>
+                <div class="login-footer">
 
-                <div class="changeLangDiv">
-                    <button type="button" id="chlang" onclick="change_lang()" value="Press">Change language</button>
+                    <button id="regguest" onclick="location.href='pages/order.html';">Regular Guest</button></a>
+                    <br>
+                    <button id="chlang" onclick="change_lang()" value="Press">Change language</button>
+
                 </div>
                 <script src="scripts/index_script.js"></script>            
             </div>
