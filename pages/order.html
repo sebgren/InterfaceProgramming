@@ -1,89 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>The Flying Dutchman</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/order.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
-          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <script src="../dutchmanFiles/jquery-3.3.1.min.js"></script>
-    <script src="../dutchmanFiles/loader.js"></script>
-    <script src="../dutchmanFiles/Beverages.js"></script>
-    <script src="../dutchmanFiles/DBLoaded.js"></script>
-    <script src="../scripts/main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="../scripts/plusminus.js"></script>
-    <script src="../scripts/dragndrop.js"></script>
-    <script src="../scripts/order.js"></script>
-    <meta charset="utf-8">
+<title>The Flying Dutchman</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="../styles/style.css">
+<link rel="stylesheet" href="../styles/order.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<script src="../dutchmanFiles/jquery-3.3.1.min.js"></script>
+<script src="../dutchmanFiles/loader.js"></script>
+<script src="../dutchmanFiles/Beverages.js"></script>
+<script src="../dutchmanFiles/DBLoaded.js"></script>
+<script src="../scripts/main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="../scripts/plusminus.js"></script>
+<script src="../scripts/dragndrop.js"></script>
+<script src="../scripts/order.js"></script>
+<meta charset="utf-8">
 
 
-    <body>
-        <div class="bg"></div>
-        <button id="logout-button" onclick="logout()">Logout</button>
-        <div class="header"><h1>Table #1</h1></div>
+<body>
+    <div class="bg"></div>
+    <button id="logout-button" onclick="logout()">Logout</button>
+    <div class="header">
+        <h1>Table #1</h1>
+    </div>
 
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="spanId" class="close" onclick="closeModal()">&times;</span>
-                    <h2>Information about the Drink</h2>
-                </div>
-                <div id="modalBody" class="modal-body">
-                    <ul>
-                        <li id="name"></li>
-                        <li id="ursprung"></li>
-                        <li id="producer"></li>
-                        <li id="alcoholLevel"></li>
-                        <li id="price"></li>
-                        
-                    </ul>
-                </div>
-                <div class="modal-footer">
-                </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="spanId" class="close" onclick="closeModal()">&times;</span>
+                <h2>Drink's Information</h2>
+            </div>
+            <div id="modalBody" class="modal-body">
+                <ul>
+                    <li id="name"></li>
+                    <li id="ursprung"></li>
+                    <li id="producer"></li>
+                    <li id="alcoholLevel"></li>
+                    <li id="price"></li>
+
+                </ul>
+            </div>
+            <!-- <div class="modal-footer">
+            </div> -->
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="drinks-container-wrapper">
+            <div class="drinks-container-header">
+                <!-- <div class="flexButtons"> -->
+                    <label class="rbContainer"> Beers
+                        <input type="radio" name="rBtn" onclick="checkBeerBox();">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="rbContainer"> Whiskey
+                        <input type="radio" name="rBtn" onclick="checkWhiskeyBox();">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="rbContainer"> Wine
+                        <input type="radio" name="rBtn" onclick="checkWineBox();">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class="rbContainer"> All
+
+                        <input type="radio" name="rBtn" checked onclick="displayAllDrinks();">
+
+                        <span class="checkmark"></span>
+                    </label>
+                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()"
+                        placeholder="Search for specific beverage">
+                <!-- </div> -->
+            </div>
+            <div class="drinks-container">
+                <ul id="drinks-container">
+                </ul>
             </div>
         </div>
+        <div class="tab-container-wrapper">
+            <!-- <div class="tab-container"> -->
+                <h1 style="width: 100px; margin: 10px auto; border-bottom: 1px solid #000;">tab</h1>
 
-        <div class="container">
-            <div class="drinks-container-wrapper">
-            <div class="drinks-container-header">
-                <div class="flexButtons">
-                    <label class = "rbContainer"> Beers
-                        <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class = "rbContainer"> Whiskey
-                        <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class = "rbContainer"> Wine
-                        <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
-
-                    <label class = "rbContainer"> All 
-
-                        <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
-
-                        <span class="checkmark"></span>
-                    </label>
-                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
-                </div>
-            </div>
-            <div class="drinks-container">     
-                    <ul id="drinks-container">
-                    </ul>
-                </div>
-            </div>
-            <div class="tab-container-wrapper">
-            <div class="tab-container">
-                <h1 style="margin: 10px;">tab</h1>
-
-                <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
+                <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)"
+                    ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
 
                     <ul id="items">
                         <!-- <li id="tab-item-beer-1" class="tab-item">
@@ -103,7 +107,7 @@
 
                 </div>
 
-                <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
+                <div id="section-price" style="margin: 10px auto; font-size: 15pt;">
                     <span>Total price: </span>
                     <span id="total-price">0</span>
                     <span> SEK</span>
@@ -111,36 +115,36 @@
                 <div class="button-container">
                     <button class="pay-button" onclick="showPayment()">Pay</button>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
-        </div>
+    </div>
 
-        <!-- <div class="beerDiv" 
+    <!-- <div class="beerDiv" 
         id="drag1" src="../images/beer.jpg" 
         draggable="true" 
         ondragstart="drag(event)" width="336" height="69"></div> -->
 
-        <div id="payment-modal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
-                    <h2>Payment successful!</h2>
-                </div>
-                <div class="modal-body">
-                    <i class="fas fa-check-circle"
-                       style="font-size:100px;color:#5cb85c;"></i>
-                </div>
-                <div class="modal-footer"> Thank you for your purchase!
-                </div>
+    <div id="payment-modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
+                <h2>Payment successful!</h2>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-check-circle" style="font-size:100px;color:#5cb85c;"></i>
+            </div>
+            <div class="modal-footer"> Thank you for your purchase!
             </div>
         </div>
+    </div>
 
-        <script>
-            checkIfStaff();
+    <script>
+        checkIfStaff();
             //showPayment();
-        </script>
+    </script>
 
-        <script src="../scripts/dragndrop.js"></script>
-    </body>
+    <script src="../scripts/dragndrop.js"></script>
+</body>
+
 </html>
