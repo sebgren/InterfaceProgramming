@@ -4,16 +4,10 @@
     --bg: #874317;
 }
 
-body {
-    background-image: url('../images/indexImage.jpg');
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    max-width: 100%;
-    max-height: 100%;
+html, body {
+    background-color: var(--bg);
+    height: calc(100vh - 300px);
     font-family: 'Roboto', sans-serif;
-}
-html{
-    height: calc(100vh);
 }
 
 h1 {
@@ -74,14 +68,16 @@ button:hover {
 }
 
 .loginDiv{
-    width:90%;
+    width:750px;
+    height: 250px;
     border: 0.5px solid #ccc;
     display: inline-block;
     border-radius: 20px;
 }
 
 .introTxtDiv{
-    width:80%;
+    width:650px;
+    height:50px;
     text-align: center;
     display: inline-block;
 }
@@ -98,6 +94,7 @@ button:hover {
 }
 
 #chlang{
+padding-top: 10px;
     width:20%;
     background-color: #fcb207;
 }
@@ -109,7 +106,7 @@ button:hover {
 .shiptrail{
     position: relative;
   overflow: hidden;
-  width: 100%;
+  width: 860px;
   height: 80px;
   margin: auto;
 
@@ -145,7 +142,7 @@ button:hover {
 .container {
     background-color: white;
     display: flex;
-    height: 70%;
+    height: 100%;
     flex-direction: column;
     justify-content: center;
     max-width: 860px;
@@ -169,7 +166,6 @@ button:hover {
     text-align: center;
     justify-content: center;
     border-radius: 20px;
-    height: 80%;
 }
 
 .logo {
