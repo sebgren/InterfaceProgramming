@@ -20,33 +20,9 @@
 
 
     <body>
+        <div class="bg"></div>
         <button id="logout-button" onclick="logout()">Logout</button>
         <div class="header"><h1>Table #1</h1></div>
-        <div class="flexButtons">
-            <span class = "rbContainer"> 
-                <span>Beers</span>
-                <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
-                <span class="checkmark"></span>
-            </span>
-
-            <label class = "rbContainer"> Whiskey
-                <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
-                <span class="checkmark"></span>
-            </label>
-
-            <label class = "rbContainer"> Wine
-                <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
-                <span class="checkmark"></span>
-            </label>
-
-            <label class = "rbContainer"> All 
-
-                <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
-
-                <span class="checkmark"></span>
-            </label>
-            <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search">
-        </div>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
