@@ -40,5 +40,7 @@ function deleteItemInTab(element) {
 
     // Update the list of items
     localStorage.setItem("itemsInTab", JSON.stringify(itemsInTab));
-}
 
+    // Update the list of items in View
+    updateTab();
+}
