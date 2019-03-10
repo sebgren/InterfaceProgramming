@@ -50,11 +50,11 @@ button {
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
-    background-color: #7F573C;
+    background-color: #fcb207;
     border: none;
     color: white;
     border-radius: 10px;
-
+    margin: 0.5em;
     text-align: center;
     text-decoration: none;
     display: inline-block;

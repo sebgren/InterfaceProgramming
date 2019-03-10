@@ -20,34 +20,12 @@
 
 
     <body>
+        <div class="bg"></div>
         <button id="logout-button" onclick="logout()">Logout</button>
         <div id="creditString">User's credit not found</div>
         <div class="header"><h1>Table #1</h1></div>
-        <div class="flexButtons">
-            <span class = "rbContainer"> 
-                <span>Beers</span>
-                <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
-                <span class="checkmark"></span>
-            </span>
 
-            <label class = "rbContainer"> Whiskey
-                <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
-                <span class="checkmark"></span>
-            </label>
-
-            <label class = "rbContainer"> Wine
-                <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
-                <span class="checkmark"></span>
-            </label>
-
-            <label class = "rbContainer"> All 
-
-                <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
-
-                <span class="checkmark"></span>
-            </label>
-            <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search">
-        </div>
+       
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
@@ -72,45 +50,79 @@
         </div>
 
         <div class="container">
+            <div class="drinks-container-wrapper">
+            <div class="drinks-container-header">
+                <div class="flexButtons">
+                    <label class = "rbContainer"> Beers
+                        <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class = "rbContainer"> Whiskey
+                        <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class = "rbContainer"> Wine
+                        <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label class = "rbContainer"> All 
+
+                        <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
+
+                        <span class="checkmark"></span>
+                    </label>
+                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                </div>
+            </div>
+
+
+            
             <div class="drinks-container">   
                 <ul id="drinks-container">
                 </ul>
             </div>
-
+            </div>
+            <div class="tab-container-wrapper">
             <div class="tab-container">
                 <h1 style="margin: 10px;">tab</h1>
 
-                <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
+                    <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
 
-                    <ul id="items">
-                        <!-- <li id="tab-item-beer-1" class="tab-item">
-                            <img class="float-left tab-item-img" src="../images/beer.jpg" width="50px" height="50px">
-                            <div class="float-left tab-item-name"><p>Beer asdak kjskjd kawjdkqwjdqkwkw  wwjdwi w</p></div>
-                            <div class="float-left tab-item-control">
-                                <input id="tab-item-beer-1-minus" type="button" value="-" onclick="minusQuantity(this)">
-                                <span id="tab-item-beer-1-quantity">1</span>
-                                <input id="tab-item-beer-1-plus" type="button" value="+" onclick="plusQuantity(this)">
-                            </div>
-                            <p id="tab-item-beer-1-price" class="float-left tab-item-price">1700</p>
-                            <p id="tab-item-beer-1-currency" class="float-left tab-item-currency">SEK</p>
+                        <ul id="items">
+                            <!-- <li id="tab-item-beer-1" class="tab-item">
+                                <img class="float-left tab-item-img" src="../images/beer.jpg" width="50px" height="50px">
+                                <div class="float-left tab-item-name"><p>Beer asdak kjskjd kawjdkqwjdqkwkw  wwjdwi w</p></div>
+                                <div class="float-left tab-item-control">
+                                    <input id="tab-item-beer-1-minus" type="button" value="-" onclick="minusQuantity(this)">
+                                    <span id="tab-item-beer-1-quantity">1</span>
+                                    <input id="tab-item-beer-1-plus" type="button" value="+" onclick="plusQuantity(this)">
+                                </div>
+                                <p id="tab-item-beer-1-price" class="float-left tab-item-price">1700</p>
+                                <p id="tab-item-beer-1-currency" class="float-left tab-item-currency">SEK</p>
 
-                            <button id="tab-item-beer-1-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
-                        </li> -->
-                    </ul>
+                                <button id="tab-item-beer-1-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
+                            </li> -->
+                        </ul>
 
-                </div>
+                    </div>
 
-                <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
-                    <span>Total price: </span>
-                    <span id="total-price">0</span>
-                    <span> SEK</span>
-                </div>
-                <div class="button-container-vip">
-                    <button class="pay-button" onclick="showPayment()">Pay</button>
-                    <button class="vip-button" onclick="showPaymentVip()">Use VIP-Credit</button>
+                    <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
+                        <span>Total price: </span>
+                        <span id="total-price">0</span>
+                        <span> SEK</span>
+                    </div>
+                    <div class="button-container-vip">
+                        <button class="pay-button" onclick="showPayment()">Pay</button>
+                        <button class="vip-button" onclick="showPaymentVip()">Use VIP-Credit</button>
+                    </div>
                 </div>
             </div>
         </div>
+    
+
 
         <!-- <div class="beerDiv" 
         id="drag1" src="../images/beer.jpg" 

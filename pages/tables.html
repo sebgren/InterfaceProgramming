@@ -8,43 +8,51 @@
     <link rel="stylesheet" href="../styles/tables.css">
     <script src="../scripts/main.js"></script>
     <body>
+        <div class="bg"></div>
         <button id="logout-button" onclick="logout()">Logout</button>
         <button onclick="switchToOrder();" class="switch-view-button">Switch to order view</button>
-        <div class="header"><h1>Tables</h1></div>
+        <div class="headerText"><h1>Tables</h1>
+        
+
+
+
+        </div>
 
         <div class="container">
+            <div class="table-container-wrapper">
+                <div class="table-container">
 
-            <div class="table-container">
+                    <div class="table active-table" onclick="displayTab()">
+                        Table #1
+                    </div>
 
-                <div class="table active-table" onclick="displayTab()">
-                    Table #1
+                    <div class="table">
+                        <p>Table #2</p>
+                        
+                    </div>
+
+                    <div class="table">
+                        Table #3
+                    </div>
+
+                    <div class="table">
+                        Table #4
+                    </div>
+
+                    <div class="table">
+                        Table #5
+                    </div>
+
+                    <div class="table">
+                        Table #6
+                    </div>
+
+                    <div class="table">
+                        Table #7
+                    </div>
                 </div>
-
-                <div class="table">
-                    Table #2
-                </div>
-
-                <div class="table">
-                    Table #3
-                </div>
-
-                <div class="table">
-                    Table #4
-                </div>
-
-                <div class="table">
-                    Table #5
-                </div>
-
-                <div class="table">
-                    Table #6
-                </div>
-
-                <div class="table">
-                    Table #7
-                </div>
-
             </div>
+            <div class="tab-container-wrapper">
             <div class="tab-container">
                 <h2>tab</h2>
                 <div id="tab-content">
@@ -60,6 +68,7 @@
                     <button onclick="clickAnimation('times')" class="btn times" id="times"><i class="fas fa-times"></i></button>
                 </div>
             </div>
+        </div>
         </div>
 
     </body>

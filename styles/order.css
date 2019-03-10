@@ -28,7 +28,7 @@
     justify-content: center;
     flex-grow: 1;
     padding: 1em;
-    height: 80%;
+    height: 65%;
     width: 100%;
     overflow: auto;
 }
@@ -39,6 +39,7 @@
     flex-direction: row;
     padding-left: 1em;
     justify-content: center;
+
 }
 /*To make rounded edges on the drink-container*/
 .drinks-container-wrapper{
