@@ -5,6 +5,11 @@
     height: 100%;
 }
 
+.header > h1{
+    background-color: transparent;
+    color: white;
+}
+
 .table-container {
     display: flex;
     flex-wrap: wrap;

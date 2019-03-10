@@ -6,13 +6,15 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/tables.css">
+    <script src="../dutchmanFiles/jquery-3.3.1.min.js"></script>
     <script src="../scripts/main.js"></script>
+    <script type="text/javascript" src="../scripts/lang.json"></script>
+    <script src="../scripts/translate.js"></script>
     <body>
         <div class="bg"></div>
         <button id="logout-button" onclick="logout()">Logout</button>
-        <button onclick="switchToOrder();" class="switch-view-button">Switch to order view</button>
-        <div class="headerText"><h1>Tables</h1>
-        
+        <button onclick="switchToOrder();" class="switch-view-button"><span id="switch-to-order">Switch to order view</span></button>
+        <div class="header"><h1><span id="table">Tables</span></h1></div>
 
 
 
@@ -54,7 +56,7 @@
             </div>
             <div class="tab-container-wrapper">
             <div class="tab-container">
-                <h2>tab</h2>
+                <h2><span id="tab">Tab</span></h2>
                 <div id="tab-content">
                     <p>
                         <hr>1x Nils Oscar Celebration Ale

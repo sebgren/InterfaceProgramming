@@ -11,11 +11,13 @@
     <script src="../dutchmanFiles/loader.js"></script>
     <script src="../dutchmanFiles/Beverages.js"></script>
     <script src="../dutchmanFiles/DBLoaded.js"></script>
-    <script src="../scripts/main.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../scripts/plusminus.js"></script>
     <script src="../scripts/dragndrop.js"></script>
     <script src="../scripts/order.js"></script>
+    <script type="text/javascript" src="../scripts/lang.json"></script>
+    <script src="../scripts/translate.js"></script>
+    <script src="../scripts/main.js"></script>
     <meta charset="utf-8">
 
 
@@ -25,14 +27,12 @@
         <div id="creditString">User's credit not found</div>
         <div class="header"><h1>Table #1</h1></div>
 
-       
-
         <!-- The Modal -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <div class="modal-header">
                     <span id="spanId" class="close" onclick="closeModal()">&times;</span>
-                    <h2>Information about the Drink</h2>
+                    <h2><span id="drink-info">Information about the Drink</span></h2>
                 </div>
                 <div id="modalBody" class="modal-body">
                     <ul>
@@ -53,22 +53,22 @@
             <div class="drinks-container-wrapper">
             <div class="drinks-container-header">
                 <div class="flexButtons">
-                    <label class = "rbContainer"> Beers
+                    <label class = "rbContainer"> <span id="beers"> Beers </span>
                         <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
                         <span class="checkmark"></span>
                     </label>
 
-                    <label class = "rbContainer"> Whiskey
+                    <label class = "rbContainer"> <span id="whiskey"> Whiskey </span>
                         <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
                         <span class="checkmark"></span>
                     </label>
 
-                    <label class = "rbContainer"> Wine
+                    <label class = "rbContainer"> <span id="wine"> Wine </span>
                         <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
                         <span class="checkmark"></span>
                     </label>
 
-                    <label class = "rbContainer"> All 
+                    <label class = "rbContainer"> <span id="all">All </span>  
 
                         <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
 
@@ -86,41 +86,28 @@
             </div>
             </div>
             <div class="tab-container-wrapper">
-            <div class="tab-container">
-                <h1 style="margin: 10px;">tab</h1>
+                <div class="tab-container">
+                    <h1 style="margin: 10px;"><span id="tab">tab</span></h1>
 
                     <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
 
                         <ul id="items">
-                            <!-- <li id="tab-item-beer-1" class="tab-item">
-                                <img class="float-left tab-item-img" src="../images/beer.jpg" width="50px" height="50px">
-                                <div class="float-left tab-item-name"><p>Beer asdak kjskjd kawjdkqwjdqkwkw  wwjdwi w</p></div>
-                                <div class="float-left tab-item-control">
-                                    <input id="tab-item-beer-1-minus" type="button" value="-" onclick="minusQuantity(this)">
-                                    <span id="tab-item-beer-1-quantity">1</span>
-                                    <input id="tab-item-beer-1-plus" type="button" value="+" onclick="plusQuantity(this)">
-                                </div>
-                                <p id="tab-item-beer-1-price" class="float-left tab-item-price">1700</p>
-                                <p id="tab-item-beer-1-currency" class="float-left tab-item-currency">SEK</p>
 
-                                <button id="tab-item-beer-1-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
-                            </li> -->
                         </ul>
 
                     </div>
 
                     <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
-                        <span>Total price: </span>
+                        <span id="sum">Total price: </span>
                         <span id="total-price">0</span>
                         <span> SEK</span>
                     </div>
                     <div class="button-container-vip">
-                        <button class="pay-button" onclick="showPayment()">Pay</button>
-                        <button class="vip-button" onclick="showPaymentVip()">Use VIP-Credit</button>
+                        <button class="pay-button" onclick="showPayment()"><span id="pay">Pay</span></button>
+                        <button class="vip-button" onclick="showPaymentVip()"><span id="pay-with-credits">Use VIP-Credit</span></button>
                     </div>
                 </div>
             </div>
-        </div>
     
 
 
@@ -133,13 +120,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
-                    <h2>Payment successful!</h2>
+                    <h2 id="payment-success"><span id="pay-sucess">Payment successful!</span></h2>
                 </div>
                 <div class="modal-body">
                     <i class="fas fa-check-circle"
                        style="font-size:100px;color:#5cb85c;"></i>
                 </div>
-                <div class="modal-footer"> Thank you for your purchase!
+                <div class="modal-footer"> <span id="pay-thanks">Thank you for your purchase!</span>
                 </div>
             </div>
         </div>
@@ -151,13 +138,13 @@
 
                     <span id="close-vip" class="close" style="font-size: 2em">&times;</span>
 
-                    <h2>Payment successful!</h2>
+                    <h2><span id="payment-success-vip">Payment successful!</span></h2>
                 </div>
                 <div id="vip-modal-body" class="modal-body">
                     <i class="fas fa-check-circle"
                        style="font-size:100px;color:#5cb85c;"></i>
                 </div>
-                <div id="vip-modal-footer" class="modal-footer"> "Thank you for your purchase!
+                <div id="vip-modal-footer" class="modal-footer"> <span id="pay-thanks-vip">Thank you for your purchase!</span>
                     <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>
                 </div>
             </div>

@@ -13,7 +13,7 @@ function getLoginCredentials(){
 function showCredit(userName) {
 	var credit =  userDetails(userName)[5];
 	var stringCredit = document.getElementById('creditString');
-	stringCredit.textContent = "Hi "+ userDetails(userName)[2] + "! Your current credit is: " + credit;
+	stringCredit.innerHTML = userDetails(userName)[2] + ", <span id=\"current-credits\"></span>" + credit;
 }
 
 /**
@@ -24,8 +24,7 @@ function checkIfStaff() {
 		var toptext = document.getElementsByClassName("header");
 		toptext[0].innerHTML = "<h1>Bar</h1>";
 		var btn = document.createElement("BUTTON");
-		var t = document.createTextNode("Switch to table view");
-		btn.appendChild(t);
+        btn.innerHTML = "<span id='switch-to-table'>Switch to table view</span>"
 		btn.className = "switch-view-button";
 		btn.setAttribute('onclick', "window.location.href ='tables.html';");
 		document.body.insertBefore(btn, toptext[0]);
@@ -127,8 +126,8 @@ function showPaymentVip() {
 			if (updateCredit(amount)) {
 				// Modify text in modal footer if successful.
 				var modalFooter = modal.getElementsByClassName("modal-footer");
-				modalFooter[0].innerHTML = "Thank you for your purchase!" +
-					" <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>";
+				modalFooter[0].innerHTML = "<span id=\"pay-thanks-vip\">Thank you for your purchase!</span>" +
+					" <p style='font-size: 0.7em; font-weight: normal'><span id=\"vip-update\">Your VIP-credit has been updated.</span></p>";
 
 				// Empty the tab by removing all the li children
 				$("#items").empty();
@@ -140,12 +139,12 @@ function showPaymentVip() {
 			} else {
 				//Modify text if unsuccessful.
 				var modalHeader = document.getElementById("vip-modal-header");
-				modalHeader.lastElementChild.textContent = "Payment unsuccessful!";
+				modalHeader.lastElementChild.innerHTML = "<span id=\"payment-failure\"> Payment unsuccessful!</span>";
 				modalHeader.style.color = "IndianRed";
 
 				var modalFooter = document.getElementById("vip-modal-footer");
-				modalFooter.innerHTML = "You do not have enough credit." +
-					" <p style='font-size: 0.7em; font-weight: normal'>Please contact our staff.</p>";
+				modalFooter.innerHTML = "<span id='no-credit'>You do not have enough credit.</span>" +
+					" <p style='font-size: 0.7em; font-weight: normal'><span id='contact-staff'>Please contact our staff.</span></p>";
 				modalFooter.style.color = "IndianRed";
 
 				var modalBody = document.getElementById("vip-modal-body");
@@ -165,6 +164,9 @@ function showPaymentVip() {
 					modal.style.display = "none";
 				}
 			}
+
+            //Updates the language again since text is inserted via javascript and therefore overwrites original text.
+            this.updateLang()
 		}
 	}
 }
@@ -193,4 +195,24 @@ function logout() {
 	sessionStorage.removeItem('vipUsername');
 	sessionStorage.removeItem('isStaff');
 	window.location.href ="../index.html";
+}
+
+
+/**
+ * Same funciton as in file /scripts/translate.js. Updates the language on the page by
+ * going through all of the variables in lang.json and then matches json keys with
+ * appropriate ID and fills the innerHTML or placeholder with the right text.
+**/
+function updateLang() {
+    var lang = localStorage.getItem("lang")
+    for (key in dbTrans) {
+        elem = document.getElementById(key)
+        if (elem) {
+            if(elem.getAttribute("placeholder") != null) {
+                elem.placeholder = dbTrans[key][lang]
+            } else {
+                elem.innerHTML = dbTrans[key][lang]
+            }
+        }
+    }   
 }
