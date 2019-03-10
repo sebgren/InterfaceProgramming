@@ -127,7 +127,7 @@ function showPaymentVip() {
 			if (updateCredit(amount)) {
 				// Modify text in modal footer if successful.
 				var modalFooter = modal.getElementsByClassName("modal-footer");
-				modalFooter[0].innerHTML = "<span id=\"pay-thanks\">Thank you for your purchase!</span>" +
+				modalFooter[0].innerHTML = "<span id=\"pay-thanks-vip\">Thank you for your purchase!</span>" +
 					" <p style='font-size: 0.7em; font-weight: normal'><span id=\"vip-update\">Your VIP-credit has been updated.</span></p>";
 
 				// Empty the tab by removing all the li children
@@ -144,8 +144,8 @@ function showPaymentVip() {
 				modalHeader.style.color = "IndianRed";
 
 				var modalFooter = document.getElementById("vip-modal-footer");
-				modalFooter.innerHTML = "You do not have enough credit." +
-					" <p style='font-size: 0.7em; font-weight: normal'>Please contact our staff.</p>";
+				modalFooter.innerHTML = "<span id='no-credit'>You do not have enough credit.</span>" +
+					" <p style='font-size: 0.7em; font-weight: normal'><span id='contact-staff'>Please contact our staff.</span></p>";
 				modalFooter.style.color = "IndianRed";
 
 				var modalBody = document.getElementById("vip-modal-body");
@@ -165,6 +165,9 @@ function showPaymentVip() {
 					modal.style.display = "none";
 				}
 			}
+
+            //Updates the language again since text is inserted via javascript and therefore overwrites original text.
+            this.updateLang()
 		}
 	}
 }
@@ -193,4 +196,24 @@ function logout() {
 	sessionStorage.removeItem('vipUsername');
 	sessionStorage.removeItem('isStaff');
 	window.location.href ="../index.html";
+}
+
+
+/**
+ * Same funciton as in file /scripts/translate.js. Updates the language on the page by
+ * going through all of the variables in lang.json and then matches json keys with
+ * appropriate ID and fills the innerHTML or placeholder with the right text.
+**/
+function updateLang() {
+    var lang = localStorage.getItem("lang")
+    for (key in dbTrans) {
+        elem = document.getElementById(key)
+        if (elem) {
+            if(elem.getAttribute("placeholder") != null) {
+                elem.placeholder = dbTrans[key][lang]
+            } else {
+                elem.innerHTML = dbTrans[key][lang]
+            }
+        }
+    }   
 }

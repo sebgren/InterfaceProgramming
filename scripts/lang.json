@@ -75,12 +75,27 @@ var translation = { "tab" :
     "eng" : "Payment successful!",
     "swe" : "Lyckad betalning!"
   },
+  "payment-success-vip" : {
+    "eng" : "Payment successful!",
+    "swe" : "Lyckad betalning!"
+  },
   "payment-failure" : {
     "eng" : "Payment unsuccessful!",
     "swe" : "Betalningen misslyckades!"
   },
-
+  "no-credit" : {
+    "eng" : "You do not have enough credit.",
+    "swe" : "Du har inte tillräckligt med VIP-krediter"
+  },
+  "contact-staff" : {
+    "eng" : "Please contact our staff.",
+    "swe" : "Var vänlig kontakta personalen."
+  },
   "pay-thanks" : {
+    "eng" : "Thank you for your purchase!",
+    "swe" : "Tack för din betalning!"
+  },
+  "pay-thanks-vip" : {
     "eng" : "Thank you for your purchase!",
     "swe" : "Tack för din betalning!"
   },
