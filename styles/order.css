@@ -1,9 +1,15 @@
-.container {
-    flex-direction: row;
-    max-width: 100%;
-    height: 100%;
-    background-color: transparent;
+* {
+    box-sizing: border-box;
+}
 
+.container {
+    /* flex-direction: row; */
+    width: 100%;
+    /* height: 100%; */
+    background-color: transparent;
+    min-height: 200px;
+    display: block;
+    max-width: 900px;
 }
 
 .header {
@@ -11,22 +17,23 @@
 }
 
 .drinks-container-header{
-    display: flex;
-    flex-direction: column;
-    flex-direction: row;
+    /* max-width: 66%; */
+    /* display: block; */
+    /* flex-direction: column;
+    flex-direction: row; */
     padding-top: 2%;
-    width:100%;
+    /* width:100%; */
     border-bottom: 1px solid;
-      
+    /* display: flex; */
 }
 
 .drinks-container {
-    display: flex;
+    /* display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-grow: 1;
+    flex-grow: 1; */
     padding: 1em;
     height: 65%;
     width: 100%;
@@ -34,35 +41,64 @@
 }
 
 #drinks-container{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    /* display: flex;
+    flex-wrap: wrap; */
+    /* flex-direction: row; */
+    overflow-y: scroll;
     padding-left: 1em;
     justify-content: center;
-
 }
 /*To make rounded edges on the drink-container*/
 .drinks-container-wrapper{
+    float: left;
+    /* display: flex;
+    flex-wrap: wrap; */
+    background-color: white;
+    /* flex-grow: 1; */
+    margin: 0.5em;
+    /* height: 100%; */
+    /* width: 66%; */
+    border-radius: 1%;    
+
+    -ms-flex: 0 0 60%;
+    flex: 0 0 60%;
+    max-width: 63%;
+    min-width: 388px;
+
+    height: 500px;
+    max-height: 500px;
+}
+/*To make rounded edges on the tab-container*/
+.tab-container-wrapper{
+    max-width: 33%;
+    float: right;
     display: flex;
     flex-wrap: wrap;
     background-color: white;
     flex-grow: 1;
     margin: 0.5em;
-    height: 100%;
-    width: 66%;
-    border-radius: 1%;    
-}
-/*To make rounded edges on the tab-container*/
-.tab-container-wrapper{
-  display: flex;
-    flex-wrap: wrap;
-    background-color: white;
-    flex-grow: 1;
-    margin: 0.5em;
-    height: 100%;
+    /* height: 100%; */
     width: 33%;
     border-radius: 1%;
 
+    -ms-flex: 0 0 33.333333%;
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+
+    /* min-width: 388px; */
+
+    height: 500px;
+    max-height: 500px;
+}
+
+@media only screen and (max-width: 768px) {
+    .drinks-container-wrapper, .tab-container-wrapper {
+        float: none;
+        margin-left:auto;
+        margin-right: auto;
+        max-width: 95%;;
+        width: 95%;
+    }
 }
 
 .tab-container {
@@ -103,8 +139,9 @@
     /* display: inline-block; */
     float: left;
     /* line-height: 150px; */
-    height: 280px;
-    width: 200px;
+    height: 150px;
+    width: 20%;
+    min-width: 150px;
     margin-right: 15px;
     margin-bottom: 15px;
     background-image: url('../images/beer.jpg');
@@ -133,8 +170,9 @@
     float: left;
     /* line-height: 150px; */
     text-align: center;
-    height: 280px;
-    width: 200px;
+    height: 150px;
+    width: 20%;
+    min-width: 150px;
     margin-right: 15px;
     margin-bottom: 15px;
     background-image: url('../images/whiskey.jpeg');
@@ -160,8 +198,9 @@
     float: left;
     /* line-height: 150px; */
     text-align: center;
-    height: 280px;
-    width: 200px;
+    height: 150px;
+    width: 20%;
+    min-width: 150px;
     margin-right: 15px;
     margin-bottom: 15px;
     justify-content: center;
@@ -279,13 +318,13 @@ h1 {
 }
 
 .modal {
-    display: none; /* Hidden by default */
+    /* display: none;  */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    width: 60%; /* Full width */
+    height: 400px; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -345,6 +384,7 @@ h1 {
 
 .modal-body {
     padding: 2px 16px;
+    margin-bottom: 20px;
 }
 
 
@@ -361,9 +401,9 @@ h1 {
 
 .modal-content {
     border-radius: 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-between; */
     position: relative;
     background-color: #fefefe;
     top: 20%;
@@ -371,7 +411,7 @@ h1 {
     padding: 0;
     border: 1px solid #888;
     width: 40%;
-    height: 60%;
+    /* height: 60%; */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     animation-name: animatetop;
     animation-duration: 0.4s
@@ -410,7 +450,9 @@ h1 {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /* Hide the browser's default radio button */
@@ -500,8 +542,18 @@ h1 {
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
+#items {
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
 #tab-items {
-    height: 600px;
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
 }

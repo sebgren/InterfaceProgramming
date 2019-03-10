@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <title>The Flying Dutchman</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,7 +48,14 @@
                 <div class="modal-footer">
                 </div>
             </div>
-        </div>
+            <div id="modalBody" class="modal-body">
+                <ul>
+                    <li id="name"></li>
+                    <li id="ursprung"></li>
+                    <li id="producer"></li>
+                    <li id="alcoholLevel"></li>
+                    <li id="price"></li>
+
 
         <div class="container">
             <div class="drinks-container-wrapper">
@@ -123,50 +131,48 @@
         </div>
     
 
-
-        <!-- <div class="beerDiv" 
+    <!-- <div class="beerDiv" 
         id="drag1" src="../images/beer.jpg" 
         draggable="true" 
         ondragstart="drag(event)" width="336" height="69"></div> -->
 
-        <div id="payment-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
-                    <h2>Payment successful!</h2>
-                </div>
-                <div class="modal-body">
-                    <i class="fas fa-check-circle"
-                       style="font-size:100px;color:#5cb85c;"></i>
-                </div>
-                <div class="modal-footer"> Thank you for your purchase!
-                </div>
+    <div id="payment-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
+                <h2>Payment successful!</h2>
+            </div>
+            <div class="modal-body">
+                <i class="fas fa-check-circle" style="font-size:100px;color:#5cb85c;"></i>
+            </div>
+            <div class="modal-footer"> Thank you for your purchase!
             </div>
         </div>
+    </div>
 
-        <div id="vip-payment-modal" class="modal">
+    <div id="vip-payment-modal" class="modal">
 
-            <div class="modal-content">
-                <div id="vip-modal-header" class="modal-header">
+        <div class="modal-content">
+            <div id="vip-modal-header" class="modal-header">
 
-                    <span id="close-vip" class="close" style="font-size: 2em">&times;</span>
+                <span id="close-vip" class="close" style="font-size: 2em">&times;</span>
 
-                    <h2>Payment successful!</h2>
-                </div>
-                <div id="vip-modal-body" class="modal-body">
-                    <i class="fas fa-check-circle"
-                       style="font-size:100px;color:#5cb85c;"></i>
-                </div>
-                <div id="vip-modal-footer" class="modal-footer"> "Thank you for your purchase!
-                    <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>
-                </div>
+                <h2>Payment successful!</h2>
+            </div>
+            <div id="vip-modal-body" class="modal-body">
+                <i class="fas fa-check-circle" style="font-size:100px;color:#5cb85c;"></i>
+            </div>
+            <div id="vip-modal-footer" class="modal-footer"> "Thank you for your purchase!
+                <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>
             </div>
         </div>
+    </div>
 
-        <script>
-            showCredit(sessionStorage.getItem("vipUsername"));</script>
-        </script>
+    <script>
+        showCredit(sessionStorage.getItem("vipUsername"));</script>
+    </script>
 
-        <script src="../scripts/dragndrop.js"></script>
-    </body>
+    <script src="../scripts/dragndrop.js"></script>
+</body>
+
 </html>

@@ -182,6 +182,7 @@ function createDrinkDivs(drinks, type)
         drinkDiv.ondragstart = drinkDragStart;
         drinkDiv.ondragend = drinkDragEnd;
         drinkDiv.onclick = clickListener;
+        drinkDiv.ondblclick = doubleClickListener;
         
         //Set first element of array to display in div. 0 = the name of the drink.
         drinkDiv.innerHTML = drinks[i].namn + " " + drinks[i].namn2;
@@ -337,12 +338,32 @@ function filterDrinkInfo(drinkObj) {
     return newDrinkObj;
 }
 
+// Timer and status are used in separate single-click and double-click events
+var timer;
+var status = 1;
+
 //Author: Jakob Skogby Steinholtz, 2019
 //If a drinkDiv is clicked this function gets the ID of that
 //specific div and sends it to "matchIidWithDrink".
-function clickListener(){
-    matchIdWithDrink(this.id);
+function clickListener(event){
+    status = 1;
+    timer = setTimeout(function() {
+        if (status == 1) {
+            matchIdWithDrink(event.target.id);
+        }
+    }, 500);
 }
+
+function doubleClickListener(event)
+{
+    clearTimeout(timer);
+    status = 0;
+    var id = event.target.id;
+    var name = event.target.innerHTML;
+
+    addDraggedItemToTab(id, name)
+}
+
 
 ////Author: Jakob Skogby Steinholtz, 2019
 //User authentication function - for logging in as VIP or staff.
