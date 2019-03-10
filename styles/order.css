@@ -501,8 +501,10 @@ h1 {
 }
 
 #tab-items {
+    display: flex;
+    justify-content: center;
     height: 600px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
@@ -528,7 +530,6 @@ h1 {
 } */
 
 .tab-item-name {
-    width: 200px;
     height: 50px;
     font-family:sans-serif;
     margin-right: 20px;
