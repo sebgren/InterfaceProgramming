@@ -20,7 +20,7 @@ function deleteItemInTab(element) {
     var itemId = type + "-" + drinkId;
 
     // Remove that item from view
-    $("#" + element.parentNode.id).remove();
+    $("#" + element.parentNode.parentNode.id).remove();
 
     // Get the list of items from localStorage
     var itemsInTab = JSON.parse(localStorage.getItem("itemsInTab"));
@@ -28,6 +28,7 @@ function deleteItemInTab(element) {
     for(var index in itemsInTab.items)
     {
         var item = itemsInTab.items[index];
+        console.log(item)
 
         // Reach that item
         if(item.id === itemId)
@@ -40,5 +41,6 @@ function deleteItemInTab(element) {
 
     // Update the list of items
     localStorage.setItem("itemsInTab", JSON.stringify(itemsInTab));
+    updateTab()
 }
 

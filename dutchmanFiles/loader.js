@@ -184,7 +184,7 @@ function createDrinkDivs(drinks, type)
         drinkDiv.onclick = clickListener;
         
         //Set first element of array to display in div. 0 = the name of the drink.
-        drinkDiv.innerHTML = drinks[i].namn + " " + drinks[i].namn2;
+        drinkDiv.innerHTML = "<div style='height: 50%'>" + drinks[i].namn + " " + drinks[i].namn2 + "</div> \n <div style='padding-top: 55%;'>" + drinks[i].prisinklmoms + " SEK </div>";
 
 
         drinksContainer.append(drinkDiv);
@@ -228,7 +228,7 @@ function allowDrop(ev) {
  */
 function drinkDragStart(ev) {
     var id = ev.target.id;
-    var name = ev.target.innerHTML;
+    var name = ev.target.innerText.split("\n")[0];
     // console.log("Drag start " + id);
     localStorage.setItem("draggedId", id);
     localStorage.setItem("draggedName", name);

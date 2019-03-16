@@ -110,5 +110,9 @@ var translation = { "tab" :
   "switch-to-table" : {
     "eng" : "Switch to table view",
     "swe" : "Byt till bord-vyn"
+  },
+  "chlang" : {
+    "eng" : "Byt till svenska",
+    "swe" : "Switch to English"
   }
 } 

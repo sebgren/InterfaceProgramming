@@ -136,17 +136,20 @@ function addDraggedItemToTab (id, name) {
     {
         $("#items").append(`
             <li id="tab-item-`+id+`" class="tab-item">
-                <img class="float-left tab-item-img" src="../images/`+type+`.jpg" width="50px" height="50px">
-                <div class="float-left tab-item-name"><p>`+name+`</p></div>
-                <div class="float-left tab-item-control">
+                <div class="tab-item-img">
+                    <img src="../images/`+type+`.jpg">
+                </div>
+                <div class="tab-item-name">`+name+`</div>
+                <div class="tab-item-control">
                     <input id="tab-item-`+id+`-minus" type="button" value="-" onclick="minusQuantity(this)">
                     <span id="tab-item-`+id+`-quantity">1</span>
                     <input id="tab-item-`+id+`-plus" type="button" value="+" onclick="plusQuantity(this)">
                 </div>
-                <p id="tab-item-`+id+`-price" class="float-left tab-item-price">`+defaultItemPrice[type+"Price"]+`</p>
-                <p id="tab-item-`+id+`-currency" class="float-left tab-item-currency">SEK</p>
-
-                <button id="tab-item-`+id+`-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
+                <div>
+                    <span id="tab-item-`+id+`-price" class="tab-item-price">`+defaultItemPrice[type+"Price"]+`</span>
+                    <span id="tab-item-`+id+`-currency" class="tab-item-currency">SEK</span>
+                    <button id="tab-item-`+id+`-delete-button" type="button" onclick="deleteItemInTab(this);">&times;</button>
+                </div>
             </li>
         `);
     }
