@@ -1,5 +1,6 @@
 //========================================================================================================
-/*  This function is called when a beverage is dropped on the Tab
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when a beverage is dropped on the Tab
  */
 function itemsOnDrop(event) {
     var id = localStorage.getItem("draggedId");
@@ -9,7 +10,8 @@ function itemsOnDrop(event) {
 }
 
 //========================================================================================================
-/*  This function is called when a beverage is dragged over the Tab
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when a beverage is dragged over the Tab
  */
 function itemsOnDragOver(event) {
     event.preventDefault();  
@@ -19,7 +21,8 @@ function itemsOnDragOver(event) {
 }
 
 //========================================================================================================
-/*  This function is called when the dragged beverage enters the Tab
+/* Author: Sy Hung Doan, 2019 
+*  This function is called when the dragged beverage enters the Tab
  */
 function itemsOnDragEnter(event) {
     event.preventDefault();  
@@ -29,7 +32,8 @@ function itemsOnDragEnter(event) {
 }
 
 //========================================================================================================
-/*  This function is called when the dragged beverage leaves the Tab
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the dragged beverage leaves the Tab
  */
 function itemsOnDragLeave(event) {
     event.preventDefault();  
@@ -39,7 +43,8 @@ function itemsOnDragLeave(event) {
 }
 
 //========================================================================================================
-/*  This function adds the dragged beverage to the Tab. It gets the Id and the name of that beverage.
+/* Author: Sy Hung Doan, 2019 
+ *  This function adds the dragged beverage to the Tab. It gets the Id and the name of that beverage.
  */
 function addDraggedItemToTab (id, name) {
 
@@ -159,7 +164,8 @@ function addDraggedItemToTab (id, name) {
 }
 
 //========================================================================================================
-/*  This function updates the quantity and the total price for each item and the total price for the whole
+/* Author: Sy Hung Doan, 2019 
+ *  This function updates the quantity and the total price for each item and the total price for the whole
  * list of items.
  */
 function updateTab() {

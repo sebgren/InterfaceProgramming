@@ -24,7 +24,8 @@ var whiskeyDrinks = [];
 var wineDrinks = [];
 
 //========================================================================================================
-/* When the document is ready, it first loads the drinks to corresponding variables and then display all 
+/* Author: Sy Hung Doan, 2019 
+ * When the document is ready, it first loads the drinks to corresponding variables and then display all 
  * of them
  */
 $( document ).ready(function(){
@@ -34,14 +35,15 @@ $( document ).ready(function(){
 });
 
 //========================================================================================================
-/* The function takes a string id (e.g. beer-232312; wine-342124). It extracts the type and the article id
+/* Author: Sy Hung Doan, 2019 
+ * The function takes a string id (e.g. beer-232312; wine-342124). It extracts the type and the article id
  * of the beverage. Then a pop up displays details of that corresponding drink by calling the showModal 
  * function.
  */
 function matchIdWithDrink(id){
     // console.log("matchIdWithDrink REACHED");
 
-    //regular expression
+    // regular expression to get the type and the id of a drink
     var matchedString = id.match(/(\w+)\-(\d+)/);
     var type = matchedString[1];
     var drinkId = matchedString[2];
@@ -64,6 +66,7 @@ function matchIdWithDrink(id){
         console.log("Wrong type");
     }
 
+    // Information that the modal will show
     var modalInfo = [];
 
     for(i=0; i<collector.length; i++){
@@ -78,7 +81,7 @@ function matchIdWithDrink(id){
     } 
 
     showModal(modalInfo);
-    console.log(modalInfo);
+    // console.log(modalInfo);
 }
 
 //Author: Jakob Skogby Steinholtz, 2019
@@ -163,7 +166,8 @@ function allUserNames() {
 }
 
 //========================================================================================================
-/*  This function takes a specific type of beverage and its list and generates a div containing all those 
+/* Author: Sy Hung Doan, 2019 
+ *  This function takes a specific type of beverage and its list and generates a div containing all those 
  *  items.
  */ 
 function createDrinkDivs(drinks, type)
@@ -195,7 +199,8 @@ function createDrinkDivs(drinks, type)
 }  
 
 //========================================================================================================
-/*  This function displays all drinks. It first empties the drink container and then call createDrinkDivs 
+/* Author: Sy Hung Doan, 2019 
+ *  This function displays all drinks. It first empties the drink container and then call createDrinkDivs 
  *  function on each type of beverage.
  */
 function displayAllDrinks()
@@ -224,7 +229,8 @@ function allowDrop(ev) {
 }
 
 //========================================================================================================
-/*  This function is called when a beverage starts being dragged
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when a beverage starts being dragged
  */
 function drinkDragStart(ev) {
     var id = ev.target.id;
@@ -236,10 +242,14 @@ function drinkDragStart(ev) {
 
 
 //========================================================================================================
-/*  This function is called when a beverage stops being dragged
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when a beverage stops being dragged
  */
 function drinkDragEnd(ev) {
-    // console.log("Drag end");
+    
+    // Remove the dragged item out of the localStorage
+    // 300ms to make sure that the item is removed after being retrieved
+
     setTimeout(function(){
         localStorage.removeItem("draggedId");
         localStorage.removeItem("draggedName");
@@ -247,7 +257,8 @@ function drinkDragEnd(ev) {
 }
 
 //========================================================================================================
-/*  This function is called when the Beer button is clicked
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the Beer button is clicked
  */
 function checkBeerBox()
 {
@@ -256,7 +267,8 @@ function checkBeerBox()
 }
 
 //========================================================================================================
-/*  This function is called when the whiskey button is clicked
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the whiskey button is clicked
  */
 function checkWhiskeyBox()
 {
@@ -265,7 +277,8 @@ function checkWhiskeyBox()
 }
 
 //========================================================================================================
-/*  This function is called when the wine button is clicked
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the wine button is clicked
  */
 function checkWineBox()
 {
@@ -274,7 +287,8 @@ function checkWineBox()
 }
 
 //========================================================================================================
-/*  This function gets 100 each type of beverages from DB2 and loads them to the corresponding variable.
+/* Author: Sy Hung Doan, 2019 
+ *  This function gets 100 each type of beverages from DB2 and loads them to the corresponding variable.
  */
 function getDrinks() {
     var nBeer = 0;
@@ -302,7 +316,8 @@ function getDrinks() {
 }
 
 //========================================================================================================
-/*  This function takes a drink object as a parameter and return a new object that are filtered out some
+/* Author: Sy Hung Doan, 2019 
+ * This function takes a drink object as a parameter and return a new object that are filtered out some
  * unnecessary fields.
  */
 function filterDrinkInfo(drinkObj) {
