@@ -43,6 +43,7 @@ function switchToOrder() {
 FUNCTIONS FOR TABLES-VIEW
 **/
 
+//Author: Sebastian Holmgren, 2019
 //Displays the tab. currently, it will only display the hard-coded
 //tab for table one.
 function displayTab() {
@@ -50,11 +51,10 @@ function displayTab() {
 	showFooter(true);
 }
 
-//Adds the animation class and then removes it when it's done playing
+//Author: Sebastian Holmgren, 2019
+//If the tab footer is visible (the buttons of the tab) then hide the tab content
+//and remove the animation on the flashing table.
 async function clickAnimation(btn){
-	//document.getElementById(btn).className = "btn-animation btn " + btn;
-	//await sleep(500);
-	//document.getElementById(btn).className = "btn " + btn;
 	if (document.getElementById('tab-footer').style.opacity == "1") {
 		document.getElementById('tab-content').style.visibility = "hidden";
 		showFooter(false);
@@ -63,6 +63,9 @@ async function clickAnimation(btn){
 
 }
 
+//Author: Sebastian Holmgren, 2019
+//Changes the opacity of the footer to indicate that you can click the buttons in
+//one state and not in the other.
 function showFooter(val) {
 	if (val) {
 		document.getElementById('tab-footer').style.opacity = "1";
@@ -70,12 +73,6 @@ function showFooter(val) {
 		document.getElementById('tab-footer').style.opacity = "0.4";
 	}
 }
-
-//below is a function to make the button click animation
-//work properly more than once
-//function sleep(ms) {
-  //return new Promise(resolve => setTimeout(resolve, ms));
-//}
 
 /**
  * Shows payment modal for normal payment.

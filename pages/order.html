@@ -22,7 +22,9 @@
 
 
     <body>
+        <!-- Background Image -->
         <div class="bg"></div>
+
         <button id="logout-button" onclick="logout()">Logout</button>
         <div class="header"><h1><span id="table">Table</span>&nbsp;#1</h1></div>
 
@@ -48,68 +50,69 @@
             </div>
         </div>
 
+        <!-- Container for the main content -->
         <div class="container">
+
+            <!-- Wrapper for the drinks and the buttons in the container -->
             <div class="drinks-container-wrapper">
-            <div class="drinks-container-header">
-                <div class="flexButtons">
-                    <label class="rbContainer"> <span id="beers"> Beers </span>
-                        <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                <div class="drinks-container-header">
+                    <div class="flexButtons">
+                        <label class="rbContainer"> <span id="beers"> Beers </span>
+                            <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="whiskey"> Whiskey </span>
-                        <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                        <label class = "rbContainer"> <span id="whiskey"> Whiskey </span>
+                            <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="wine"> Wine </span>
-                        <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                        <label class = "rbContainer"> <span id="wine"> Wine </span>
+                            <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="all">All </span> 
+                        <label class = "rbContainer"> <span id="all">All </span> 
 
-                        <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
+                            <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
 
-                        <span class="checkmark"></span>
-                    </label>
-                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                            <span class="checkmark"></span>
+                        </label>
+                        <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                    </div>
+                </div>
+                <div class="drinks-container">     
+                        <ul id="drinks-container">
+                        </ul>
                 </div>
             </div>
-            <div class="drinks-container">     
-                    <ul id="drinks-container">
-                    </ul>
-            </div>
-            </div>
+
+            <!-- Wrapper for the tab -->
             <div class="tab-container-wrapper">
-            <div class="tab-container">
-                <h1 style="margin: 10px;"><span id="tab">tab</span></h1>
+                <div class="tab-container">
+                    <h1 style="margin: 10px;"><span id="tab">tab</span></h1>
 
-                <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
+                    <div id="tab-items" ondrop="itemsOnDrop(this)" ondragenter="itemsOnDragEnter(event)" ondragover="itemsOnDragOver(event)" ondragleave="itemsOnDragLeave(event)">
 
-                    <ul id="items">
+                        <ul id="items">
 
-                    </ul>
+                        </ul>
 
-                </div>
+                    </div>
 
-                <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
-                    <span id="sum">Total price: </span>
-                    <span id="total-price">0</span>
-                    <span> SEK</span>
-                </div>
-                <div class="button-container">
-                    <button id="pay" class="pay-button" onclick="showPayment()">Pay</button>
+                    <div id="section-price" style="display: none; margin-top: 10px; margin-bottom: 10px; font-size: 15pt;">
+                        <span id="sum">Total price: </span>
+                        <span id="total-price">0</span>
+                        <span> SEK</span>
+                    </div>
+                    <div class="button-container">
+                        <button id="pay" class="pay-button" onclick="showPayment()">Pay</button>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
 
-        <!-- <div class="beerDiv" 
-        id="drag1" src="../images/beer.jpg" 
-        draggable="true" 
-        ondragstart="drag(event)" width="336" height="69"></div> -->
-
+        <!-- Regular Payment Modal -->
         <div id="payment-modal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
@@ -121,7 +124,7 @@
                     <i class="fas fa-check-circle"
                        style="font-size:100px;color:#5cb85c;"></i>
                 </div>
-                <div class="modal-footer"> <span id="pay-thanks">Thank you for your purchase!</span>
+                <div class="modal-footer"><span id="pay-thanks">Thank you for your purchase!</span>
                 </div>
             </div>
         </div>
