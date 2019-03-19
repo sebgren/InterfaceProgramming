@@ -1,5 +1,6 @@
 //========================================================================================================
-/*  This function is called when a delete button of an item in Tab is clicked. The item is removed from 
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when a delete button of an item in Tab is clicked. The item is removed from 
  * View and localStorage.
  */
 function deleteItemInTab(element) {
