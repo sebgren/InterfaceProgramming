@@ -98,6 +98,9 @@ function showModal(modalInfo) {
 
     var infoToDisplay;
 
+    //Creating 6 different strings and replacing unicode chars with the swedish chars.
+    //6 different strings is needed for this solution as the function .method overwrites 
+    //any changes that previously have been made on that string.
     var swedishString1;
     var swedishString2;
     var swedishString3;
@@ -208,8 +211,9 @@ function displayAllDrinks()
     createDrinkDivs(wineDrinks, "wine");
 }
 
-//Author: Jakob Skogby Steinholtz, 2019
-//Used to remove the divs 
+//========================================================================================================
+/*  This function is used for removing drinkDivs.
+ */
 function eraseFunction(className){
     var elements = document.getElementsByClassName(className);
     while(elements.length > 0){
@@ -218,10 +222,7 @@ function eraseFunction(className){
 }
 
 
-//for the drag and drop (not working with drinkDivs at the moment)
-function allowDrop(ev) {
-  ev.preventDefault();
-}
+
 
 //========================================================================================================
 /*  This function is called when a beverage starts being dragged
@@ -337,15 +338,20 @@ function filterDrinkInfo(drinkObj) {
     return newDrinkObj;
 }
 
-//Author: Jakob Skogby Steinholtz, 2019
-//If a drinkDiv is clicked this function gets the ID of that
-//specific div and sends it to "matchIidWithDrink".
+
+//========================================================================================================
+/*  Author: Jakob Skogby Steinholtz, 2019
+ * If a drinkDiv is clicked this function gets the ID of that
+ * specific div and sends it to the function "matchIdWithDrink"
+ */
 function clickListener(){
     matchIdWithDrink(this.id);
 }
 
-////Author: Jakob Skogby Steinholtz, 2019
-//User authentication function - for logging in as VIP or staff.
+//========================================================================================================
+/*  Author: Jakob SKogby Steinholtz, 2019
+ * A function for user authentication, for logging in as VIP or staff.
+ */
 function validateUser(){
     var usrname = document.getElementById('username');
     var pswrd = document.getElementById('password');
@@ -407,8 +413,11 @@ function validateUser(){
     }
     
 }
-//Author: Jakob Skogby Steinholtz, 2019
-//To search for specific drinks
+
+//========================================================================================================
+/*  Author: Jakob Skogby Steinholtz, 2019
+ * This function is used to search for specific drinks.
+ */
 function searchFunction(listToSearch){
     console.log("Searched");
     var input = document.getElementById("myInput");
