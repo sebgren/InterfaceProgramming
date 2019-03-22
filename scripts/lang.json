@@ -1,3 +1,5 @@
+//Author: Sebastian Holmgren, 2019
+//A JSON-object with all the translations in the entire project.
 var translation = { "tab" : 
    { 
      "eng" : "Tab", 

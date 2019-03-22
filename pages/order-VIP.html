@@ -22,7 +22,9 @@
 
 
     <body>
+        <!-- Background Image -->
         <div class="bg"></div>
+
         <button id="logout-button" onclick="logout()">Logout</button>
         <div id="creditString">User's credit not found</div>
         <div class="header"><h1>Table #1</h1></div>
@@ -49,42 +51,47 @@
             </div>
         </div>
 
+        <!-- Container for the main content -->
         <div class="container">
+
+            <!-- Wrapper for the drinks and the buttons in the container -->
             <div class="drinks-container-wrapper">
-            <div class="drinks-container-header">
-                <div class="flexButtons">
-                    <label class = "rbContainer"> <span id="beers"> Beers </span>
-                        <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                <div class="drinks-container-header">
+                    <div class="flexButtons">
+                        <label class = "rbContainer"> <span id="beers"> Beers </span>
+                            <input type="radio"  name ="rBtn" onclick="checkBeerBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="whiskey"> Whiskey </span>
-                        <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                        <label class = "rbContainer"> <span id="whiskey"> Whiskey </span>
+                            <input type="radio"  name ="rBtn" onclick="checkWhiskeyBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="wine"> Wine </span>
-                        <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
-                        <span class="checkmark"></span>
-                    </label>
+                        <label class = "rbContainer"> <span id="wine"> Wine </span>
+                            <input type="radio"  name ="rBtn" onclick="checkWineBox();"> 
+                            <span class="checkmark"></span>
+                        </label>
 
-                    <label class = "rbContainer"> <span id="all">All </span>  
+                        <label class = "rbContainer"> <span id="all">All </span>  
 
-                        <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
+                            <input type="radio" name ="rBtn" checked onclick="displayAllDrinks();"> 
 
-                        <span class="checkmark"></span>
-                    </label>
-                    <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                            <span class="checkmark"></span>
+                        </label>
+                        <input class="searchDiv" type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search for specific beverage">
+                    </div>
                 </div>
+
+                <div class="drinks-container">   
+                    <ul id="drinks-container">
+                    </ul>
+                </div>
+
             </div>
 
+            <!-- Wrapper for the tab -->
 
-            
-            <div class="drinks-container">   
-                <ul id="drinks-container">
-                </ul>
-            </div>
-            </div>
             <div class="tab-container-wrapper">
                 <div class="tab-container">
                     <h1 style="margin: 10px;"><span id="tab">tab</span></h1>
@@ -108,47 +115,44 @@
                     </div>
                 </div>
             </div>
-    
 
+            <!-- Regular Payment Modal -->
 
-        <!-- <div class="beerDiv" 
-        id="drag1" src="../images/beer.jpg" 
-        draggable="true" 
-        ondragstart="drag(event)" width="336" height="69"></div> -->
-
-        <div id="payment-modal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
-                    <h2 id="payment-success"><span id="pay-sucess">Payment successful!</span></h2>
-                </div>
-                <div class="modal-body">
-                    <i class="fas fa-check-circle"
-                       style="font-size:100px;color:#5cb85c;"></i>
-                </div>
-                <div class="modal-footer"> <span id="pay-thanks">Thank you for your purchase!</span>
+            <div id="payment-modal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span id="close-normal" class="close" style="font-size: 2em">&times;</span>
+                        <h2 id="payment-success"><span id="pay-sucess">Payment successful!</span></h2>
+                    </div>
+                    <div class="modal-body">
+                        <i class="fas fa-check-circle"
+                           style="font-size:100px;color:#5cb85c;"></i>
+                    </div>
+                    <div class="modal-footer"> <span id="pay-thanks">Thank you for your purchase!</span>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div id="vip-payment-modal" class="modal">
+            <!-- VIP Payment Modal -->
 
-            <div class="modal-content">
-                <div id="vip-modal-header" class="modal-header">
+            <div id="vip-payment-modal" class="modal">
 
-                    <span id="close-vip" class="close" style="font-size: 2em">&times;</span>
+                <div class="modal-content">
+                    <div id="vip-modal-header" class="modal-header">
 
-                    <h2><span id="payment-success-vip">Payment successful!</span></h2>
-                </div>
-                <div id="vip-modal-body" class="modal-body">
-                    <i class="fas fa-check-circle"
-                       style="font-size:100px;color:#5cb85c;"></i>
-                </div>
-                <div id="vip-modal-footer" class="modal-footer"> <span id="pay-thanks-vip">Thank you for your purchase!</span>
-                    <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>
+                        <span id="close-vip" class="close" style="font-size: 2em">&times;</span>
+
+                        <h2><span id="payment-success-vip">Payment successful!</span></h2>
+                    </div>
+                    <div id="vip-modal-body" class="modal-body">
+                        <i class="fas fa-check-circle"
+                           style="font-size:100px;color:#5cb85c;"></i>
+                    </div>
+                    <div id="vip-modal-footer" class="modal-footer"> <span id="pay-thanks-vip">Thank you for your purchase!</span>
+                        <p style='font-size: 0.7em; font-weight: normal'>Your VIP-credit has been updated.</p>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <script>
             showCredit(sessionStorage.getItem("vipUsername"));</script>

@@ -1,5 +1,6 @@
 //========================================================================================================
-/*  This function is called when the plus button (in Tab) is clicked
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the plus button (in Tab) is clicked
  */
 function plusQuantity(element) {
     // Get the id of the HTML element
@@ -43,7 +44,8 @@ function plusQuantity(element) {
 
 
 //========================================================================================================
-/*  This function is called when the minus button (in Tab) is clicked
+/* Author: Sy Hung Doan, 2019 
+ *  This function is called when the minus button (in Tab) is clicked
  */
 function minusQuantity(element) {
     // Get the id of the HTML element
@@ -89,7 +91,8 @@ function minusQuantity(element) {
 }
 
 //========================================================================================================
-/*  This function updates the price corresponding to the params idQuery (the string for querying) and 
+/* Author: Sy Hung Doan, 2019 
+ *  This function updates the price corresponding to the params idQuery (the string for querying) and 
  * newPrice (the new price to be updated to).
  */
 function updatePrice(idQuery, newPrice) {
