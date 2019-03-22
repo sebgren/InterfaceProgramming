@@ -8,6 +8,7 @@ function getLoginCredentials(){
 	console.log('password= ' + pswrd.value);
 }
 /**
+ * Author: Axel Grönberg 2019
  * Function for updating string showing credit of VIP-customer
  */
 function showCredit(userName) {
@@ -17,12 +18,14 @@ function showCredit(userName) {
 }
 
 /**
- * Function for modifying the standard order page to provide extra features for staff
+ * Author: Axel Grönberg 2019
+ * Function which checks if user is staff and if modifies the standard order page to provide extra staff features.
  */
 function checkIfStaff() {
 	if(sessionStorage.getItem("isStaff") == 1) {
 		var toptext = document.getElementsByClassName("header");
 		toptext[0].innerHTML = "<h1>Bar</h1>";
+
 		var btn = document.createElement("BUTTON");
         btn.innerHTML = "<span id='switch-to-table'>Switch to table view</span>"
 		btn.className = "switch-view-button";
@@ -32,7 +35,8 @@ function checkIfStaff() {
 }
 
 /**
- * Function for switching to staff version of order page.
+ * Author: Axel Grönberg 2019
+ * Function for moving to staff version of order page.
  */
 function switchToOrder() {
 	sessionStorage.setItem("isStaff", 1);
@@ -40,42 +44,8 @@ function switchToOrder() {
 }
 
 /**
-FUNCTIONS FOR TABLES-VIEW
-**/
-
-//Author: Sebastian Holmgren, 2019
-//Displays the tab. currently, it will only display the hard-coded
-//tab for table one.
-function displayTab() {
-	document.getElementById('tab-content').style.visibility = "visible";
-	showFooter(true);
-}
-
-//Author: Sebastian Holmgren, 2019
-//If the tab footer is visible (the buttons of the tab) then hide the tab content
-//and remove the animation on the flashing table.
-async function clickAnimation(btn){
-	if (document.getElementById('tab-footer').style.opacity == "1") {
-		document.getElementById('tab-content').style.visibility = "hidden";
-		showFooter(false);
-		document.getElementsByClassName("active-table")[0].style.animation = "none";
-	}
-
-}
-
-//Author: Sebastian Holmgren, 2019
-//Changes the opacity of the footer to indicate that you can click the buttons in
-//one state and not in the other.
-function showFooter(val) {
-	if (val) {
-		document.getElementById('tab-footer').style.opacity = "1";
-	} else {
-		document.getElementById('tab-footer').style.opacity = "0.4";
-	}
-}
-
-/**
- * Shows payment modal for normal payment.
+ * Author: Axel Grönberg, 2019
+ * Shows payment modal for non-credit payment if there are items on the tab. Also clears all purchased items from tab.
  */
 function showPayment() {
 	if (document.getElementById("total-price").textContent != '0') {
@@ -83,7 +53,7 @@ function showPayment() {
 		var modal = document.getElementById('payment-modal');
 		modal.style.display = "block";
 
-		// Adds close functionality to X.
+		// Adds close functionality to X-icon.
 		var span = document.getElementById("close-normal");
 		span.onclick = function () {
 			modal.style.display = "none";
@@ -95,7 +65,6 @@ function showPayment() {
 				modal.style.display = "none";
 			}
 		}
-
 
 		// Empty the tab by removing all the li children
 		$("#items").empty();
@@ -109,8 +78,9 @@ function showPayment() {
 }
 
 /**
- * Shows payment modal for paying with VIP-credits. Calls function to update credits. Shows appropriate message for
- * successful as well as unsuccessful payments.
+ * Author: Axel Grönberg, 2019
+ * Shows payment modal for paying with VIP-credits if there are items on tab. Calls function to update credits.
+ * Shows appropriate message for successful as well as unsuccessful payments. Also clears purchased items from tab.
  */
 function showPaymentVip() {
 	if (document.getElementById("total-price").textContent != '0') {
@@ -169,9 +139,11 @@ function showPaymentVip() {
 }
 
 /**
+ * Author: Axel Grönberg, 2019
  * Updates user credit and updates string displaying credit. No update will be made if user doesn't have enough credit.
  * @param amount The value with which to decrement user credit.
- * @returns {boolean} Returns true if successfully decremented credit. Returns false if user doesn't have enough credits.
+ * @returns {boolean} Returns true if successfully decremented credit. Returns false if user doesn't have enough
+ * credits.
  */
 function updateCredit(amount) {
 	var userName = sessionStorage.getItem("vipUsername")
@@ -188,6 +160,10 @@ function updateCredit(amount) {
 	}
 }
 
+/**
+ * Author: Axel Grönberg, 2019
+ * Logs current user out and clears local storage of user data.
+ */
 function logout() {
 	sessionStorage.removeItem('vipUsername');
 	sessionStorage.removeItem('isStaff');
@@ -212,4 +188,39 @@ function updateLang() {
             }
         }
     }   
+}
+
+/**
+ FUNCTIONS FOR TABLES-VIEW
+ **/
+
+//Author: Sebastian Holmgren, 2019
+//Displays the tab. currently, it will only display the hard-coded
+//tab for table one.
+function displayTab() {
+	document.getElementById('tab-content').style.visibility = "visible";
+	showFooter(true);
+}
+
+//Author: Sebastian Holmgren, 2019
+//If the tab footer is visible (the buttons of the tab) then hide the tab content
+//and remove the animation on the flashing table.
+async function clickAnimation(btn){
+	if (document.getElementById('tab-footer').style.opacity == "1") {
+		document.getElementById('tab-content').style.visibility = "hidden";
+		showFooter(false);
+		document.getElementsByClassName("active-table")[0].style.animation = "none";
+	}
+
+}
+
+//Author: Sebastian Holmgren, 2019
+//Changes the opacity of the footer to indicate that you can click the buttons in
+//one state and not in the other.
+function showFooter(val) {
+	if (val) {
+		document.getElementById('tab-footer').style.opacity = "1";
+	} else {
+		document.getElementById('tab-footer').style.opacity = "0.4";
+	}
 }
